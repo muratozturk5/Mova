@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- fontWeight
+   100 Thin
+   200 Extra Light
+   300 Light
+   400 Normal
+   500 Medium
+   600 Semi Bold
+   700 Bold
+   800 Extra Bold
+   900 Ultra Bold -->
+    <font
+        android:font="@font/urbanist_thin"
+        android:fontStyle="normal"
+        android:fontWeight="100" />
+    <font
+        android:font="@font/urbanist_extra_light"
+        android:fontStyle="normal"
+        android:fontWeight="200" />
+    <font
+        android:font="@font/urbanist_light"
+        android:fontStyle="normal"
+        android:fontWeight="300" />
+    <font
+        android:font="@font/urbanist_regular"
+        android:fontStyle="normal"
+        android:fontWeight="400" />
+    <font
+        android:font="@font/urbanist_medium"
+        android:fontStyle="normal"
+        android:fontWeight="500" />
+    <font
+        android:font="@font/urbanist_semi_bold"
+        android:fontStyle="normal"
+        android:fontWeight="600" />
+    <font
+        android:font="@font/urbanist_bold"
+        android:fontStyle="normal"
+        android:fontWeight="700" />
+    <font
+        android:font="@font/urbanist_extra_bold"
+        android:fontStyle="normal"
+        android:fontWeight="800" />
+    <font
+        android:font="@font/urbanist_black"
+        android:fontStyle="normal"
+        android:fontWeight="900" />
+</font-family>

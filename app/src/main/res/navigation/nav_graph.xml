@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInWithSocialFragment">
+
+    <fragment
+        android:id="@+id/signInWithSocialFragment"
+        android:name="com.muratozturk.metflix.SignInWithSocialFragment"
+        android:label="fragment_sign_in_with_social"
+        tools:layout="@layout/fragment_sign_in_with_social">
+        <action
+            android:id="@+id/action_signInWithSocialFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInWithSocialFragment_to_signInWithPasswordFragment"
+            app:destination="@id/signInWithPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.muratozturk.metflix.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/signInWithPasswordFragment"
+        android:name="com.muratozturk.metflix.SignInWithPasswordFragment"
+        android:label="fragment_sign_in_with_password"
+        tools:layout="@layout/fragment_sign_in_with_password">
+        <action
+            android:id="@+id/action_signInWithPasswordFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+</navigation>

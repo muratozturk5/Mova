@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_focused="true">
+        <color android:color="@color/text_color" />
+    </item>
+    <item android:state_enabled="true">
+        <color android:color="@color/inactive_input" />
+    </item>
+</selector>
