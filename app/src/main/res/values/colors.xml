@@ -15,4 +15,5 @@
     <color name="background">#ffffff</color>
     <color name="color_input_back">#f9f9f9</color>
     <color name="inactive_input">#949494</color>
+    <color name="dark">#181A20</color>
 </resources>

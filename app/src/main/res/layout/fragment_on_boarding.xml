@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    tools:context=".OnBoardingFragment">
+
+    <ImageView
+        android:id="@+id/onBoardingImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/onboarding_image"
+        android:rotation="12"
+        android:scaleType="centerCrop"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
+        android:src="@drawable/onboarding_background" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/onboarding_gradient"
+        android:src="@drawable/onboarding_gradient" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="@string/welcome_to_metflix"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="10dp"
+        android:textFontWeight="700"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/description" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:gravity="center"
+        android:text="@string/onboarding_description"
+        android:textColor="@color/white"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/shadout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.github.sablasvegas.shadout.Shadout
+        android:id="@+id/shadout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:Dy="5dp"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shadowColor="#1AE21221"
+        app:shadowRadius="10dp"
+        tools:layout_editor_absoluteX="5dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/getStarted"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_btn"
+            android:backgroundTint="@color/red"
+            android:elevation="0dp"
+            android:shadowRadius="0"
+            android:stateListAnimator="@null"
+            android:text="@string/get_started"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textFontWeight="600"
+            android:textSize="15sp" />
+
+    </com.github.sablasvegas.shadout.Shadout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

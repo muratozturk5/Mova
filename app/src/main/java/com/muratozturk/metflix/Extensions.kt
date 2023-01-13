@@ -30,7 +30,7 @@ fun EditText.changeFocusedInputTint(isFocused: Boolean) {
                         PorterDuffColorFilter(
                             androidx.core.content.ContextCompat.getColor(
                                 this.context,
-                                com.muratozturk.metflix.R.color.inactive_input
+                                R.color.inactive_input
                             ),
                             android.graphics.PorterDuff.Mode.SRC_IN
                         )

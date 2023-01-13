@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">MetFlix</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Metflix</string>
     <string name="login_image">Login Image</string>
     <string name="lets_you_in">Let\'s you in</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
@@ -12,7 +10,7 @@
     <string name="sign_in_with_password">Sign in with password</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
-    <string name="create_your_account">Create your account</string>
+    <string name="create_your_account">Create Your Account</string>
     <string name="e_mail_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="remember_me">Remember me</string>
@@ -20,4 +18,9 @@
     <string name="sign_in">Sign in</string>
     <string name="or_continue_with">or continue with</string>
     <string name="login_to_your_account">Login to Your Account</string>
+    <string name="onboarding_image">Onboarding image</string>
+    <string name="onboarding_gradient">Onboarding gradient</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_to_metflix">Welcome to Metflix</string>
+    <string name="onboarding_description">The best movie stream ing app of the century to make your days great!</string>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signInWithSocialFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/signInWithSocialFragment"
@@ -30,5 +30,14 @@
         <action
             android:id="@+id/action_signInWithPasswordFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.muratozturk.metflix.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding">
+        <action
+            android:id="@+id/action_onBoardingFragment_to_signInWithSocialFragment"
+            app:destination="@id/signInWithSocialFragment" />
     </fragment>
 </navigation>

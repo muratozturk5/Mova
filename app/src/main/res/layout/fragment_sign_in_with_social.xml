@@ -49,7 +49,6 @@
         android:layout_height="220dp"
         android:contentDescription="@string/login_image"
         android:src="@drawable/login"
-        android:text="@string/hello_blank_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
