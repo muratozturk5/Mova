@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_sign_in_with_social">
         <action
             android:id="@+id/action_signInWithSocialFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_signInWithSocialFragment_to_signInWithPasswordFragment"
-            app:destination="@id/signInWithPasswordFragment" />
+            app:destination="@id/signInWithPasswordFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -29,7 +37,11 @@
         tools:layout="@layout/fragment_sign_in_with_password">
         <action
             android:id="@+id/action_signInWithPasswordFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -38,6 +50,10 @@
         tools:layout="@layout/fragment_on_boarding">
         <action
             android:id="@+id/action_onBoardingFragment_to_signInWithSocialFragment"
-            app:destination="@id/signInWithSocialFragment" />
+            app:destination="@id/signInWithSocialFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
 </navigation>
