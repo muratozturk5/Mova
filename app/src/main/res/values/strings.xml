@@ -23,4 +23,7 @@
     <string name="get_started">Get Started</string>
     <string name="welcome_to_metflix">Welcome to Metflix</string>
     <string name="onboarding_description">The best movie stream ing app of the century to make your days great!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_logo">App logo</string>
 </resources>
