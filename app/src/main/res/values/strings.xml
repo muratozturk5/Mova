@@ -23,7 +23,16 @@
     <string name="get_started">Get Started</string>
     <string name="welcome_to_metflix">Welcome to Metflix</string>
     <string name="onboarding_description">The best movie stream ing app of the century to make your days great!</string>
+    <string name="app_logo">App logo</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="my_list">My List</string>
+    <string name="profile">Profile</string>
+    <string name="download">Download</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="app_logo">App logo</string>
+    <string name="error">Error</string>
+    <string name="email_or_password_is_not_valid">Email or password is not valid</string>
+    <string name="sign_up_success">Sign Up Successful</string>
+    <string name="success">Success</string>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/menu_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/exploreFragment"
+        android:icon="@drawable/menu_discovery"
+        android:title="@string/explore" />
+    <item
+        android:id="@+id/basketFragment"
+        android:icon="@drawable/menu_bookmark"
+        android:title="@string/my_list" />
+    <item
+        android:id="@+id/downloadFragment"
+        android:icon="@drawable/menu_download"
+        android:title="@string/download" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/menu_profile"
+        android:title="@string/profile" />
+</menu>

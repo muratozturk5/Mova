@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824409577602",
+    "project_id": "metflix-ac7ed",
+    "storage_bucket": "metflix-ac7ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824409577602:android:4f5b81ba08a3fc945ffc9b",
+        "android_client_info": {
+          "package_name": "com.muratozturk.metflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824409577602-5qgg15fmb8gihvp0scsp5fjut3vd8vta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFkVOaizLQraoZ7yzD3ngpMuinRGD7StM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824409577602-5qgg15fmb8gihvp0scsp5fjut3vd8vta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

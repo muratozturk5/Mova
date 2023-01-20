@@ -1,7 +1,13 @@
-package com.muratozturk.metflix
+package com.muratozturk.metflix.common
 
+import android.app.Activity
 import android.graphics.PorterDuffColorFilter
+import android.view.View
 import android.widget.EditText
+import androidx.core.content.res.ResourcesCompat
+import com.muratozturk.metflix.R
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 
 fun EditText.changeFocusedInputTint(isFocused: Boolean) {
@@ -42,3 +48,29 @@ fun EditText.changeFocusedInputTint(isFocused: Boolean) {
     }
 
 }
+
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun Activity.showToast(
+    title: String?,
+    description: String,
+    style: MotionToastStyle
+) {
+    MotionToast.createColorToast(
+        this,
+        title,
+        description,
+        style,
+        MotionToast.GRAVITY_TOP or MotionToast.GRAVITY_CENTER,
+        MotionToast.LONG_DURATION,
+        ResourcesCompat.getFont(this, R.font.urbanist_font_family)
+    )
+}
+

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInWithSocialFragment"
-        android:name="com.muratozturk.metflix.SignInWithSocialFragment"
+        android:name="com.muratozturk.metflix.ui.login.signinwithsocialmedia.SignInWithSocialFragment"
         android:label="fragment_sign_in_with_social"
         tools:layout="@layout/fragment_sign_in_with_social">
         <action
@@ -27,12 +27,18 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.muratozturk.metflix.SignUpFragment"
+        android:name="com.muratozturk.metflix.ui.login.signup.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/signInWithPasswordFragment"
-        android:name="com.muratozturk.metflix.SignInWithPasswordFragment"
+        android:name="com.muratozturk.metflix.ui.login.signinwithpassword.SignInWithPasswordFragment"
         android:label="fragment_sign_in_with_password"
         tools:layout="@layout/fragment_sign_in_with_password">
         <action
@@ -42,10 +48,20 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_signInWithPasswordFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.muratozturk.metflix.OnBoardingFragment"
+        android:name="com.muratozturk.metflix.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding">
         <action
@@ -58,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.muratozturk.metflix.SplashScreenFragment"
+        android:name="com.muratozturk.metflix.ui.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -68,7 +84,26 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit"
-            app:popUpTo="@id/splashScreenFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.muratozturk.metflix.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.muratozturk.metflix.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
 </navigation>
