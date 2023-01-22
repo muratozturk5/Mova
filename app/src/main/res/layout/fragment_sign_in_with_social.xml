@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="5dp"
-    tools:context=".ui.login.signinwithsocialmedia.SignInWithSocialFragment">
+    tools:context=".ui.authentication.signinwithsocialmedia.SignInWithSocialFragment">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -144,7 +144,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/continueWithApple"
+        android:id="@+id/continueWithGithub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
@@ -167,14 +167,14 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/apple_icon" />
+                android:src="@drawable/github_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:text="@string/continue_with_apple"
+                android:text="@string/continue_with_github"
                 android:textColor="@color/text_color"
                 android:textFontWeight="600"
                 android:textSize="16sp" />
@@ -190,7 +190,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@+id/continueWithApple"
+        app:layout_constraintTop_toBottomOf="@+id/continueWithGithub"
         tools:layout_editor_absoluteX="5dp">
 
         <View

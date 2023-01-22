@@ -1,11 +1,13 @@
 package com.muratozturk.metflix.di
 
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
-import com.muratozturk.metflix.data.repository.UserRepositoryImpl
-import com.muratozturk.metflix.domain.repository.UserRepository
+import com.muratozturk.metflix.data.repository.AuthRepositoryImpl
+import com.muratozturk.metflix.domain.repository.AuthRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,8 +18,8 @@ object AuthenticatorModule {
     @Provides
     @Singleton
     fun provideAuthenticator(
-        firebaseAuth: FirebaseAuth
-    ): UserRepository =
-        UserRepositoryImpl(firebaseAuth)
-
+        firebaseAuth: FirebaseAuth,
+        @ApplicationContext context: Context
+    ): AuthRepository =
+        AuthRepositoryImpl(firebaseAuth, context)
 }

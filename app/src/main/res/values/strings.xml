@@ -3,7 +3,7 @@
     <string name="login_image">Login Image</string>
     <string name="lets_you_in">Let\'s you in</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
-    <string name="continue_with_apple">Continue with Apple</string>
+    <string name="continue_with_github">Continue with Github</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="back_button">Back button</string>
     <string name="or">or</string>
@@ -29,10 +29,17 @@
     <string name="my_list">My List</string>
     <string name="profile">Profile</string>
     <string name="download">Download</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error">Error</string>
     <string name="email_or_password_is_not_valid">Email or password is not valid</string>
     <string name="sign_up_success">Sign Up Successful</string>
     <string name="success">Success</string>
+    <string name="credantials_error">Credantials Error</string>
+
+
+    <string name="facebook_application_id">3452963321696571</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">b825f9066fe6b0faddfcf6f185c66f81</string>
+
+
 </resources>

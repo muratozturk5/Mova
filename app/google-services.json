@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "824409577602-5qgg15fmb8gihvp0scsp5fjut3vd8vta.apps.googleusercontent.com",
+          "client_id": "824409577602-pfipm84gkcu7sv2b6t6a216jcpa6uh40.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.muratozturk.metflix",
+            "certificate_hash": "fe9bd0fa2582c9b2f364a7fb0fff620c10e82e90"
+          }
+        },
+        {
+          "client_id": "824409577602-6qimbh36qk4hbup0q1pdpdqurprdb2a3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

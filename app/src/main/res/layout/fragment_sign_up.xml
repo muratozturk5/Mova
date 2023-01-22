@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    tools:context=".ui.login.signup.SignUpFragment">
+    tools:context=".ui.authentication.signup.SignUpFragment">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -277,7 +277,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/continueWithApple"
+            android:id="@+id/continueWithGithub"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -299,7 +299,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/apple_icon" />
+                    android:src="@drawable/github_icon" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

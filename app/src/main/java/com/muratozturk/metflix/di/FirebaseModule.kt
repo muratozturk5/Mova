@@ -15,4 +15,6 @@ object FirebaseModule {
     @Provides
     @Singleton
     fun provideFirebaseUser() = Firebase.auth
+
+
 }
