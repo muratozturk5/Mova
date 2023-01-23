@@ -17,7 +17,9 @@ import com.muratozturk.metflix.common.Constants.REQ_SIGN_IN_GOOGLE
 import com.muratozturk.metflix.common.LoadingScreen
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.showToast
+import com.muratozturk.metflix.data.model.DialogArguments
 import com.muratozturk.metflix.databinding.FragmentSignInWithSocialBinding
+import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import www.sanju.motiontoast.MotionToastStyle
@@ -117,7 +119,14 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
                         is Resource.Success -> {
                             LoadingScreen.hideLoading()
                             val action =
-                                SignInWithSocialFragmentDirections.actionSignInWithSocialFragmentToHomeFragment()
+                                SignInWithSocialFragmentDirections.actionSignInWithSocialFragmentToDialogFragment(
+                                    DialogArguments(
+                                        getString(R.string.congratulations),
+                                        getString(R.string.successful_sign_in),
+                                        R.drawable.dialog_profile,
+                                        DialogFragmentDirections.actionDialogFragmentToHomeFragment()
+                                    )
+                                )
                             findNavController().navigate(action)
 
                         }

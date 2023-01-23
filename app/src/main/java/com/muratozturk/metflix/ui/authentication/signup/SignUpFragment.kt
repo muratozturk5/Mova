@@ -16,7 +16,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
+import com.muratozturk.metflix.data.model.DialogArguments
 import com.muratozturk.metflix.databinding.FragmentSignUpBinding
+import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import www.sanju.motiontoast.MotionToastStyle
@@ -133,7 +135,14 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                                 MotionToastStyle.SUCCESS
                             )
                             val action =
-                                SignUpFragmentDirections.actionSignUpFragmentToHomeFragment()
+                                SignUpFragmentDirections.actionSignUpFragmentToDialogFragment(
+                                    DialogArguments(
+                                        getString(R.string.congratulations),
+                                        getString(R.string.successful_sign_in),
+                                        R.drawable.dialog_profile,
+                                        DialogFragmentDirections.actionDialogFragmentToHomeFragment()
+                                    )
+                                )
                             findNavController().navigate(action)
                         }
                         else -> {}
@@ -185,7 +194,14 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                         is Resource.Success -> {
                             LoadingScreen.hideLoading()
                             val action =
-                                SignUpFragmentDirections.actionSignUpFragmentToHomeFragment()
+                                SignUpFragmentDirections.actionSignUpFragmentToDialogFragment(
+                                    DialogArguments(
+                                        getString(R.string.congratulations),
+                                        getString(R.string.successful_sign_in),
+                                        R.drawable.dialog_profile,
+                                        DialogFragmentDirections.actionDialogFragmentToHomeFragment()
+                                    )
+                                )
                             findNavController().navigate(action)
 
                         }

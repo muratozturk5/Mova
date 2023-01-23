@@ -40,6 +40,9 @@
     <string name="facebook_application_id">3452963321696571</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">b825f9066fe6b0faddfcf6f185c66f81</string>
+    <string name="dialog_image">Dialog image</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="successful_sign_in">Your account is ready to use. You will be redirected to the Home page in a few seconds.</string>
 
 
 </resources>
