@@ -124,5 +124,14 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 
+    // Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
+    
 
 }

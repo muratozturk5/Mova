@@ -6,7 +6,7 @@ import android.content.Intent
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.*
-import com.muratozturk.metflix.common.Constants.WEB_CLIENT_ID
+import com.muratozturk.metflix.common.Constants.Authentication.WEB_CLIENT_ID
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.domain.repository.AuthRepository
 import kotlinx.coroutines.flow.Flow

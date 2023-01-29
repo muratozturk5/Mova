@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.domain.usecase.authentication.google
+package com.muratozturk.metflix.domain.use_case.authentication.google
 
 import com.muratozturk.metflix.domain.repository.AuthRepository
 import javax.inject.Inject

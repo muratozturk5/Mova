@@ -3,7 +3,7 @@ package com.muratozturk.metflix.ui.profile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muratozturk.metflix.common.Resource
-import com.muratozturk.metflix.domain.usecase.profile.SignOut
+import com.muratozturk.metflix.domain.use_case.profile.SignOut
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

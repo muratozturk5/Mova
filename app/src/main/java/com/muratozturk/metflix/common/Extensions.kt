@@ -1,11 +1,20 @@
 package com.muratozturk.metflix.common
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.muratozturk.metflix.R
+import jp.wasabeef.glide.transformations.BlurTransformation
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -74,3 +83,41 @@ fun Activity.showToast(
     )
 }
 
+
+fun Context.circularProgressDrawable(): Drawable {
+    return CircularProgressDrawable(this).apply {
+        strokeWidth = 5f
+        centerRadius = 80f
+        start()
+    }
+}
+
+fun ImageView.loadImage(url: String, isBlur: Boolean? = false, isPoster: Boolean) {
+
+    val urlString = if (isPoster) {
+        Constants.getPosterPath(url)
+    } else {
+        Constants.getBackDropPath(url)
+    }
+    if (isBlur == true) {
+        Glide.with(this.context)
+            .load(urlString)
+            .override(500, 500)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(10, 1)))
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
+            .placeholder(this.context.circularProgressDrawable())
+            .error(R.drawable.profile)
+            .into(this)
+    } else {
+        Glide.with(this.context)
+            .load(urlString)
+            .override(500, 500)
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
+            .placeholder(this.context.circularProgressDrawable())
+            .error(R.drawable.profile)
+            .into(this)
+    }
+
+
+}

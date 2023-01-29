@@ -2,7 +2,6 @@ package com.muratozturk.metflix.ui.authentication.signup
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.facebook.CallbackManager
@@ -14,13 +13,13 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.muratozturk.metflix.common.Resource
-import com.muratozturk.metflix.domain.usecase.authentication.SignInWithCredential
-import com.muratozturk.metflix.domain.usecase.authentication.SignUp
-import com.muratozturk.metflix.domain.usecase.authentication.github.SignInGithub
-import com.muratozturk.metflix.domain.usecase.authentication.google.SignInGoogle
+import com.muratozturk.metflix.domain.use_case.authentication.SignInWithCredential
+import com.muratozturk.metflix.domain.use_case.authentication.SignUp
+import com.muratozturk.metflix.domain.use_case.authentication.github.SignInGithub
+import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogle
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,24 +31,23 @@ class SignUpViewModel @Inject constructor(
     private val signInGithubUseCase: SignInGithub
 ) : ViewModel() {
 
-    private val _user = MutableStateFlow<Resource<AuthResult>?>(null)
+    private val _user = MutableSharedFlow<Resource<AuthResult>>()
     val user
-        get() = _user.asStateFlow()
+        get() = _user.asSharedFlow()
 
-
-    private val _googleIntent = MutableStateFlow<Resource<Intent>?>(null)
+    private val _googleIntent = MutableSharedFlow<Resource<Intent>>()
     val googleIntent
-        get() = _googleIntent.asStateFlow()
+        get() = _googleIntent.asSharedFlow()
 
-    private val _credentialSignInResult = MutableStateFlow<Resource<AuthResult>?>(null)
+    private val _credentialSignInResult = MutableSharedFlow<Resource<AuthResult>>()
     val credentialSignInResult
-        get() = _credentialSignInResult.asStateFlow()
+        get() = _credentialSignInResult.asSharedFlow()
 
-    private val _facebookSignIn = MutableStateFlow<Resource<AuthCredential>?>(null)
+    private val _facebookSignIn = MutableSharedFlow<Resource<AuthCredential>>()
     val facebookSignIn
-        get() = _facebookSignIn.asStateFlow()
+        get() = _facebookSignIn.asSharedFlow()
 
-    
+
     fun signUp(email: String, password: String) = viewModelScope.launch {
         signUpUseCase(email, password).collect {
             _user.emit(it)
@@ -80,7 +78,6 @@ class SignUpViewModel @Inject constructor(
         override fun onSuccess(result: LoginResult) {
 
             val credential = FacebookAuthProvider.getCredential(result.accessToken.token)
-            Log.e("credential", credential.toString())
             viewModelScope.launch {
                 _facebookSignIn.emit(Resource.Success(credential))
             }

@@ -43,6 +43,14 @@
     <string name="dialog_image">Dialog image</string>
     <string name="congratulations">Congratulations!</string>
     <string name="successful_sign_in">Your account is ready to use. You will be redirected to the Home page in a few seconds.</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="see_all">See all</string>
+    <string name="play">Play</string>
+    <string name="now_playing_movies">Now Playing Movies</string>
+    <string name="search">Search</string>
+    <string name="notifications">Notifications</string>
+    <string name="now_playing_series">Now Playing Series</string>
 
 
 </resources>

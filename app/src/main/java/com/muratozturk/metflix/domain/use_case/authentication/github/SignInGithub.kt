@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.domain.usecase.authentication.github
+package com.muratozturk.metflix.domain.use_case.authentication.github
 
 import android.app.Activity
 import com.muratozturk.metflix.domain.repository.AuthRepository

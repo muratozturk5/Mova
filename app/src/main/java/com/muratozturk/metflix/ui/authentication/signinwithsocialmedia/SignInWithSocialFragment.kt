@@ -13,7 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider.getCredential
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.Constants.REQ_SIGN_IN_GOOGLE
+import com.muratozturk.metflix.common.Constants.Authentication.REQ_SIGN_IN_GOOGLE
 import com.muratozturk.metflix.common.LoadingScreen
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.showToast

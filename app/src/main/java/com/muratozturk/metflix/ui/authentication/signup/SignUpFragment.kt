@@ -240,7 +240,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private fun activityResult(resultContracts: ActivityResult) {
         try {
             when (resultContracts.resultCode) {
-                Constants.REQ_SIGN_IN_GOOGLE -> {
+                Constants.Authentication.REQ_SIGN_IN_GOOGLE -> {
                     val task = GoogleSignIn.getSignedInAccountFromIntent(resultContracts.data)
                     val account = task.getResult(ApiException::class.java)
                     val credential = GoogleAuthProvider.getCredential(account?.idToken, null)

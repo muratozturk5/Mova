@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.domain.usecase.authentication
+package com.muratozturk.metflix.domain.use_case.authentication
 
 import com.muratozturk.metflix.domain.repository.AuthRepository
 import javax.inject.Inject

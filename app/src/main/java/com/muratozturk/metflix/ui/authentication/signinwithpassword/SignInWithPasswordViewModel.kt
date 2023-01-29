@@ -14,10 +14,10 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.muratozturk.metflix.common.Resource
-import com.muratozturk.metflix.domain.usecase.authentication.SignIn
-import com.muratozturk.metflix.domain.usecase.authentication.SignInWithCredential
-import com.muratozturk.metflix.domain.usecase.authentication.github.SignInGithub
-import com.muratozturk.metflix.domain.usecase.authentication.google.SignInGoogle
+import com.muratozturk.metflix.domain.use_case.authentication.SignIn
+import com.muratozturk.metflix.domain.use_case.authentication.SignInWithCredential
+import com.muratozturk.metflix.domain.use_case.authentication.github.SignInGithub
+import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
