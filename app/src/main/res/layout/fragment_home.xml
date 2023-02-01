@@ -126,7 +126,7 @@
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_movie" />
+                tools:listitem="@layout/item_movie_serie" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,7 +167,7 @@
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_movie" />
+                tools:listitem="@layout/item_movie_serie" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

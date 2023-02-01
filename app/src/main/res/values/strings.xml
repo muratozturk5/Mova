@@ -51,6 +51,7 @@
     <string name="search">Search</string>
     <string name="notifications">Notifications</string>
     <string name="now_playing_series">Now Playing Series</string>
+    <string name="retry">Retry</string>
 
 
 </resources>

@@ -21,6 +21,7 @@ import com.muratozturk.metflix.databinding.FragmentSignInWithPasswordBinding
 import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -111,7 +112,7 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                 }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                user.collect { response ->
+                user.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -144,7 +145,7 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                googleIntent.collect { response ->
+                googleIntent.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -169,7 +170,7 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                credentialSignInResult.collect { response ->
+                credentialSignInResult.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -203,7 +204,7 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                facebookSignIn.collect { response ->
+                facebookSignIn.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)

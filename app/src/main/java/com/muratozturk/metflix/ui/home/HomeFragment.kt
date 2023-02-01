@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.databinding.FragmentHomeBinding
@@ -14,6 +15,7 @@ import com.muratozturk.metflix.domain.model.MovieUI
 import com.muratozturk.metflix.domain.model.SerieUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -22,6 +24,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels()
     private var timer: MyCountDownTimer? = null
+
+    private val adapter: MovieAdapter by lazy {
+        MovieAdapter(::onClickItem)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,15 +45,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             with(viewModel) {
 
-                viewpagerPopularMovies.setOnTouchListener(object : View.OnTouchListener {
-                    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                        when (event?.action) {
-                            MotionEvent.ACTION_DOWN -> onUserInteraction()
-                        }
-
-                        return v?.onTouchEvent(event) ?: true
+                viewpagerPopularMovies.setOnTouchListener { v, event ->
+                    when (event?.action) {
+                        MotionEvent.ACTION_DOWN -> onUserInteraction()
                     }
-                })
+
+                    v?.onTouchEvent(event) ?: true
+                }
+
+                seeAllNowPlayingMovies.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToNowPlayingMoviesFragment()
+                    findNavController().navigate(action)
+                }
+
+                seeAllNowPlayingSeries.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToNowPlayingSeriesFragment()
+                    findNavController().navigate(action)
+                }
             }
         }
     }
@@ -55,8 +71,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun collectData() {
         with(viewModel) {
             with(binding) {
+
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                    popularMovies.collect { response ->
+                    popularMovies.collectLatest { response ->
                         when (response) {
                             is Resource.Loading -> {
 //                                LoadingScreen.displayLoading(requireContext(), false)
@@ -93,34 +110,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                    nowPlayingMovies.collect { response ->
-                        when (response) {
-                            is Resource.Loading -> {
-                                LoadingScreen.displayLoading(requireContext(), false)
-                            }
-                            is Resource.Error -> {
-                                LoadingScreen.hideLoading()
-                                requireActivity().showToast(
-                                    getString(R.string.error),
-                                    response.throwable.localizedMessage ?: "Error",
-                                    MotionToastStyle.ERROR
-                                )
-
-                            }
-                            is Resource.Success -> {
-                                LoadingScreen.hideLoading()
-
-                                val adapter =
-                                    MoviesAdapter(response.data as ArrayList<MovieUI>)
-                                binding.recyclerViewNowPlayingMovies.adapter = adapter
-
-                            }
-                        }
+                    nowPlayingMovies.collectLatest { response ->
+                        adapter.submitData(
+                            lifecycle,
+                            response
+                        )
+                        binding.recyclerViewNowPlayingMovies.adapter = adapter
                     }
                 }
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                    nowPlayingSeries.collect { response ->
+                    nowPlayingSeries.collectLatest { response ->
                         when (response) {
                             is Resource.Loading -> {
 //                                LoadingScreen.displayLoading(requireContext(), false)
@@ -149,6 +149,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    private fun onClickItem(movie: Int) {
+
+    }
+
     private fun pageSwitcher(list: MutableList<MovieUI>) {
         with(binding) {
             timer = MyCountDownTimer(5000, 5000) {
@@ -171,11 +175,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         onStopTimer()
     }
 
+
     private fun onStopTimer() {
+        Timber.d("onStopTimer")
         if (timer != null) timer!!.cancel()
     }
 
-    fun onUserInteraction() {
+    private fun onUserInteraction() {
         Timber.d("onUserInteraction")
         if (timer != null) {
             timer!!.cancel()

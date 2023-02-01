@@ -21,6 +21,7 @@ import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -51,25 +52,25 @@ class SignInWithPasswordViewModel @Inject constructor(
 
 
     fun signIn(email: String, password: String) = viewModelScope.launch {
-        signInUseCase(email, password).collect {
+        signInUseCase(email, password).collectLatest {
             _user.emit(it)
         }
     }
 
     fun signInWithCredential(credential: AuthCredential) = viewModelScope.launch {
-        signInWithCredentialUseCase(credential).collect {
+        signInWithCredentialUseCase(credential).collectLatest {
             _credentialSignInResult.emit(it)
         }
     }
 
     fun signInGoogle() = viewModelScope.launch {
-        signInGoogleUseCase().collect {
+        signInGoogleUseCase().collectLatest {
             _googleIntent.emit(it)
         }
     }
 
     fun signInGithub(activity: Activity) = viewModelScope.launch {
-        signInGithubUseCase(activity).collect {
+        signInGithubUseCase(activity).collectLatest {
             _credentialSignInResult.emit(it)
         }
     }

@@ -17,13 +17,17 @@ class ViewPagerAdapter(private val itemList: ArrayList<MovieUI>) : PagerAdapter(
             ItemViewPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         with(itemBinding) {
             with(itemList[position]) {
-                backDrop.loadImage(backdropPath, isPoster = false)
+                if (backdropPath != null) {
+                    backDrop.loadImage(backdropPath, isPoster = false)
+                }
                 titleTv.text = title
 //                genresTv.text =
             }
         }
 
-        parent.addView(itemBinding.root, position)
+
+        parent.addView(itemBinding.root, 0)
+
         return itemBinding.root
     }
 

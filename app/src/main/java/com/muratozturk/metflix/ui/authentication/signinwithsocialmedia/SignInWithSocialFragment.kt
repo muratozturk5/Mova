@@ -1,7 +1,6 @@
 package com.muratozturk.metflix.ui.authentication.signinwithsocialmedia
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +21,8 @@ import com.muratozturk.metflix.databinding.FragmentSignInWithSocialBinding
 import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -77,7 +78,7 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
 
         with(viewModel) {
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                googleIntent.collect { response ->
+                googleIntent.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -96,13 +97,12 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
                             laResult.launch(response.data)
 
                         }
-                        else -> {}
                     }
                 }
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                credentialSignInResult.collect { response ->
+                credentialSignInResult.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -130,13 +130,12 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
                             findNavController().navigate(action)
 
                         }
-                        else -> {}
                     }
                 }
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                facebookSignIn.collect { response ->
+                facebookSignIn.collectLatest { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoading(requireContext(), false)
@@ -155,7 +154,6 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
                             signInWithCredential(response.data)
 
                         }
-                        else -> {}
                     }
                 }
             }
@@ -174,7 +172,7 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
             }
 
         } catch (e: Exception) {
-            Log.e("TAG-Activity", "onActivityResult: ${e.message}")
+            Timber.e("TAG-Activity", "onActivityResult: ${e.message}")
         }
     }
 

@@ -94,7 +94,22 @@
         android:id="@+id/homeFragment"
         android:name="com.muratozturk.metflix.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_nowPlayingMoviesFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/nowPlayingMoviesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nowPlayingSeriesFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/nowPlayingSeriesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.muratozturk.metflix.ui.explore.ExploreFragment"
@@ -133,4 +148,14 @@
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </dialog>
+    <fragment
+        android:id="@+id/nowPlayingMoviesFragment"
+        android:name="com.muratozturk.metflix.ui.home.now_playing_movies.NowPlayingMoviesFragment"
+        android:label="fragment_now_playing_movies"
+        tools:layout="@layout/fragment_now_playing_movies" />
+    <fragment
+        android:id="@+id/nowPlayingSeriesFragment"
+        android:name="com.muratozturk.metflix.ui.home.now_playing_series.NowPlayingSeriesFragment"
+        android:label="fragment_now_playing_series"
+        tools:layout="@layout/fragment_now_playing_series" />
 </navigation>

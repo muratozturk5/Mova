@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.muratozturk.metflix.common.Constants.API_KEY
 import com.muratozturk.metflix.common.Constants.BASE_URL
 import com.muratozturk.metflix.common.interceptor.ApiKeyInterceptor
-import com.muratozturk.metflix.data.service.RemoteService
+import com.muratozturk.metflix.data.service.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -73,7 +73,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRemoteService(retrofit: Retrofit): RemoteService =
-        retrofit.create(RemoteService::class.java)
+    fun provideRemoteService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
 
 }

@@ -9,6 +9,9 @@ object Constants {
     private const val BASE_BACKDROP_PATH = "https://image.tmdb.org/t/p/w780"
     const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original"
 
+    const val NETWORK_PAGE_SIZE = 10
+    const val STARTING_PAGE = 1
+
     object Authentication {
         const val WEB_CLIENT_ID =
             "824409577602-6qimbh36qk4hbup0q1pdpdqurprdb2a3.apps.googleusercontent.com"

@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.ui.profile
+package com.muratozturk.metflix.ui.home.now_playing_series
 
 import android.os.Bundle
 import android.view.View
@@ -7,67 +7,70 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.LoadingScreen
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.showToast
-import com.muratozturk.metflix.databinding.FragmentProfileBinding
+import com.muratozturk.metflix.databinding.FragmentNowPlayingSeriesBinding
+import com.muratozturk.metflix.domain.model.SerieUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
-    private val binding by viewBinding(FragmentProfileBinding::bind)
-    private val viewModel: ProfileViewModel by viewModels()
+class NowPlayingSeriesFragment : Fragment(R.layout.fragment_now_playing_series) {
+    private val binding by viewBinding(FragmentNowPlayingSeriesBinding::bind)
+    private val viewModel: NowPlayingSeriesViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        collectData()
         initUI()
+        collectData()
     }
+
 
     private fun initUI() {
         with(binding) {
-            with(viewModel) {
-                signOut.setOnClickListener {
-                    signOut()
-                }
+            backButton.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }
 
     private fun collectData() {
-        with(binding) {
-            with(viewModel) {
+        with(viewModel) {
+            with(binding) {
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                    authResult.collectLatest { response ->
+                    nowPlayingSeries.collectLatest { response ->
                         when (response) {
                             is Resource.Loading -> {
-                                LoadingScreen.displayLoading(requireContext(), false)
+                                com.muratozturk.metflix.common.LoadingScreen.displayLoading(
+                                    requireContext(),
+                                    false
+                                )
                             }
                             is Resource.Error -> {
-                                LoadingScreen.hideLoading()
+                                com.muratozturk.metflix.common.LoadingScreen.hideLoading()
                                 requireActivity().showToast(
-                                    getString(R.string.error),
+                                    getString(com.muratozturk.metflix.R.string.error),
                                     response.throwable.localizedMessage ?: "Error",
                                     MotionToastStyle.ERROR
                                 )
 
                             }
                             is Resource.Success -> {
-                                val action =
-                                    ProfileFragmentDirections.actionProfileFragmentToSignInWithSocialFragment()
-                                findNavController().navigate(action)
+                                com.muratozturk.metflix.common.LoadingScreen.hideLoading()
+
+                                val adapter =
+                                    NowPlayingSeriesAdapter(response.data as ArrayList<SerieUI>)
+                                binding.recyclerViewNowPlayingSeries.adapter = adapter
 
                             }
-                            else -> {}
                         }
                     }
-
                 }
+
             }
         }
     }
+
 }

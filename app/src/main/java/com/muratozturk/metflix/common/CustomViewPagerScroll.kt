@@ -62,8 +62,8 @@ class CustomViewPagerScroll : ViewPager {
 
 fun parallaxPageTransformer(vararg v: Int): ViewPager.PageTransformer =
     ViewPager.PageTransformer { page, position ->
-        for (i in 0 until v.size) {
-            val view = page.findViewById<View>(v[i])
+        for (element in v) {
+            val view = page.findViewById<View>(element)
             if (view != null) ViewCompat.setTranslationX(
                 view,
                 (page.width / 1.5 * position).toFloat()

@@ -132,6 +132,9 @@ dependencies {
 
     // OkHttp
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
-    
+
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+
 
 }

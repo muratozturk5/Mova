@@ -17,6 +17,18 @@ fun List<Movie>.toMovieUI() = map {
     )
 }
 
+fun Movie.toMovieUI() =
+    MovieUI(
+        id = id,
+        title = title,
+        posterPath = posterPath,
+        backdropPath = backdropPath,
+        voteAverage = voteAverage,
+        originalTitle = originalTitle,
+        adult = adult
+    )
+
+
 fun List<Serie>.toSerieUI() = map {
     SerieUI(
         id = it.id,

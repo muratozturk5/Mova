@@ -1,6 +1,6 @@
 package com.muratozturk.metflix.di
 
-import com.muratozturk.metflix.data.source.RemoteDataSourceImpl
+import com.muratozturk.metflix.data.data_source.RemoteDataSourceImpl
 import com.muratozturk.metflix.domain.source.DataSource
 import dagger.Binds
 import dagger.Module

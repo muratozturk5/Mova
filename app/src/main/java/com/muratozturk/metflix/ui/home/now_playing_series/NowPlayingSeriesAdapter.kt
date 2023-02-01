@@ -1,18 +1,18 @@
-package com.muratozturk.metflix.ui.home
+package com.muratozturk.metflix.ui.home.now_playing_series
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.metflix.common.loadImage
-import com.muratozturk.metflix.databinding.ItemMovieSerieBinding
-import com.muratozturk.metflix.domain.model.MovieUI
+import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
+import com.muratozturk.metflix.domain.model.SerieUI
 
-class MoviesAdapter(private val movieList: ArrayList<MovieUI>) :
-    RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class NowPlayingSeriesAdapter(private val movieList: ArrayList<SerieUI>) :
+    RecyclerView.Adapter<NowPlayingSeriesAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: ItemMovieSerieBinding) :
+    inner class ViewHolder(private val binding: ItemMovieSerieNowPlayingBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MovieUI) {
+        fun bind(item: SerieUI) {
             with(binding) {
                 with(item) {
                     item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
@@ -25,7 +25,11 @@ class MoviesAdapter(private val movieList: ArrayList<MovieUI>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
-            ItemMovieSerieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemMovieSerieNowPlayingBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return ViewHolder(itemBinding)
     }
 
