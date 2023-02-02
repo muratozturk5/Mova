@@ -6,7 +6,7 @@ import com.muratozturk.metflix.data.model.remote.series.SerieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MovieService {
+interface MetflixService {
 
     @GET(Constants.Endpoints.GET_POPULAR_MOVIES)
     suspend fun getPopularMovies(): MovieResponse
@@ -15,6 +15,6 @@ interface MovieService {
     suspend fun getNowPlayingMovies(@Query("page") page: Int): MovieResponse
 
     @GET(Constants.Endpoints.GET_NOW_PLAYING_SERIES)
-    suspend fun getNowPlayingSeries(): SerieResponse
+    suspend fun getNowPlayingSeries(@Query("page") page: Int): SerieResponse
 
 }

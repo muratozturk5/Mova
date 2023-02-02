@@ -34,7 +34,7 @@ class HomeViewModel @Inject constructor(
     val nowPlayingMovies
         get() = _nowPlayingMovies.asStateFlow()
 
-    private val _nowPlayingSeries = MutableStateFlow<Resource<List<SerieUI>>>(Resource.Loading)
+    private val _nowPlayingSeries = MutableStateFlow<PagingData<SerieUI>>(PagingData.empty())
     val nowPlayingSeries
         get() = _nowPlayingSeries.asStateFlow()
 
@@ -61,7 +61,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getNowPlayingSeries() = viewModelScope.launch {
-        getNowPlayingSeriesUseCase().collectLatest {
+        getNowPlayingSeriesUseCase().cachedIn(viewModelScope).collectLatest {
             _nowPlayingSeries.emit(it)
             Timber.d("now playing series: $it")
         }

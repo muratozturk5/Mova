@@ -86,7 +86,7 @@ fun Activity.showToast(
 
 fun Context.circularProgressDrawable(): Drawable {
     return CircularProgressDrawable(this).apply {
-        strokeWidth = 5f
+        strokeWidth = 7f
         centerRadius = 80f
         start()
     }

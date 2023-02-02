@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.databinding.FragmentHomeBinding
 import com.muratozturk.metflix.domain.model.MovieUI
-import com.muratozturk.metflix.domain.model.SerieUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -25,9 +25,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
     private var timer: MyCountDownTimer? = null
 
-    private val adapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickItem)
-    }
+    private val adapterNowPlayingMovies: MovieAdapter by lazy { MovieAdapter(::onClickItem) }
+    private val adapterNowPlayingSeries: SerieAdapter by lazy { SerieAdapter(::onClickItem) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -76,10 +75,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     popularMovies.collectLatest { response ->
                         when (response) {
                             is Resource.Loading -> {
-//                                LoadingScreen.displayLoading(requireContext(), false)
+                                popularMoviesLoading.visible()
+                                popularMoviesLoading.startShimmer()
                             }
                             is Resource.Error -> {
-                                LoadingScreen.hideLoading()
                                 requireActivity().showToast(
                                     getString(R.string.error),
                                     response.throwable.localizedMessage ?: "Error",
@@ -88,8 +87,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                             }
                             is Resource.Success -> {
-//                                LoadingScreen.hideLoading()
-
+                                popularMoviesLoading.gone()
+                                popularMoviesLoading.stopShimmer()
                                 val pagerAdapter =
                                     ViewPagerAdapter(response.data as ArrayList<MovieUI>)
                                 viewpagerPopularMovies.apply {
@@ -111,35 +110,62 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     nowPlayingMovies.collectLatest { response ->
-                        adapter.submitData(
-                            lifecycle,
-                            response
-                        )
-                        binding.recyclerViewNowPlayingMovies.adapter = adapter
+
+                        recyclerViewNowPlayingMovies.adapter = adapterNowPlayingMovies
+                        adapterNowPlayingMovies.submitData(lifecycle, response)
+
+
+                        adapterNowPlayingMovies.loadStateFlow.collectLatest { loadStates ->
+                            when (loadStates.refresh) {
+                                is LoadState.Loading -> {
+                                    nowPlayingMoviesLoading.visible()
+                                    nowPlayingMoviesLoading.startShimmer()
+                                    recyclerViewNowPlayingMovies.gone()
+                                }
+                                is LoadState.NotLoading -> {
+                                    nowPlayingMoviesLoading.gone()
+                                    nowPlayingMoviesLoading.stopShimmer()
+                                    recyclerViewNowPlayingMovies.visible()
+                                }
+                                is LoadState.Error -> {
+                                    requireActivity().showToast(
+                                        getString(R.string.error),
+                                        (loadStates.refresh as LoadState.Error).error.localizedMessage
+                                            ?: "Error",
+                                        MotionToastStyle.ERROR
+                                    )
+                                }
+
+                            }
+                        }
                     }
                 }
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     nowPlayingSeries.collectLatest { response ->
-                        when (response) {
-                            is Resource.Loading -> {
-//                                LoadingScreen.displayLoading(requireContext(), false)
-                            }
-                            is Resource.Error -> {
-//                                LoadingScreen.hideLoading()
-                                requireActivity().showToast(
-                                    getString(R.string.error),
-                                    response.throwable.localizedMessage ?: "Error",
-                                    MotionToastStyle.ERROR
-                                )
+                        recyclerViewNowPlayingSeries.adapter = adapterNowPlayingSeries
+                        adapterNowPlayingSeries.submitData(lifecycle, response)
 
-                            }
-                            is Resource.Success -> {
-//                                LoadingScreen.hideLoading()
-
-                                val adapter =
-                                    SeriesAdapter(response.data as ArrayList<SerieUI>)
-                                binding.recyclerViewNowPlayingSeries.adapter = adapter
+                        adapterNowPlayingSeries.loadStateFlow.collectLatest { loadStates ->
+                            when (loadStates.refresh) {
+                                is LoadState.Loading -> {
+                                    nowPlayingSeriesLoading.visible()
+                                    nowPlayingSeriesLoading.startShimmer()
+                                    recyclerViewNowPlayingSeries.gone()
+                                }
+                                is LoadState.NotLoading -> {
+                                    nowPlayingSeriesLoading.gone()
+                                    nowPlayingSeriesLoading.stopShimmer()
+                                    recyclerViewNowPlayingSeries.visible()
+                                }
+                                is LoadState.Error -> {
+                                    requireActivity().showToast(
+                                        getString(R.string.error),
+                                        (loadStates.refresh as LoadState.Error).error.localizedMessage
+                                            ?: "Error",
+                                        www.sanju.motiontoast.MotionToastStyle.ERROR
+                                    )
+                                }
 
                             }
                         }

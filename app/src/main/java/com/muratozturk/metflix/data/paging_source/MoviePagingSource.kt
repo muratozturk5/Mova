@@ -4,12 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.muratozturk.metflix.common.Constants.STARTING_PAGE
 import com.muratozturk.metflix.data.model.remote.movies.Movie
-import com.muratozturk.metflix.data.service.MovieService
+import com.muratozturk.metflix.data.service.MetflixService
 import okio.IOException
 import retrofit2.HttpException
 
-class PagingSource(
-    private val movieService: MovieService
+class MoviePagingSource(
+    private val movieService: MetflixService
 ) : PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

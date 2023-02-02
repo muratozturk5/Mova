@@ -6,20 +6,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.Resource
+import com.muratozturk.metflix.common.gone
 import com.muratozturk.metflix.common.showToast
+import com.muratozturk.metflix.common.visible
 import com.muratozturk.metflix.databinding.FragmentNowPlayingSeriesBinding
-import com.muratozturk.metflix.domain.model.SerieUI
+import com.muratozturk.metflix.ui.home.LoadStateAdapter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
 class NowPlayingSeriesFragment : Fragment(R.layout.fragment_now_playing_series) {
     private val binding by viewBinding(FragmentNowPlayingSeriesBinding::bind)
     private val viewModel: NowPlayingSeriesViewModel by viewModels()
+    private val adapter: NowPlayingSeriesAdapter by lazy { NowPlayingSeriesAdapter(::onClickItem) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
@@ -35,34 +39,56 @@ class NowPlayingSeriesFragment : Fragment(R.layout.fragment_now_playing_series) 
         }
     }
 
+    private fun onClickItem(id: Int) {
+
+    }
+
     private fun collectData() {
         with(viewModel) {
             with(binding) {
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     nowPlayingSeries.collectLatest { response ->
-                        when (response) {
-                            is Resource.Loading -> {
-                                com.muratozturk.metflix.common.LoadingScreen.displayLoading(
-                                    requireContext(),
-                                    false
-                                )
-                            }
-                            is Resource.Error -> {
-                                com.muratozturk.metflix.common.LoadingScreen.hideLoading()
-                                requireActivity().showToast(
-                                    getString(com.muratozturk.metflix.R.string.error),
-                                    response.throwable.localizedMessage ?: "Error",
-                                    MotionToastStyle.ERROR
-                                )
+                        // Creating Contact Adapter For Paging Footer Span Count
+                        val contactAdapter = adapter.withLoadStateFooter(
+                            footer = LoadStateAdapter { adapter.retry() }
+                        )
 
-                            }
-                            is Resource.Success -> {
-                                com.muratozturk.metflix.common.LoadingScreen.hideLoading()
+                        recyclerViewNowPlayingSeries.layoutManager =
+                            GridLayoutManager(context, 2).apply {
+                                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                                    override fun getSpanSize(position: Int): Int {
+                                        return if (contactAdapter.getItemViewType(position) in
+                                            arrayOf(1)
+                                        ) spanCount else 1
+                                    }
 
-                                val adapter =
-                                    NowPlayingSeriesAdapter(response.data as ArrayList<SerieUI>)
-                                binding.recyclerViewNowPlayingSeries.adapter = adapter
+                                }
+                            }
+
+                        recyclerViewNowPlayingSeries.adapter = contactAdapter
+                        adapter.submitData(lifecycle, response)
+
+                        adapter.loadStateFlow.collectLatest { loadStates ->
+                            when (loadStates.refresh) {
+                                is LoadState.Loading -> {
+                                    nowPlayingSeriesLoading.visible()
+                                    nowPlayingSeriesLoading.startShimmer()
+                                    recyclerViewNowPlayingSeries.gone()
+                                }
+                                is LoadState.NotLoading -> {
+                                    nowPlayingSeriesLoading.gone()
+                                    nowPlayingSeriesLoading.stopShimmer()
+                                    recyclerViewNowPlayingSeries.visible()
+                                }
+                                is LoadState.Error -> {
+                                    requireActivity().showToast(
+                                        getString(R.string.error),
+                                        (loadStates.refresh as LoadState.Error).error.localizedMessage
+                                            ?: "Error",
+                                        www.sanju.motiontoast.MotionToastStyle.ERROR
+                                    )
+                                }
 
                             }
                         }

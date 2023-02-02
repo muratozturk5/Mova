@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.ui.home.now_playing_movies
+package com.muratozturk.metflix.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,21 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.loadImage
-import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
-import com.muratozturk.metflix.domain.model.MovieUI
+import com.muratozturk.metflix.databinding.ItemMovieSerieBinding
+import com.muratozturk.metflix.domain.model.SerieUI
 
-class NowPlayingMoviesAdapter(
-    private val onClickMovie: ((movieId: Int) -> Unit)?
-) : BasePagingAdapter<MovieUI>(
+
+class SerieAdapter(
+    private val onClick: ((id: Int) -> Unit)?
+) : BasePagingAdapter<SerieUI>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
 ) {
 
-    class MovieViewHolder(
-        private val binding: ItemMovieSerieNowPlayingBinding,
-        private val onClickMovie: ((movieId: Int) -> Unit)?
+    class SerieViewHolder(
+        private val binding: ItemMovieSerieBinding,
+        private val onClick: ((id: Int) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MovieUI) = binding.apply {
+        fun bind(item: SerieUI) = binding.apply {
 
             item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
             voteAverageTV.text = item.voteAverage.toString()
@@ -35,17 +36,17 @@ class NowPlayingMoviesAdapter(
         inflater: LayoutInflater,
         viewType: Int
     ): RecyclerView.ViewHolder =
-        MovieViewHolder(
-            ItemMovieSerieNowPlayingBinding.inflate(
+        SerieViewHolder(
+            ItemMovieSerieBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), onClickMovie
+            ), onClick
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is MovieViewHolder -> {
+            is SerieViewHolder -> {
                 getItem(position)?.let { movie -> holder.bind(movie) }
             }
         }

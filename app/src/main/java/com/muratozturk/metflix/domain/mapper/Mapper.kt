@@ -28,6 +28,16 @@ fun Movie.toMovieUI() =
         adult = adult
     )
 
+fun Serie.toSerieUI() =
+    SerieUI(
+        id = id,
+        name = name,
+        posterPath = posterPath,
+        backdropPath = backdropPath,
+        voteAverage = voteAverage,
+        originalName = originalName
+    )
+
 
 fun List<Serie>.toSerieUI() = map {
     SerieUI(

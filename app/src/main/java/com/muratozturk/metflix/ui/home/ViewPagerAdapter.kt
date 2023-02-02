@@ -22,6 +22,7 @@ class ViewPagerAdapter(private val itemList: ArrayList<MovieUI>) : PagerAdapter(
                 }
                 titleTv.text = title
 //                genresTv.text =
+
             }
         }
 

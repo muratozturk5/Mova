@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.ui.home.now_playing_movies
+package com.muratozturk.metflix.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +8,9 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.metflix.databinding.LoadStateViewBinding
 
-class MovieLoadStateAdapter(
+class LoadStateAdapter(
     private val retry: () -> Unit
-) : LoadStateAdapter<MovieLoadStateAdapter.ViewHolder>() {
+) : LoadStateAdapter<com.muratozturk.metflix.ui.home.LoadStateAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, loadState: LoadState) {
         holder.bind(loadState, retry)
