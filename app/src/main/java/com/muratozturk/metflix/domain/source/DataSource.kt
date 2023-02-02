@@ -12,6 +12,8 @@ interface DataSource {
         suspend fun getPopularMovies(): MovieResponse
         suspend fun getNowPlayingMovies(): Flow<PagingData<Movie>>
         suspend fun getNowPlayingSeries(): Flow<PagingData<Serie>>
+        suspend fun getDiscoverMovies(): Flow<PagingData<Movie>>
+        suspend fun getDiscoverSeries(): Flow<PagingData<Serie>>
     }
 
 }

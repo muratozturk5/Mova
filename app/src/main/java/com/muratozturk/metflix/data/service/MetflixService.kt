@@ -17,4 +17,9 @@ interface MetflixService {
     @GET(Constants.Endpoints.GET_NOW_PLAYING_SERIES)
     suspend fun getNowPlayingSeries(@Query("page") page: Int): SerieResponse
 
+    @GET(Constants.Endpoints.GET_DISCOVER_MOVIES)
+    suspend fun getDiscoverMovies(@Query("page") page: Int): MovieResponse
+
+    @GET(Constants.Endpoints.GET_DISCOVER_SERIES)
+    suspend fun getDiscoverSeries(@Query("page") page: Int): SerieResponse
 }

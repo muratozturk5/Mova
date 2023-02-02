@@ -4,11 +4,7 @@ object Constants {
 
     const val BASE_URL = "https://api.themoviedb.org/3/"
     const val API_KEY = "2d8356343a8ebcb5b324c3fcffea5706"
-    private const val BASE_POSTER_PATH =
-        "https://image.tmdb.org/t/p/w342"
-    private const val BASE_BACKDROP_PATH = "https://image.tmdb.org/t/p/w780"
-    const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original"
-
+    private const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original"
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
 
@@ -22,6 +18,8 @@ object Constants {
         const val GET_POPULAR_MOVIES = "movie/popular"
         const val GET_NOW_PLAYING_MOVIES = "movie/now_playing"
         const val GET_NOW_PLAYING_SERIES = "tv/on_the_air"
+        const val GET_DISCOVER_MOVIES = "discover/movie"
+        const val GET_DISCOVER_SERIES = "discover/tv"
     }
 
     fun getPosterPath(posterPath: String?): String {

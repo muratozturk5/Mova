@@ -27,7 +27,6 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
     }
 
     override fun getNowPlayingMovies(): Flow<PagingData<MovieUI>> = flow {
-
         remote.getNowPlayingMovies().map { pagingData ->
             pagingData.map { it.toMovieUI() }
         }.collect {
@@ -37,6 +36,18 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
 
     override fun getNowPlayingSeries(): Flow<PagingData<SerieUI>> = flow {
         remote.getNowPlayingSeries().map { pagingData ->
+            pagingData.map { it.toSerieUI() }
+        }.collect { emit(it) }
+    }
+
+    override fun getDiscoverMovies(): Flow<PagingData<MovieUI>> = flow {
+        remote.getDiscoverMovies().map { pagingData ->
+            pagingData.map { it.toMovieUI() }
+        }.collect { emit(it) }
+    }
+
+    override fun getDiscoverSeries(): Flow<PagingData<SerieUI>> = flow {
+        remote.getDiscoverSeries().map { pagingData ->
             pagingData.map { it.toSerieUI() }
         }.collect { emit(it) }
     }

@@ -10,4 +10,6 @@ interface MetflixRepository {
     fun getPopularMovies(): Flow<Resource<List<MovieUI>>>
     fun getNowPlayingMovies(): Flow<PagingData<MovieUI>>
     fun getNowPlayingSeries(): Flow<PagingData<SerieUI>>
+    fun getDiscoverMovies(): Flow<PagingData<MovieUI>>
+    fun getDiscoverSeries(): Flow<PagingData<SerieUI>>
 }
