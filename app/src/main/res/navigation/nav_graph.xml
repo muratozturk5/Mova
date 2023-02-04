@@ -114,7 +114,11 @@
         android:id="@+id/exploreFragment"
         android:name="com.muratozturk.metflix.ui.explore.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_exploreFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.muratozturk.metflix.ui.profile.ProfileFragment"
@@ -158,4 +162,13 @@
         android:name="com.muratozturk.metflix.ui.home.now_playing_series.NowPlayingSeriesFragment"
         android:label="fragment_now_playing_series"
         tools:layout="@layout/fragment_now_playing_series" />
+    <dialog
+        android:id="@+id/filterFragment"
+        android:name="com.muratozturk.metflix.ui.filter.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter">
+        <argument
+            android:name="filterModel"
+            app:argType="com.muratozturk.metflix.data.model.FilterResult" />
+    </dialog>
 </navigation>

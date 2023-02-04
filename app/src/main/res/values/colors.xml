@@ -17,4 +17,6 @@
     <color name="color_input_back">#f9f9f9</color>
     <color name="inactive_input">#949494</color>
     <color name="dark">#181A20</color>
+    <color name="indicator_color">#e0e0e0</color>
+    <color name="place_holder">#C2C2C2</color>
 </resources>

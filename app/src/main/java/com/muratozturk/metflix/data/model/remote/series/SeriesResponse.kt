@@ -1,13 +1,13 @@
-package com.muratozturk.metflix.data.model.remote.movies
+package com.muratozturk.metflix.data.model.remote.series
 
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieResponse(
+data class SeriesResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<Movie>,
+    val results: List<Serie>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")

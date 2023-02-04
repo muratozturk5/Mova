@@ -52,6 +52,24 @@
     <string name="notifications">Notifications</string>
     <string name="now_playing_series">Now Playing Series</string>
     <string name="retry">Retry</string>
+    <string name="sort_filter"><![CDATA[Sort & Filter]]></string>
+    <string name="movie">Movie</string>
+    <string name="movies">Movies</string>
+    <string name="tv_series">TV Series</string>
+    <string name="categories">Categories</string>
+    <string name="apply">Apply</string>
+    <string name="reset">Reset</string>
+    <string name="genres">Genres</string>
+    <string name="sort">Sort</string>
+    <string name="popuparity">Popularity</string>
+    <string name="popularity">Popularity</string>
+    <string name="latest_release">Latest Release</string>
+    <string name="include_adult">Include Adult</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="vote_avarage">Vote Avarage</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="vote_count">Vote Count</string>
 
 
 </resources>

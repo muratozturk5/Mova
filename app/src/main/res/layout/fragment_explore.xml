@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:paddingTop="35dip"
     tools:context=".ui.explore.ExploreFragment">
 
@@ -57,6 +58,56 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+
+    <LinearLayout
+        android:id="@+id/filtersLayout"
+        android:layout_width="match_parent"
+        android:paddingHorizontal="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText"
+        android:layout_height="wrap_content">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/filtersLoading"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/placeholder_genre" />
+
+                <include layout="@layout/placeholder_genre" />
+
+                <include layout="@layout/placeholder_genre" />
+
+                <include layout="@layout/placeholder_genre" />
+
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_genre" />
+
+    </LinearLayout>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/discoverLoading"
         android:layout_width="match_parent"
@@ -64,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchEditText"
+        app:layout_constraintTop_toBottomOf="@+id/filtersLayout"
         android:visibility="visible">
 
         <LinearLayout
@@ -94,7 +145,7 @@
         android:paddingHorizontal="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchEditText"
+        app:layout_constraintTop_toBottomOf="@+id/filtersLayout"
         app:spanCount="2"
         tools:listitem="@layout/item_movie_serie_now_playing" />
 

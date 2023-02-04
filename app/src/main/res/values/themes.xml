@@ -13,6 +13,8 @@
         <item name="android:statusBarColor">@color/background</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/urbanist_font_family</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
     </style>
 
     <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
@@ -32,5 +34,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyleFilter</item>
+    </style>
+
+    <style name="AppModalStyleFilter" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_filter_dialog</item>
     </style>
 </resources>

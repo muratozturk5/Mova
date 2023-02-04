@@ -154,8 +154,6 @@
 
                     <include layout="@layout/placeholder_movie_serie" />
 
-                    <include layout="@layout/placeholder_movie_serie" />
-
 
                 </LinearLayout>
 
@@ -215,8 +213,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:orientation="horizontal">
-
-                    <include layout="@layout/placeholder_movie_serie" />
 
                     <include layout="@layout/placeholder_movie_serie" />
 

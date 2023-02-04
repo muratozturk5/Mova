@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".ui.filter.FilterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp">
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/indicator_color" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/sort_filter"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textFontWeight="700"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/indicator_color" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/categories"
+                android:textAlignment="textStart"
+                android:textColor="@color/text_color"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <RadioButton
+                    android:id="@+id/movieRadioBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/movies"
+                    android:textColor="@drawable/radio_flat_text_selector"
+                    android:textFontWeight="600" />
+
+                <RadioButton
+                    android:id="@+id/serieRadioBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/tv_series"
+                    android:textColor="@drawable/radio_flat_text_selector"
+                    android:textFontWeight="600" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/genres"
+                android:textAlignment="textStart"
+                android:textColor="@color/text_color"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/genresLoading"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/placeholder_genre" />
+
+                    <include layout="@layout/placeholder_genre" />
+
+                    <include layout="@layout/placeholder_genre" />
+
+                    <include layout="@layout/placeholder_genre" />
+
+
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_genre" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/sort"
+                android:textAlignment="textStart"
+                android:textColor="@color/text_color"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:scrollbars="none"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/sortByRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/popularityRadioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:checked="true"
+                        android:paddingHorizontal="20dp"
+                        android:gravity="center"
+                        android:text="@string/popularity"
+                        android:textColor="@drawable/radio_flat_text_selector"
+                        android:textFontWeight="600" />
+
+                    <RadioButton
+                        android:id="@+id/releaseDateRadioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="@string/latest_release"
+                        android:textColor="@drawable/radio_flat_text_selector"
+                        android:textFontWeight="600" />
+
+                    <RadioButton
+                        android:id="@+id/voteAverageRadioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="@string/vote_average"
+                        android:textColor="@drawable/radio_flat_text_selector"
+                        android:textFontWeight="600" />
+
+                    <RadioButton
+                        android:id="@+id/voteCountRadioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="@string/vote_count"
+                        android:textColor="@drawable/radio_flat_text_selector"
+                        android:textFontWeight="600" />
+
+                </RadioGroup>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/include_adult"
+                android:textAlignment="textStart"
+                android:textColor="@color/text_color"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+
+                <ToggleButton
+                    android:id="@+id/includeAdultToggleBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textOn="@string/yes"
+                    android:textOff="@string/no"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:checked="true"
+                    android:paddingHorizontal="20dp"
+                    android:gravity="center"
+                    android:text="@string/popularity"
+                    android:textColor="@drawable/radio_flat_text_selector"
+                    android:textFontWeight="600" />
+
+
+            </RadioGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/indicator_color" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/resetButton"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/red_input_active_background"
+                android:elevation="0dp"
+                android:shadowRadius="0"
+                android:stateListAnimator="@null"
+                android:text="@string/reset"
+                android:textAllCaps="false"
+                android:textColor="@color/red"
+                android:textFontWeight="600"
+                android:textSize="15sp" />
+
+            <com.github.sablasvegas.shadout.Shadout
+                android:id="@+id/shadout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:Dy="10dp"
+                app:cornerRadius="100dp"
+                app:shadowColor="@color/red_shadow"
+                app:shadowRadius="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/applyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/rounded_btn"
+                    android:backgroundTint="@color/red"
+                    android:elevation="0dp"
+                    android:shadowRadius="0"
+                    android:stateListAnimator="@null"
+                    android:text="@string/apply"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textFontWeight="600"
+                    android:textSize="15sp" />
+
+            </com.github.sablasvegas.shadout.Shadout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

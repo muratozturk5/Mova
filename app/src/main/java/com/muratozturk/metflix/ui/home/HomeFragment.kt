@@ -31,38 +31,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            with(viewModel) {
-                collectData()
-                initUI()
-            }
-        }
+        collectData()
+        initUI()
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initUI() {
         with(binding) {
-            with(viewModel) {
-
-                viewpagerPopularMovies.setOnTouchListener { v, event ->
-                    when (event?.action) {
-                        MotionEvent.ACTION_DOWN -> onUserInteraction()
-                    }
-
-                    v?.onTouchEvent(event) ?: true
+            viewpagerPopularMovies.setOnTouchListener { v, event ->
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> onUserInteraction()
                 }
 
-                seeAllNowPlayingMovies.setOnClickListener {
-                    val action =
-                        HomeFragmentDirections.actionHomeFragmentToNowPlayingMoviesFragment()
-                    findNavController().navigate(action)
-                }
+                v?.onTouchEvent(event) ?: true
+            }
 
-                seeAllNowPlayingSeries.setOnClickListener {
-                    val action =
-                        HomeFragmentDirections.actionHomeFragmentToNowPlayingSeriesFragment()
-                    findNavController().navigate(action)
-                }
+            seeAllNowPlayingMovies.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToNowPlayingMoviesFragment()
+                findNavController().navigate(action)
+            }
+
+            seeAllNowPlayingSeries.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToNowPlayingSeriesFragment()
+                findNavController().navigate(action)
             }
         }
     }

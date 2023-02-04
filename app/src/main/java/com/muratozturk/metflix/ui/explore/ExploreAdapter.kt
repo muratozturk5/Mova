@@ -2,10 +2,8 @@ package com.muratozturk.metflix.ui.explore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
-import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
 import com.muratozturk.metflix.domain.model.MovieUI
@@ -25,8 +23,7 @@ class ExploreAdapter(
 
             item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
             voteAverageTV.text = item.voteAverage.toString()
-            root.animation =
-                AnimationUtils.loadAnimation(binding.root.context, R.anim.recyclerview_anim)
+
         }
     }
 

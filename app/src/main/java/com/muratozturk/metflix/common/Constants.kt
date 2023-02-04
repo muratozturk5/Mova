@@ -8,6 +8,20 @@ object Constants {
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
 
+    object Filter {
+        const val SORT_BY = "sort_by"
+        const val INCLUDE_ADULT = "include_adult"
+        const val WITH_GENRES = "with_genres"
+    }
+
+
+    object SortBy {
+        const val POPULARITY = "popularity"
+        const val VOTE_COUNT = "vote_count"
+        const val VOTE_AVERAGE = "vote_average"
+        const val RELEASE_DATE = "release_date"
+    }
+
     object Authentication {
         const val WEB_CLIENT_ID =
             "824409577602-6qimbh36qk4hbup0q1pdpdqurprdb2a3.apps.googleusercontent.com"
@@ -20,6 +34,11 @@ object Constants {
         const val GET_NOW_PLAYING_SERIES = "tv/on_the_air"
         const val GET_DISCOVER_MOVIES = "discover/movie"
         const val GET_DISCOVER_SERIES = "discover/tv"
+        const val GET_SEARCH_MOVIE = "search/movie"
+        const val GET_SEARCH_SERIE = "search/tv"
+        const val GET_MOVIE_GENRES = "genre/movie/list"
+        const val GET_SERIE_GENRES = "genre/tv/list"
+        const val GET_CONFIGURATION_COUNTRIES = "configuration/countries"
     }
 
     fun getPosterPath(posterPath: String?): String {

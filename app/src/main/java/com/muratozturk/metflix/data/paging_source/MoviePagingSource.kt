@@ -3,7 +3,9 @@ package com.muratozturk.metflix.data.paging_source
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.muratozturk.metflix.common.Constants.STARTING_PAGE
+import com.muratozturk.metflix.common.MovieRequestOptionsMapper
 import com.muratozturk.metflix.common.enums.MovieEnum
+import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.service.MetflixService
 import okio.IOException
@@ -11,8 +13,16 @@ import retrofit2.HttpException
 
 class MoviePagingSource(
     private val movieService: MetflixService,
-    private val movieEnum: MovieEnum
+    private val movieEnum: MovieEnum,
+    private val searchQuery: String = "",
+    movieRequestOptionsMapper: MovieRequestOptionsMapper,
+    filterResult: FilterResult? = null,
+    private val includeAdult: Boolean = false
+
 ) : PagingSource<Int, Movie>() {
+    private val options = movieRequestOptionsMapper.map(filterResult)
+
+
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
@@ -28,11 +38,19 @@ class MoviePagingSource(
                 when (movieEnum) {
                     MovieEnum.DISCOVER_MOVIES -> {
                         movieService.getDiscoverMovies(
-                            page = page
+                            page = page,
+                            options = options
                         )
                     }
                     MovieEnum.NOW_PLAYING_MOVIES -> {
                         movieService.getNowPlayingMovies(page = page)
+                    }
+                    MovieEnum.SEARCH_MOVIES -> {
+                        movieService.getSearchMovie(
+                            page = page,
+                            query = searchQuery,
+                            includeAdult = includeAdult
+                        )
                     }
                 }
 
