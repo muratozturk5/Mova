@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_homeFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
@@ -121,6 +124,9 @@
         <action
             android:id="@+id/action_exploreFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -159,12 +165,20 @@
         android:id="@+id/nowPlayingMoviesFragment"
         android:name="com.muratozturk.metflix.ui.home.now_playing_movies.NowPlayingMoviesFragment"
         android:label="fragment_now_playing_movies"
-        tools:layout="@layout/fragment_now_playing_movies" />
+        tools:layout="@layout/fragment_now_playing_movies">
+        <action
+            android:id="@+id/action_nowPlayingMoviesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nowPlayingSeriesFragment"
         android:name="com.muratozturk.metflix.ui.home.now_playing_series.NowPlayingSeriesFragment"
         android:label="fragment_now_playing_series"
-        tools:layout="@layout/fragment_now_playing_series" />
+        tools:layout="@layout/fragment_now_playing_series">
+        <action
+            android:id="@+id/action_nowPlayingSeriesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <dialog
         android:id="@+id/filterFragment"
         android:name="com.muratozturk.metflix.ui.filter.FilterFragment"
@@ -178,5 +192,21 @@
         android:id="@+id/myListFragment"
         android:name="com.muratozturk.metflix.ui.mylist.MyListFragment"
         android:label="fragment_my_list"
-        tools:layout="@layout/fragment_my_list" />
+        tools:layout="@layout/fragment_my_list">
+        <action
+            android:id="@+id/action_myListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.muratozturk.metflix.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="mediaType"
+            app:argType="com.muratozturk.metflix.common.enums.MediaTypeEnum" />
+    </fragment>
 </navigation>

@@ -12,6 +12,7 @@
     <color name="red_input_active_background">#fee9eb</color>
     <color name="dark_shadow">#faedee</color>
     <color name="text_color">#1e1e1e</color>
+    <color name="text_color_secondary">#434343</color>
     <color name="stroke_color">#f0f0f0</color>
     <color name="background">#ffffff</color>
     <color name="color_input_back">#f9f9f9</color>

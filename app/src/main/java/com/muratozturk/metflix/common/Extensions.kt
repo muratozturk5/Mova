@@ -17,6 +17,11 @@ import com.muratozturk.metflix.R
 import jp.wasabeef.glide.transformations.BlurTransformation
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun EditText.changeFocusedInputTint(isFocused: Boolean) {
@@ -58,6 +63,26 @@ fun EditText.changeFocusedInputTint(isFocused: Boolean) {
 
 }
 
+fun Double.format(digits: Int): String {
+    val df = DecimalFormat()
+    df.decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
+    df.maximumFractionDigits = digits
+    return df.format(this)
+}
+
+fun getReformatDate(dateInString: String?): String {
+
+    return if (dateInString != null) {
+        val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        try {
+            val date = parser.parse(dateInString)
+            formatter.format(date)
+        } catch (e: ParseException) {
+            "-"
+        }
+    } else "-"
+}
 
 fun View.visible() {
     this.visibility = View.VISIBLE

@@ -73,6 +73,10 @@
     <string name="list_image">List Image</string>
     <string name="empty_list">Your List is Empty</string>
     <string name="empty_list_desc">It seems that you haven\'t added \n any movies or series to the list</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="share">Share</string>
+    <string name="star">Star</string>
+    <string name="view_more">...View More</string>
 
 
 </resources>

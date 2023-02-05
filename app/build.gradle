@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.muratozturk.metflix"
-        minSdk 21
+        minSdk 22
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -135,6 +135,9 @@ dependencies {
 
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+
+    // Show More TextView
+    implementation 'com.github.sanjaydraws:ShowMoreTextView:1.0.3'
 
 
 }

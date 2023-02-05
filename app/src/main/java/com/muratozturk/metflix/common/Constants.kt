@@ -8,6 +8,11 @@ object Constants {
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
 
+    object Arguments {
+        const val ID = "id"
+        const val MEDIA_TYPE = "mediaType"
+    }
+
     object Filter {
         const val SORT_BY = "sort_by"
         const val INCLUDE_ADULT = "include_adult"
@@ -38,7 +43,8 @@ object Constants {
         const val GET_SEARCH_SERIE = "search/tv"
         const val GET_MOVIE_GENRES = "genre/movie/list"
         const val GET_SERIE_GENRES = "genre/tv/list"
-        const val GET_CONFIGURATION_COUNTRIES = "configuration/countries"
+        const val GET_MOVIE_DETAILS = "movie/{movie_id}"
+        const val GET_MOVIE_CREDITS = "movie/{movie_id}/credits"
     }
 
     fun getPosterPath(posterPath: String?): String {

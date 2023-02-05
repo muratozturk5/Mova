@@ -1,7 +1,11 @@
 package com.muratozturk.metflix.domain.mapper
 
+import com.muratozturk.metflix.data.model.remote.credits.Cast
+import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.series.Serie
+import com.muratozturk.metflix.domain.model.CastUI
+import com.muratozturk.metflix.domain.model.MovieDetailsUI
 import com.muratozturk.metflix.domain.model.MovieUI
 import com.muratozturk.metflix.domain.model.SerieUI
 
@@ -38,14 +42,29 @@ fun Serie.toSerieUI() =
         originalName = originalName
     )
 
-
-fun List<Serie>.toSerieUI() = map {
-    SerieUI(
-        id = it.id,
-        name = it.name,
-        posterPath = it.posterPath,
-        backdropPath = it.backdropPath,
-        voteAverage = it.voteAverage,
-        originalName = it.originalName
+fun MovieDetailsResponse.toMovieDetailsUI() =
+    MovieDetailsUI(
+        backdropPath = backdropPath,
+        genres = genres,
+        id = id,
+        originalLanguage = originalLanguage,
+        originalTitle = originalTitle,
+        overview = overview,
+        posterPath = posterPath,
+        releaseDate = releaseDate,
+        runtime = runtime,
+        status = status,
+        tagline = tagline,
+        title = title,
+        video = video,
+        voteAverage = voteAverage
     )
-}
+
+fun Cast.toCastUI() =
+    CastUI(
+        id = id,
+        name = name,
+        originalName = originalName,
+        character = character,
+        profilePath = profilePath
+    )

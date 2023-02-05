@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
+import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.databinding.FragmentHomeBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -25,8 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
     private var timer: MyCountDownTimer? = null
 
-    private val adapterNowPlayingMovies: MovieAdapter by lazy { MovieAdapter(::onClickItem) }
-    private val adapterNowPlayingSeries: SerieAdapter by lazy { SerieAdapter(::onClickItem) }
+    private val adapterNowPlayingMovies: MovieAdapter by lazy { MovieAdapter(::onClickMovieItem) }
+    private val adapterNowPlayingSeries: SerieAdapter by lazy { SerieAdapter(::onClickSerieItem) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -173,8 +174,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun onClickItem(movie: Int) {
+    private fun onClickMovieItem(movie: Int) {
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie, MediaTypeEnum.MOVIE)
+        findNavController().navigate(action)
+    }
 
+    private fun onClickSerieItem(serie: Int) {
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToDetailsFragment(serie, MediaTypeEnum.SERIE)
+        findNavController().navigate(action)
     }
 
     private fun pageSwitcher(list: MutableList<MovieUI>) {

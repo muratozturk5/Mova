@@ -2,6 +2,8 @@ package com.muratozturk.metflix.domain.source
 
 import androidx.paging.PagingData
 import com.muratozturk.metflix.data.model.FilterResult
+import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
+import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
@@ -20,6 +22,9 @@ interface DataSource {
         suspend fun getSearchSerie(query: String, includeAdult: Boolean): Flow<PagingData<Serie>>
         suspend fun getMovieGenres(): GenresResponse
         suspend fun getSerieGenres(): GenresResponse
+        suspend fun getMovieDetails(movieId: Int): MovieDetailsResponse
+        suspend fun getMovieCredits(movieId: Int): CreditsResponse
+
     }
 
 }

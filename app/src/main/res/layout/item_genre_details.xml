@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:textAlignment="center"
+    android:gravity="center"
+    android:id="@+id/genreTv"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/rounded_btn_bordered_red_genre"
+    android:paddingHorizontal="10dp"
+    android:textSize="14sp"
+    tools:text="Lorem Ipsum"
+    android:textColor="@color/red"
+    android:textFontWeight="500" />
