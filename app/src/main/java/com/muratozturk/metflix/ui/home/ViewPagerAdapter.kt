@@ -21,7 +21,6 @@ class ViewPagerAdapter(private val itemList: ArrayList<MovieUI>) : PagerAdapter(
                     backDrop.loadImage(backdropPath, isPoster = false)
                 }
                 titleTv.text = title
-//                genresTv.text =
 
             }
         }

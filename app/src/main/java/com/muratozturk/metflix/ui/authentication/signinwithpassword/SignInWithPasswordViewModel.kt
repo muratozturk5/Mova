@@ -19,8 +19,8 @@ import com.muratozturk.metflix.domain.use_case.authentication.SignInWithCredenti
 import com.muratozturk.metflix.domain.use_case.authentication.github.SignInGithub
 import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogle
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,21 +34,21 @@ class SignInWithPasswordViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    private val _user = MutableStateFlow<Resource<AuthResult>?>(null)
+    private val _user = MutableSharedFlow<Resource<AuthResult>>()
     val user
-        get() = _user.asStateFlow()
+        get() = _user.asSharedFlow()
 
-    private val _googleIntent = MutableStateFlow<Resource<Intent>?>(null)
+    private val _googleIntent = MutableSharedFlow<Resource<Intent>>()
     val googleIntent
-        get() = _googleIntent.asStateFlow()
+        get() = _googleIntent.asSharedFlow()
 
-    private val _credentialSignInResult = MutableStateFlow<Resource<AuthResult>?>(null)
+    private val _credentialSignInResult = MutableSharedFlow<Resource<AuthResult>>()
     val credentialSignInResult
-        get() = _credentialSignInResult.asStateFlow()
+        get() = _credentialSignInResult.asSharedFlow()
 
-    private val _facebookSignIn = MutableStateFlow<Resource<AuthCredential>?>(null)
+    private val _facebookSignIn = MutableSharedFlow<Resource<AuthCredential>>()
     val facebookSignIn
-        get() = _facebookSignIn.asStateFlow()
+        get() = _facebookSignIn.asSharedFlow()
 
 
     fun signIn(email: String, password: String) = viewModelScope.launch {

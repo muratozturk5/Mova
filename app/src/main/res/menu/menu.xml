@@ -11,7 +11,7 @@
         android:icon="@drawable/menu_discovery"
         android:title="@string/explore" />
     <item
-        android:id="@+id/basketFragment"
+        android:id="@+id/myListFragment"
         android:icon="@drawable/menu_bookmark"
         android:title="@string/my_list" />
     <item

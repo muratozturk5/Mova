@@ -70,6 +70,9 @@
     <string name="vote_avarage">Vote Avarage</string>
     <string name="vote_average">Vote Average</string>
     <string name="vote_count">Vote Count</string>
+    <string name="list_image">List Image</string>
+    <string name="empty_list">Your List is Empty</string>
+    <string name="empty_list_desc">It seems that you haven\'t added \n any movies or series to the list</string>
 
 
 </resources>

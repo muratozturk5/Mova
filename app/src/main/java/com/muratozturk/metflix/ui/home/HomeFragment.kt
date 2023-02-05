@@ -57,6 +57,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     HomeFragmentDirections.actionHomeFragmentToNowPlayingSeriesFragment()
                 findNavController().navigate(action)
             }
+
+            searchBtn.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToExploreFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 

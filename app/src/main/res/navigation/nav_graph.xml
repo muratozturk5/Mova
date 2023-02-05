@@ -109,6 +109,9 @@
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit"
             app:destination="@id/nowPlayingSeriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
@@ -171,4 +174,9 @@
             android:name="filterModel"
             app:argType="com.muratozturk.metflix.data.model.FilterResult" />
     </dialog>
+    <fragment
+        android:id="@+id/myListFragment"
+        android:name="com.muratozturk.metflix.ui.mylist.MyListFragment"
+        android:label="fragment_my_list"
+        tools:layout="@layout/fragment_my_list" />
 </navigation>

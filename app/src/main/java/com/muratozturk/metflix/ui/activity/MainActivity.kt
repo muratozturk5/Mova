@@ -1,6 +1,7 @@
 package com.muratozturk.metflix.ui.activity
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
 
         setupBottomNavigationView()
     }
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
+
+
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashScreenFragment -> {
@@ -52,5 +57,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    
+
 }
