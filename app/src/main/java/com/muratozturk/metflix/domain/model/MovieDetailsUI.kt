@@ -1,6 +1,6 @@
 package com.muratozturk.metflix.domain.model
 
-import com.muratozturk.metflix.data.model.remote.details.movie.Genre
+import com.muratozturk.metflix.data.model.remote.genres.Genre
 
 data class MovieDetailsUI(
     val backdropPath: String?,

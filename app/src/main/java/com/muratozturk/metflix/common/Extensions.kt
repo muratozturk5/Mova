@@ -143,6 +143,5 @@ fun ImageView.loadImage(url: String, isBlur: Boolean? = false, isPoster: Boolean
             .error(R.drawable.profile)
             .into(this)
     }
-
-
+    
 }

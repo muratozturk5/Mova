@@ -29,8 +29,8 @@ import www.sanju.motiontoast.MotionToastStyle
 class ExploreFragment : Fragment(R.layout.fragment_explore) {
     private val binding by viewBinding(FragmentExploreBinding::bind)
     private val viewModel: ExploreViewModel by viewModels()
-    private val movieAdapter: ExploreAdapter by lazy { ExploreAdapter(::onClickItem) }
-    private val serieAdapter: ExploreSeriesAdapter by lazy { ExploreSeriesAdapter(::onClickItem) }
+    private val movieAdapter: ExploreMovieAdapter by lazy { ExploreMovieAdapter(::onClickMovieItem) }
+    private val serieAdapter: ExploreSeriesAdapter by lazy { ExploreSeriesAdapter(::onClickSerieItem) }
     private var returnFilterResult = FilterResult()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,8 +64,20 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         }
     }
 
-    private fun onClickItem(id: Int) {
+    private fun onClickMovieItem(id: Int) {
+        val action = ExploreFragmentDirections.actionExploreFragmentToDetailsFragment(
+            id,
+            MediaTypeEnum.MOVIE
+        )
+        findNavController().navigate(action)
+    }
 
+    private fun onClickSerieItem(id: Int) {
+        val action = ExploreFragmentDirections.actionExploreFragmentToDetailsFragment(
+            id,
+            MediaTypeEnum.SERIE
+        )
+        findNavController().navigate(action)
     }
 
     private fun collectData() {
@@ -192,7 +204,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         with(binding) {
             searchEditText.text.clear()
             searchEditText.clearFocus()
-            
+
             filtersLoading.visible()
             filtersLoading.startShimmer()
 

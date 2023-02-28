@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.muratozturk.metflix.R
+import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.common.gone
 import com.muratozturk.metflix.common.showToast
 import com.muratozturk.metflix.common.visible
@@ -42,7 +43,12 @@ class NowPlayingMoviesFragment : Fragment(R.layout.fragment_now_playing_movies) 
     }
 
     private fun onClickItem(id: Int) {
-
+        val action =
+            NowPlayingMoviesFragmentDirections.actionNowPlayingMoviesFragmentToDetailsFragment(
+                id,
+                MediaTypeEnum.MOVIE
+            )
+        findNavController().navigate(action)
     }
 
     private fun collectData() {

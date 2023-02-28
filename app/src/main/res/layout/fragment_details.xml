@@ -8,10 +8,256 @@
     tools:context=".ui.details.DetailsFragment">
 
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/detailsLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:translationZ="99dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="#C2C2C2"
+                android:orientation="horizontal" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="25dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="25dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="2dp"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:layout_height="45dp"
+                    android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/place_holder_bg" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/place_holder_bg" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/place_holder_bg" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/place_holder_bg" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="21dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:scrollbars="none"
+
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="30dp"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="70dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="30dp"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="70dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="30dp"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="70dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="30dp"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="70dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/place_holder_bg_full_rounded_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/imageLayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,22 +269,6 @@
             android:scaleType="centerCrop"
             tools:src="@drawable/doktor_strange" />
 
-        <!--        <com.facebook.shimmer.ShimmerFrameLayout-->
-        <!--            android:id="@+id/popularMoviesLoading"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            tools:visibility="gone">-->
-
-        <!--            <LinearLayout-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:orientation="horizontal">-->
-
-        <!--                <include layout="@layout/placeholder_view_pager" />-->
-        <!--            </LinearLayout>-->
-        <!--        </com.facebook.shimmer.ShimmerFrameLayout>-->
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,6 +276,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginHorizontal="15dp"
+        android:visibility="gone"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -69,12 +300,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/imageLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,7 +347,7 @@
                     android:id="@+id/shareBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginStart="10dp"
                     android:contentDescription="@string/share"
                     android:gravity="center"
                     android:src="@drawable/send_curved" />
@@ -269,9 +502,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_genre_details" />
+
+                <TextView
+                    android:id="@+id/textviewGenres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:textFontWeight="600"
+                    android:textSize="14sp"
+                    tools:text="Genres" />
             </LinearLayout>
 
             <com.sanjayprajapat.showmoretextview.ShowMoreTextView
@@ -279,7 +521,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/text_color"
                 android:textFontWeight="500"
                 android:textSize="14sp"
@@ -310,6 +552,5 @@
 
 
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

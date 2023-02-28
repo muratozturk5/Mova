@@ -4,10 +4,7 @@ import androidx.paging.PagingData
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.genres.Genre
-import com.muratozturk.metflix.domain.model.CastUI
-import com.muratozturk.metflix.domain.model.MovieDetailsUI
-import com.muratozturk.metflix.domain.model.MovieUI
-import com.muratozturk.metflix.domain.model.SerieUI
+import com.muratozturk.metflix.domain.model.*
 import kotlinx.coroutines.flow.Flow
 
 interface MetflixRepository {
@@ -22,4 +19,6 @@ interface MetflixRepository {
     fun getSerieGenres(): Flow<Resource<List<Genre>>>
     fun getMovieDetails(movieId: Int): Flow<Resource<MovieDetailsUI>>
     fun getMovieCredits(movieId: Int): Flow<Resource<List<CastUI>>>
+    fun getSerieDetails(serieId: Int): Flow<Resource<SerieDetailsUI>>
+    fun getSerieCredits(serieId: Int): Flow<Resource<List<CastUI>>>
 }

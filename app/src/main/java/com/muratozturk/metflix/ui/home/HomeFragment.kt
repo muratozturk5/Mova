@@ -89,7 +89,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                 popularMoviesLoading.gone()
                                 popularMoviesLoading.stopShimmer()
                                 val pagerAdapter =
-                                    ViewPagerAdapter(response.data as ArrayList<MovieUI>)
+                                    ViewPagerAdapter(
+                                        response.data as ArrayList<MovieUI>,
+                                        ::onClickMovieItem
+                                    )
                                 viewpagerPopularMovies.apply {
                                     setScrollDurationFactor(4)
                                     setPageTransformer(

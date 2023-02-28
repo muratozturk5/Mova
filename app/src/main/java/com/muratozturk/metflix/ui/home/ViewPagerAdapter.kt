@@ -9,7 +9,9 @@ import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemViewPagerBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 
-class ViewPagerAdapter(private val itemList: ArrayList<MovieUI>) : PagerAdapter() {
+class ViewPagerAdapter(
+    private val itemList: ArrayList<MovieUI>, private val onClickMovie: ((movieId: Int) -> Unit)?
+) : PagerAdapter() {
 
     override fun instantiateItem(parent: ViewGroup, position: Int): Any {
 
@@ -21,7 +23,9 @@ class ViewPagerAdapter(private val itemList: ArrayList<MovieUI>) : PagerAdapter(
                     backDrop.loadImage(backdropPath, isPoster = false)
                 }
                 titleTv.text = title
-
+                backDrop.setOnClickListener {
+                    onClickMovie?.invoke(id)
+                }
             }
         }
 

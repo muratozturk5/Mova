@@ -3,6 +3,7 @@ package com.muratozturk.metflix.data.service
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
+import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
 import com.muratozturk.metflix.data.model.remote.series.SeriesResponse
@@ -59,5 +60,11 @@ interface MetflixService {
 
     @GET(Constants.Endpoints.GET_MOVIE_CREDITS)
     suspend fun getMovieCredits(@Path("movie_id") movieId: Int): CreditsResponse
+
+    @GET(Constants.Endpoints.GET_SERIE_DETAILS)
+    suspend fun getSerieDetails(@Path("tv_id") serieId: Int): SerieDetailsResponse
+
+    @GET(Constants.Endpoints.GET_SERIE_CREDITS)
+    suspend fun getSerieCredits(@Path("tv_id") serieId: Int): CreditsResponse
 
 }

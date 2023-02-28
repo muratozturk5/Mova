@@ -3,7 +3,7 @@ package com.muratozturk.metflix.ui.details
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.muratozturk.metflix.data.model.remote.details.movie.Genre
+import com.muratozturk.metflix.data.model.remote.genres.Genre
 import com.muratozturk.metflix.databinding.ItemGenreDetailsBinding
 
 class GenresAdapter(private val genreList: List<Genre>) :

@@ -5,14 +5,8 @@ import androidx.paging.map
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.genres.Genre
-import com.muratozturk.metflix.domain.mapper.toCastUI
-import com.muratozturk.metflix.domain.mapper.toMovieDetailsUI
-import com.muratozturk.metflix.domain.mapper.toMovieUI
-import com.muratozturk.metflix.domain.mapper.toSerieUI
-import com.muratozturk.metflix.domain.model.CastUI
-import com.muratozturk.metflix.domain.model.MovieDetailsUI
-import com.muratozturk.metflix.domain.model.MovieUI
-import com.muratozturk.metflix.domain.model.SerieUI
+import com.muratozturk.metflix.domain.mapper.*
+import com.muratozturk.metflix.domain.model.*
 import com.muratozturk.metflix.domain.repository.MetflixRepository
 import com.muratozturk.metflix.domain.source.DataSource
 import kotlinx.coroutines.flow.Flow
@@ -104,6 +98,26 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
         emit(Resource.Loading)
         try {
             val response = remote.getMovieCredits(movieId).cast.map { it.toCastUI() }
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getSerieDetails(serieId: Int): Flow<Resource<SerieDetailsUI>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getSerieDetails(serieId).toSerieDetailsUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getSerieCredits(serieId: Int): Flow<Resource<List<CastUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getSerieCredits(serieId).cast.map { it.toCastUI() }
             emit(Resource.Success(response))
         } catch (t: Throwable) {
             emit(Resource.Error(t))

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
@@ -31,6 +32,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         with(binding) {
             Timber.d("initUI: ${args.mediaType}")
 
+            backButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 
@@ -43,6 +47,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                             is Resource.Success -> {
                                 with(response.data)
                                 {
+
+                                    detailsLoading.gone()
+                                    imageLayout.visible()
+                                    toolbar.visible()
+                                    contentLayout.visible()
+
                                     if (backdropPath != null) {
                                         backDropIv.loadImage(backdropPath, isPoster = false)
                                     }
@@ -54,9 +64,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                     val genresAdapter = GenresAdapter(this.genres)
                                     recyclerViewGenres.adapter = genresAdapter
 
+                                    StringBuilder().apply {
+                                        append(resources.getString(R.string.genres))
+                                        append(" : ")
+                                        append(genres.joinToString { it.name })
+                                        textviewGenres.text = this.toString()
+                                    }
+
                                     when (args.mediaType) {
                                         MediaTypeEnum.MOVIE -> {
-                                            mediaTypeTv.text = resources.getString(R.string.movie)
+                                            mediaTypeTv.text =
+                                                resources.getString(R.string.movie)
                                         }
                                         MediaTypeEnum.SERIE -> {
                                             mediaTypeTv.text =
@@ -64,6 +82,35 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                         }
                                     }
                                 }
+                            }
+                            is Resource.Error -> {
+                                detailsLoading.visible()
+                                imageLayout.gone()
+                                toolbar.gone()
+                                contentLayout.gone()
+
+                                requireActivity().showToast(
+                                    getString(R.string.error),
+                                    response.throwable.localizedMessage ?: "Error",
+                                    MotionToastStyle.ERROR
+                                )
+                            }
+                            is Resource.Loading -> {
+                                detailsLoading.visible()
+                                imageLayout.gone()
+                                toolbar.gone()
+                                contentLayout.gone()
+                            }
+                        }
+                    }
+                }
+
+                viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+                    movieCredits.collectLatest { response ->
+                        when (response) {
+                            is Resource.Success -> {
+                                val genresAdapter = CreditsAdapter(response.data)
+                                recyclerViewCasts.adapter = genresAdapter
                             }
                             is Resource.Error -> {
                                 requireActivity().showToast(
@@ -79,7 +126,71 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 }
 
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                    movieCredits.collectLatest { response ->
+                    serieDetail.collectLatest { response ->
+                        when (response) {
+                            is Resource.Success -> {
+                                with(response.data)
+                                {
+
+                                    detailsLoading.gone()
+                                    imageLayout.visible()
+                                    toolbar.visible()
+                                    contentLayout.visible()
+
+                                    if (backdropPath != null) {
+                                        backDropIv.loadImage(backdropPath, isPoster = false)
+                                    }
+                                    titleTv.text = this.name
+                                    overviewTv.text = this.overview
+                                    voteAverageTv.text = this.voteAverage.format(1)
+                                    yearTv.text = getReformatDate(this.firstAirDate)
+
+                                    val genresAdapter = GenresAdapter(this.genres)
+                                    recyclerViewGenres.adapter = genresAdapter
+
+                                    StringBuilder().apply {
+                                        append(resources.getString(R.string.genres))
+                                        append(" : ")
+                                        append(genres.joinToString { it.name })
+                                        textviewGenres.text = this.toString()
+                                    }
+
+                                    when (args.mediaType) {
+                                        MediaTypeEnum.MOVIE -> {
+                                            mediaTypeTv.text =
+                                                resources.getString(R.string.movie)
+                                        }
+                                        MediaTypeEnum.SERIE -> {
+                                            mediaTypeTv.text =
+                                                resources.getString(R.string.tv_series)
+                                        }
+                                    }
+                                }
+                            }
+                            is Resource.Error -> {
+                                detailsLoading.visible()
+                                imageLayout.gone()
+                                toolbar.gone()
+                                contentLayout.gone()
+
+                                requireActivity().showToast(
+                                    getString(R.string.error),
+                                    response.throwable.localizedMessage ?: "Error",
+                                    MotionToastStyle.ERROR
+                                )
+                            }
+                            is Resource.Loading -> {
+                                detailsLoading.visible()
+                                imageLayout.gone()
+                                toolbar.gone()
+                                contentLayout.gone()
+                            }
+                        }
+                    }
+                }
+
+                viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+                    serieCredits.collectLatest { response ->
                         when (response) {
                             is Resource.Success -> {
                                 val genresAdapter = CreditsAdapter(response.data)

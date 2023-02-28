@@ -8,7 +8,7 @@ import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 
-class ExploreAdapter(
+class ExploreMovieAdapter(
     private val onClickMovie: ((movieId: Int) -> Unit)?
 ) : BasePagingAdapter<MovieUI>(
     itemsSame = { old, new -> old.id == new.id },
@@ -23,7 +23,9 @@ class ExploreAdapter(
 
             item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
             voteAverageTV.text = item.voteAverage.toString()
-
+            root.setOnClickListener {
+                onClickMovie?.invoke(item.id)
+            }
         }
     }
 

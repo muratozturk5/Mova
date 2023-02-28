@@ -9,7 +9,7 @@ import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 
 class NowPlayingMoviesAdapter(
-    private val onClickMovie: ((movieId: Int) -> Unit)?
+    private val onClickMovie: ((movieId: Int) -> Unit)
 ) : BasePagingAdapter<MovieUI>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
@@ -17,13 +17,15 @@ class NowPlayingMoviesAdapter(
 
     class MovieViewHolder(
         private val binding: ItemMovieSerieNowPlayingBinding,
-        private val onClickMovie: ((movieId: Int) -> Unit)?
+        private val onClickMovie: ((movieId: Int) -> Unit)
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieUI) = binding.apply {
 
             item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
             voteAverageTV.text = item.voteAverage.toString()
-
+            root.setOnClickListener {
+                onClickMovie(item.id)
+            }
         }
     }
 

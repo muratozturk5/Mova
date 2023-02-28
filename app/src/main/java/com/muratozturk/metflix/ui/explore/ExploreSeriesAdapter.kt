@@ -23,7 +23,9 @@ class ExploreSeriesAdapter(
 
             item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
             voteAverageTV.text = item.voteAverage.toString()
-
+            root.setOnClickListener {
+                onClickMovie?.invoke(item.id)
+            }
         }
     }
 

@@ -114,6 +114,10 @@
             app:destination="@id/exploreFragment" />
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -126,6 +130,10 @@
             app:destination="@id/filterFragment" />
         <action
             android:id="@+id/action_exploreFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -168,6 +176,10 @@
         tools:layout="@layout/fragment_now_playing_movies">
         <action
             android:id="@+id/action_nowPlayingMoviesFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -177,6 +189,10 @@
         tools:layout="@layout/fragment_now_playing_series">
         <action
             android:id="@+id/action_nowPlayingSeriesFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <dialog
@@ -195,6 +211,10 @@
         tools:layout="@layout/fragment_my_list">
         <action
             android:id="@+id/action_myListFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment

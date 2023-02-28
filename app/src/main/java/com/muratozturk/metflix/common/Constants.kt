@@ -45,6 +45,8 @@ object Constants {
         const val GET_SERIE_GENRES = "genre/tv/list"
         const val GET_MOVIE_DETAILS = "movie/{movie_id}"
         const val GET_MOVIE_CREDITS = "movie/{movie_id}/credits"
+        const val GET_SERIE_DETAILS = "tv/{tv_id}"
+        const val GET_SERIE_CREDITS = "tv/{tv_id}/credits"
     }
 
     fun getPosterPath(posterPath: String?): String {

@@ -2,6 +2,7 @@ package com.muratozturk.metflix.data.model.remote.details.movie
 
 
 import com.google.gson.annotations.SerializedName
+import com.muratozturk.metflix.data.model.remote.genres.Genre
 
 data class MovieDetailsResponse(
     @SerializedName("adult")
