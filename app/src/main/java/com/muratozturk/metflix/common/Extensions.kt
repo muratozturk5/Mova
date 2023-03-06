@@ -14,6 +14,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.muratozturk.metflix.R
+import com.muratozturk.metflix.common.Constants.getBackDropPath
+import com.muratozturk.metflix.common.Constants.getPosterPath
+import com.muratozturk.metflix.common.Constants.getYouTubePath
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import jp.wasabeef.glide.transformations.BlurTransformation
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
@@ -117,31 +121,46 @@ fun Context.circularProgressDrawable(): Drawable {
     }
 }
 
-fun ImageView.loadImage(url: String, isBlur: Boolean? = false, isPoster: Boolean) {
+fun ImageView.loadImage(url: String?, isBlur: Boolean? = false, imageTypeEnum: ImageTypeEnum) {
 
-    val urlString = if (isPoster) {
-        Constants.getPosterPath(url)
-    } else {
-        Constants.getBackDropPath(url)
+    val placeholder = when (imageTypeEnum) {
+        ImageTypeEnum.BACKDROP -> R.drawable.gray_placeholder
+        ImageTypeEnum.POSTER -> R.drawable.gray_placeholder
+        ImageTypeEnum.YOUTUBE -> R.drawable.gray_placeholder
+        ImageTypeEnum.CREDIT -> R.drawable.profile_filled
     }
-    if (isBlur == true) {
-        Glide.with(this.context)
-            .load(urlString)
-            .override(500, 500)
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .apply(RequestOptions.bitmapTransform(BlurTransformation(10, 1)))
-            .diskCacheStrategy(DiskCacheStrategy.DATA)
-            .placeholder(this.context.circularProgressDrawable())
-            .error(R.drawable.profile)
-            .into(this)
-    } else {
-        Glide.with(this.context)
-            .load(urlString)
-            .override(500, 500)
-            .diskCacheStrategy(DiskCacheStrategy.DATA)
-            .placeholder(this.context.circularProgressDrawable())
-            .error(R.drawable.profile)
-            .into(this)
+
+    url?.let {
+
+        val urlString = when (imageTypeEnum) {
+            ImageTypeEnum.BACKDROP -> getBackDropPath(url)
+            ImageTypeEnum.POSTER -> getPosterPath(url)
+            ImageTypeEnum.YOUTUBE -> getYouTubePath(url)
+            ImageTypeEnum.CREDIT -> getPosterPath(url)
+        }
+        
+        if (isBlur == true) {
+            Glide.with(this.context)
+                .load(urlString)
+                .override(500, 500)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(10, 1)))
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .placeholder(this.context.circularProgressDrawable())
+                .error(placeholder)
+                .into(this)
+        } else {
+            Glide.with(this.context)
+                .load(urlString)
+                .override(500, 500)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .placeholder(this.context.circularProgressDrawable())
+                .error(placeholder)
+                .into(this)
+        }
+
+    } ?: run {
+        this.setImageResource(placeholder)
     }
-    
+
 }

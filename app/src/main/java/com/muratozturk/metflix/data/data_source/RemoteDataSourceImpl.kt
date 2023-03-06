@@ -9,8 +9,10 @@ import com.muratozturk.metflix.common.enums.MovieEnum
 import com.muratozturk.metflix.common.enums.SerieEnum
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
+import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
+import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
@@ -154,5 +156,18 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getSerieCredits(serieId: Int): CreditsResponse =
         metflixService.getSerieCredits(serieId)
+
+    override suspend fun getMovieTrailers(movieId: Int): VideosResponse =
+        metflixService.getMovieTrailers(movieId)
+
+    override suspend fun getSerieTrailers(serieId: Int): VideosResponse =
+        metflixService.getSerieTrailers(serieId)
+
+    override suspend fun getMovieImages(movieId: Int): ImagesResponse =
+        metflixService.getMovieImages(movieId)
+
+    override suspend fun getSerieImages(serieId: Int): ImagesResponse =
+        metflixService.getSerieImages(serieId)
+
 
 }

@@ -1,8 +1,10 @@
 package com.muratozturk.metflix.domain.mapper
 
 import com.muratozturk.metflix.data.model.remote.credits.Cast
+import com.muratozturk.metflix.data.model.remote.details.images.Backdrop
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
+import com.muratozturk.metflix.data.model.remote.details.videos.Video
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.series.Serie
 import com.muratozturk.metflix.domain.model.*
@@ -82,3 +84,19 @@ fun SerieDetailsResponse.toSerieDetailsUI() =
         tagline = tagline,
         voteAverage = voteAverage
     )
+
+fun List<Video>.toVideoUI() = map {
+    VideoUI(
+        id = it.id,
+        key = it.key,
+        name = it.name,
+        publishedAt = it.publishedAt
+    )
+}
+
+fun List<Backdrop>.toImageUI() = map {
+    ImageUI(
+        filePath = it.filePath,
+        voteCount = it.voteCount
+    )
+}

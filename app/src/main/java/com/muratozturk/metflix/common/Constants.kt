@@ -5,6 +5,8 @@ object Constants {
     const val BASE_URL = "https://api.themoviedb.org/3/"
     const val API_KEY = "2d8356343a8ebcb5b324c3fcffea5706"
     private const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original"
+    private const val BASE_URL_IMAGE_YOUTUBE = "https://img.youtube.com/vi/"
+    private const val SIZE_IMG_YOUTUBE = "/hq720.jpg"
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
 
@@ -47,6 +49,11 @@ object Constants {
         const val GET_MOVIE_CREDITS = "movie/{movie_id}/credits"
         const val GET_SERIE_DETAILS = "tv/{tv_id}"
         const val GET_SERIE_CREDITS = "tv/{tv_id}/credits"
+        const val GET_MOVIE_TRAILERS = "movie/{movie_id}/videos"
+        const val GET_SERIE_TRAILERS = "tv/{tv_id}/videos"
+        const val GET_MOVIE_IMAGES = "movie/{movie_id}/images"
+        const val GET_SERIE_IMAGES = "tv/{tv_id}/images"
+
     }
 
     fun getPosterPath(posterPath: String?): String {
@@ -55,5 +62,9 @@ object Constants {
 
     fun getBackDropPath(backDropPath: String?): String {
         return BASE_URL_IMAGE + backDropPath
+    }
+
+    fun getYouTubePath(youTubePath: String?): String {
+        return BASE_URL_IMAGE_YOUTUBE + youTubePath + SIZE_IMG_YOUTUBE
     }
 }

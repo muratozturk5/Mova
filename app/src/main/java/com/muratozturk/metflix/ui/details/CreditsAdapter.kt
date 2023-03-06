@@ -3,6 +3,7 @@ package com.muratozturk.metflix.ui.details
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemCreditBinding
 import com.muratozturk.metflix.domain.model.CastUI
@@ -16,7 +17,12 @@ class CreditsAdapter(private val list: List<CastUI>) :
             with(binding) {
                 nameTv.text = item.name
                 characterTv.text = item.character
-                item.profilePath?.let { imageView.loadImage(it, isPoster = true) }
+
+                imageView.loadImage(
+                    item.profilePath,
+                    imageTypeEnum = ImageTypeEnum.CREDIT
+                )
+
             }
         }
     }

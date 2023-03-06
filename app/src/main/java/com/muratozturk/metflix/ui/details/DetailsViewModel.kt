@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -49,7 +48,6 @@ class DetailsViewModel @Inject constructor(
     init {
         savedStateHandle.get<Int>(Constants.Arguments.ID)?.let { id ->
             savedStateHandle.get<MediaTypeEnum>(Constants.Arguments.MEDIA_TYPE)?.let { mediaType ->
-                Timber.d("movie details: $id")
 
                 when (mediaType) {
                     MediaTypeEnum.MOVIE -> {
@@ -70,28 +68,24 @@ class DetailsViewModel @Inject constructor(
     private fun getMovieDetails(movieId: Int) = viewModelScope.launch {
         getMovieDetailsUseCase(movieId).collectLatest {
             _movieDetails.emit(it)
-            Timber.d("movie details: $it")
         }
     }
 
     private fun getMovieCredits(movieId: Int) = viewModelScope.launch {
         getMovieCreditsUseCase(movieId).collectLatest {
             _movieCredits.emit(it)
-            Timber.d("movie credits: $it")
         }
     }
 
     private fun getSerieDetails(serieId: Int) = viewModelScope.launch {
         getSerieDetailsUseCase(serieId).collectLatest {
             _serieDetail.emit(it)
-            Timber.d("serie details: $it")
         }
     }
 
     private fun getSerieCredits(serieId: Int) = viewModelScope.launch {
         getSerieCreditsUseCase(serieId).collectLatest {
             _serieCredits.emit(it)
-            Timber.d("serie credits: $it")
         }
     }
 }

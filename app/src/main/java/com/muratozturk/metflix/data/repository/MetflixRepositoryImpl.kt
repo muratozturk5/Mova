@@ -123,4 +123,44 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
             emit(Resource.Error(t))
         }
     }
+
+    override fun getMovieTrailers(movieId: Int): Flow<Resource<List<VideoUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getMovieTrailers(movieId).results.toVideoUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getSerieTrailers(serieId: Int): Flow<Resource<List<VideoUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getSerieTrailers(serieId).results.toVideoUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getMovieImages(movieId: Int): Flow<Resource<List<ImageUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getMovieImages(movieId).backdrops.toImageUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getSerieImages(serieId: Int): Flow<Resource<List<ImageUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getSerieImages(serieId).backdrops.toImageUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
 }

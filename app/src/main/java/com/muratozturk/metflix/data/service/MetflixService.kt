@@ -2,8 +2,10 @@ package com.muratozturk.metflix.data.service
 
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
+import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
+import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
 import com.muratozturk.metflix.data.model.remote.series.SeriesResponse
@@ -66,5 +68,17 @@ interface MetflixService {
 
     @GET(Constants.Endpoints.GET_SERIE_CREDITS)
     suspend fun getSerieCredits(@Path("tv_id") serieId: Int): CreditsResponse
+
+    @GET(Constants.Endpoints.GET_MOVIE_TRAILERS)
+    suspend fun getMovieTrailers(@Path("movie_id") movieId: Int): VideosResponse
+
+    @GET(Constants.Endpoints.GET_SERIE_TRAILERS)
+    suspend fun getSerieTrailers(@Path("tv_id") serieId: Int): VideosResponse
+
+    @GET(Constants.Endpoints.GET_MOVIE_IMAGES)
+    suspend fun getMovieImages(@Path("movie_id") movieId: Int): ImagesResponse
+
+    @GET(Constants.Endpoints.GET_SERIE_IMAGES)
+    suspend fun getSerieImages(@Path("tv_id") serieId: Int): ImagesResponse
 
 }

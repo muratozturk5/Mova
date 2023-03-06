@@ -20,4 +20,6 @@
     <color name="dark">#181A20</color>
     <color name="indicator_color">#e0e0e0</color>
     <color name="place_holder">#C2C2C2</color>
+    <color name="unselected_tabs">#9e9e9e</color>
+    <color name="unselected_tabs_indicator">#eeeeee</color>
 </resources>

@@ -77,6 +77,11 @@
     <string name="share">Share</string>
     <string name="star">Star</string>
     <string name="view_more">...View More</string>
+    <string name="trailers">Trailers</string>
+    <string name="more_like_this">More Like This</string>
+    <string name="comments">Comments</string>
+    <string name="images">Images</string>
+    <string name="smilar">Smilar</string>
 
 
 </resources>

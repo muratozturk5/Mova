@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
 import com.muratozturk.metflix.domain.model.MovieUI
@@ -21,7 +22,7 @@ class NowPlayingMoviesAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieUI) = binding.apply {
 
-            item.posterPath?.let { imageView.loadImage(it, isPoster = true) }
+            imageView.loadImage(item.posterPath, imageTypeEnum = ImageTypeEnum.POSTER)
             voteAverageTV.text = item.voteAverage.toString()
             root.setOnClickListener {
                 onClickMovie(item.id)

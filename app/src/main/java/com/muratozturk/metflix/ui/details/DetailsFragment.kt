@@ -7,14 +7,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.tabs.TabLayoutMediator
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.databinding.FragmentDetailsBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -30,11 +31,25 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     fun initUI() {
         with(binding) {
-            Timber.d("initUI: ${args.mediaType}")
 
             backButton.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            viewPager.adapter =
+                ViewPagerAdapter(parentFragmentManager, lifecycle, args.id, args.mediaType)
+
+
+            val tabsArray = arrayOf(
+                resources.getString(R.string.trailers),
+                resources.getString(R.string.images),
+                resources.getString(R.string.smilar)
+            )
+
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                tab.text = tabsArray[position]
+            }.attach()
+
         }
     }
 
@@ -53,9 +68,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                     toolbar.visible()
                                     contentLayout.visible()
 
-                                    if (backdropPath != null) {
-                                        backDropIv.loadImage(backdropPath, isPoster = false)
-                                    }
+
+                                    backDropIv.loadImage(
+                                        backdropPath,
+                                        imageTypeEnum = ImageTypeEnum.BACKDROP
+                                    )
+
                                     titleTv.text = this.title
                                     overviewTv.text = this.overview
                                     voteAverageTv.text = this.voteAverage.format(1)
@@ -137,9 +155,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                     toolbar.visible()
                                     contentLayout.visible()
 
-                                    if (backdropPath != null) {
-                                        backDropIv.loadImage(backdropPath, isPoster = false)
-                                    }
+                                    backDropIv.loadImage(
+                                        backdropPath,
+                                        imageTypeEnum = ImageTypeEnum.BACKDROP
+                                    )
                                     titleTv.text = this.name
                                     overviewTv.text = this.overview
                                     voteAverageTv.text = this.voteAverage.format(1)

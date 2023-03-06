@@ -3,8 +3,10 @@ package com.muratozturk.metflix.domain.source
 import androidx.paging.PagingData
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
+import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
+import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
@@ -27,6 +29,10 @@ interface DataSource {
         suspend fun getMovieCredits(movieId: Int): CreditsResponse
         suspend fun getSerieDetails(serieId: Int): SerieDetailsResponse
         suspend fun getSerieCredits(serieId: Int): CreditsResponse
+        suspend fun getMovieTrailers(movieId: Int): VideosResponse
+        suspend fun getSerieTrailers(serieId: Int): VideosResponse
+        suspend fun getMovieImages(movieId: Int): ImagesResponse
+        suspend fun getSerieImages(serieId: Int): ImagesResponse
 
     }
 

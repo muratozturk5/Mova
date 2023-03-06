@@ -21,4 +21,8 @@ interface MetflixRepository {
     fun getMovieCredits(movieId: Int): Flow<Resource<List<CastUI>>>
     fun getSerieDetails(serieId: Int): Flow<Resource<SerieDetailsUI>>
     fun getSerieCredits(serieId: Int): Flow<Resource<List<CastUI>>>
+    fun getMovieTrailers(movieId: Int): Flow<Resource<List<VideoUI>>>
+    fun getSerieTrailers(serieId: Int): Flow<Resource<List<VideoUI>>>
+    fun getMovieImages(movieId: Int): Flow<Resource<List<ImageUI>>>
+    fun getSerieImages(serieId: Int): Flow<Resource<List<ImageUI>>>
 }
