@@ -17,7 +17,8 @@ class MoviePagingSource(
     private val searchQuery: String = "",
     movieRequestOptionsMapper: MovieRequestOptionsMapper,
     filterResult: FilterResult? = null,
-    private val includeAdult: Boolean = false
+    private val includeAdult: Boolean = false,
+    private val movieId: Int = 0
 
 ) : PagingSource<Int, Movie>() {
     private val options = movieRequestOptionsMapper.map(filterResult)
@@ -50,6 +51,12 @@ class MoviePagingSource(
                             page = page,
                             query = searchQuery,
                             includeAdult = includeAdult
+                        )
+                    }
+                    MovieEnum.SIMILAR_MOVIES -> {
+                        movieService.getSimilarMovies(
+                            page = page,
+                            movieId = movieId
                         )
                     }
                 }

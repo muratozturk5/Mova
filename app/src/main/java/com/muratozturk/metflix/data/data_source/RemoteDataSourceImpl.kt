@@ -169,5 +169,41 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getSerieImages(serieId: Int): ImagesResponse =
         metflixService.getSerieImages(serieId)
 
+    override suspend fun getSimilarMovies(movieId: Int): Flow<PagingData<Movie>> = Pager(
+        config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE,
+            prefetchDistance = 2,
+            maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+            jumpThreshold = Int.MIN_VALUE,
+            enablePlaceholders = true
+        ),
+        pagingSourceFactory = {
+            MoviePagingSource(
+                metflixService, MovieEnum.SIMILAR_MOVIES,
+                movieId = movieId,
+                movieRequestOptionsMapper = movieRequestOptionsMapper
+            )
+        }
+    ).flow
+
+    override suspend fun getSimilarSeries(
+        serieId: Int
+    ): Flow<PagingData<Serie>> = Pager(
+        config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE,
+            prefetchDistance = 2,
+            maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+            jumpThreshold = Int.MIN_VALUE,
+            enablePlaceholders = true
+        ),
+        pagingSourceFactory = {
+            SeriePagingSource(
+                metflixService, SerieEnum.SIMILAR_SERIES,
+                serieId = serieId,
+                movieRequestOptionsMapper = movieRequestOptionsMapper
+            )
+        }
+    ).flow
+
 
 }

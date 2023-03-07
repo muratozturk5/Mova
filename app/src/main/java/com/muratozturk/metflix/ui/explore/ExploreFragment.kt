@@ -12,11 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.changeFocusedInputTint
+import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
-import com.muratozturk.metflix.common.gone
-import com.muratozturk.metflix.common.showToast
-import com.muratozturk.metflix.common.visible
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.databinding.FragmentExploreBinding
 import com.muratozturk.metflix.ui.home.LoadStateAdapter
@@ -255,12 +252,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
     }
 
     private fun filterResult() {
-        setFragmentResultListener("popUp") { _, bundle ->
+        setFragmentResultListener(Constants.Arguments.POP_UP) { _, bundle ->
 
             returnFilterResult = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                bundle.getParcelable("filterResult", FilterResult::class.java) ?: FilterResult()
+                bundle.getParcelable(Constants.Arguments.FILTER_RESULT, FilterResult::class.java)
+                    ?: FilterResult()
             } else {
-                @Suppress("DEPRECATION") (bundle.getParcelable("filterResult")
+                @Suppress("DEPRECATION") (bundle.getParcelable(Constants.Arguments.FILTER_RESULT)
                     ?: FilterResult())
             }
 

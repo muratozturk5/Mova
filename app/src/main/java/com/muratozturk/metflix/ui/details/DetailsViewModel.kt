@@ -45,10 +45,10 @@ class DetailsViewModel @Inject constructor(
     val serieCredits
         get() = _serieCredits.asSharedFlow()
 
-    init {
+    // Init is not used because when we navigate to back stack we need to get data again
+    fun getDetails() {
         savedStateHandle.get<Int>(Constants.Arguments.ID)?.let { id ->
             savedStateHandle.get<MediaTypeEnum>(Constants.Arguments.MEDIA_TYPE)?.let { mediaType ->
-
                 when (mediaType) {
                     MediaTypeEnum.MOVIE -> {
                         getMovieDetails(id)
@@ -62,7 +62,7 @@ class DetailsViewModel @Inject constructor(
 
 
             }
-        }
+        } ?: throw IllegalArgumentException("Missing id or media type")
     }
 
     private fun getMovieDetails(movieId: Int) = viewModelScope.launch {

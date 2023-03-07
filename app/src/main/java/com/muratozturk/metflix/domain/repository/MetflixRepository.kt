@@ -25,4 +25,6 @@ interface MetflixRepository {
     fun getSerieTrailers(serieId: Int): Flow<Resource<List<VideoUI>>>
     fun getMovieImages(movieId: Int): Flow<Resource<List<ImageUI>>>
     fun getSerieImages(serieId: Int): Flow<Resource<List<ImageUI>>>
+    fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUI>>
+    fun getSimilarSeries(serieId: Int): Flow<PagingData<SerieUI>>
 }

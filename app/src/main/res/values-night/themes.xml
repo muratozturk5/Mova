@@ -15,4 +15,9 @@
         <item name="fontFamily">@font/urbanist_font_family</item>
 
     </style>
+
+    <style name="ThemeOverlay.MetFlix.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
+    </style>
 </resources>

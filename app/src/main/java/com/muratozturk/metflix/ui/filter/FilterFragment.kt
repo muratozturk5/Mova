@@ -105,7 +105,10 @@ class FilterFragment : BottomSheetDialogFragment(R.layout.fragment_filter) {
 
                 applyButton.setOnClickListener {
                     createFilterResult()
-                    setFragmentResult("popUp", bundleOf("filterResult" to returnFilterResult))
+                    setFragmentResult(
+                        Constants.Arguments.POP_UP,
+                        bundleOf(Constants.Arguments.FILTER_RESULT to returnFilterResult)
+                    )
                     findNavController().popBackStack()
                 }
                 resetButton.setOnClickListener {

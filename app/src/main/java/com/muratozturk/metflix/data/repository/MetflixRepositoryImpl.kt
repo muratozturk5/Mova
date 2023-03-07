@@ -163,4 +163,16 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
             emit(Resource.Error(t))
         }
     }
+
+    override fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUI>> = flow {
+        remote.getSimilarMovies(movieId).map { pagingData ->
+            pagingData.map { it.toMovieUI() }
+        }.collect { emit(it) }
+    }
+
+    override fun getSimilarSeries(serieId: Int): Flow<PagingData<SerieUI>> = flow {
+        remote.getSimilarSeries(serieId).map { pagingData ->
+            pagingData.map { it.toSerieUI() }
+        }.collect { emit(it) }
+    }
 }

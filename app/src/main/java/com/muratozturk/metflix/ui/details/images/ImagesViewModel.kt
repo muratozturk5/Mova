@@ -10,7 +10,8 @@ import com.muratozturk.metflix.domain.model.ImageUI
 import com.muratozturk.metflix.domain.use_case.details.movie.images.GetMovieImagesUseCase
 import com.muratozturk.metflix.domain.use_case.details.serie.images.GetSerieImagesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,9 +23,9 @@ class ImagesViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _images = MutableSharedFlow<Resource<List<ImageUI>>>()
+    private val _images = MutableStateFlow<Resource<List<ImageUI>>>(Resource.Loading)
     val images
-        get() = _images
+        get() = _images.asStateFlow()
 
     init {
         savedStateHandle.get<Int>(Constants.Arguments.ID)?.let { id ->

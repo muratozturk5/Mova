@@ -9,8 +9,11 @@ import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemTrailerBinding
 import com.muratozturk.metflix.domain.model.VideoUI
 
-class TrailersAdapter(private val trailerList: List<VideoUI>) :
+class TrailersAdapter(
+    private val trailerList: List<VideoUI>
+) :
     RecyclerView.Adapter<TrailersAdapter.ViewHolder>() {
+    var onClick: (String) -> Unit = {}
 
     inner class ViewHolder(private val binding: ItemTrailerBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -20,6 +23,12 @@ class TrailersAdapter(private val trailerList: List<VideoUI>) :
                 dateTv.text = getReformatDate(item.publishedAt)
                 imageView.loadImage(item.key, imageTypeEnum = ImageTypeEnum.YOUTUBE)
 
+                root.setOnClickListener {
+                    onClick(item.key)
+                }
+                cardView.setOnClickListener {
+                    onClick(item.key)
+                }
             }
         }
     }

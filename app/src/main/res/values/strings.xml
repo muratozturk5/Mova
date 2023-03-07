@@ -82,6 +82,8 @@
     <string name="comments">Comments</string>
     <string name="images">Images</string>
     <string name="smilar">Smilar</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>

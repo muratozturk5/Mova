@@ -81,4 +81,14 @@ interface MetflixService {
     @GET(Constants.Endpoints.GET_SERIE_IMAGES)
     suspend fun getSerieImages(@Path("tv_id") serieId: Int): ImagesResponse
 
+    @GET(Constants.Endpoints.GET_MOVIE_SIMILAR)
+    suspend fun getSimilarMovies(
+        @Path("movie_id") movieId: Int, @Query("page") page: Int,
+    ): MoviesResponse
+
+    @GET(Constants.Endpoints.GET_SERIE_SIMILAR)
+    suspend fun getSimilarSeries(
+        @Path("tv_id") serieId: Int, @Query("page") page: Int,
+    ): SeriesResponse
+
 }

@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.ui.details.trailers
+package com.muratozturk.metflix.ui.player
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -14,10 +14,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class TrailersViewModel @Inject constructor(
+class VideoPlayerViewModel @Inject constructor(
     private val getMovieTrailersUseCase: GetMovieTrailersUseCase,
     private val getSerieTrailersUseCase: GetSerieTrailersUseCase,
     private val savedStateHandle: SavedStateHandle
@@ -45,12 +46,14 @@ class TrailersViewModel @Inject constructor(
     private fun getMovieTrailers(movieId: Int) = viewModelScope.launch {
         getMovieTrailersUseCase(movieId).collectLatest {
             _trailers.emit(it)
+            Timber.d("getMovieTrailers: $it")
         }
     }
 
     private fun getSerieTrailers(serieId: Int) = viewModelScope.launch {
         getSerieTrailersUseCase(serieId).collectLatest {
             _trailers.emit(it)
+            Timber.d("getSerieTrailers: $it")
         }
     }
 }

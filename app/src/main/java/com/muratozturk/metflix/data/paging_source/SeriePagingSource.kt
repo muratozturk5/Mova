@@ -17,7 +17,8 @@ class SeriePagingSource(
     private val searchQuery: String = "",
     movieRequestOptionsMapper: MovieRequestOptionsMapper,
     filterResult: FilterResult? = null,
-    private val includeAdult: Boolean = false
+    private val includeAdult: Boolean = false,
+    private val serieId: Int = 0
 
 ) : PagingSource<Int, Serie>() {
     private val options = movieRequestOptionsMapper.map(filterResult)
@@ -50,6 +51,12 @@ class SeriePagingSource(
                             page = page,
                             query = searchQuery,
                             includeAdult = includeAdult
+                        )
+                    }
+                    SerieEnum.SIMILAR_SERIES -> {
+                        movieService.getSimilarSeries(
+                            page = page,
+                            serieId = serieId
                         )
                     }
                 }

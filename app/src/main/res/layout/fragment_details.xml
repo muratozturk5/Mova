@@ -12,7 +12,7 @@
         android:id="@+id/detailsLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -68,48 +68,18 @@
 
             </LinearLayout>
 
-
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:layout_marginHorizontal="15dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/place_holder_bg" />
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/place_holder_bg" />
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/place_holder_bg" />
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/place_holder_bg" />
-
-            </LinearLayout>
+                android:layout_marginTop="22dp"
+                android:background="@drawable/place_holder_bg_full_rounded_dark" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/place_holder_bg_full_rounded_dark" />
 
             <View
@@ -252,12 +222,11 @@
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/imageLayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -279,7 +248,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -303,7 +272,7 @@
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -578,6 +547,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/tab_background"
                 android:translationZ="1dp"
+                android:layout_marginTop="10dp"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:tabBackground="@drawable/tab_background"
                 app:tabGravity="fill"

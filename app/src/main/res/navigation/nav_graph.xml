@@ -228,5 +228,47 @@
         <argument
             android:name="mediaType"
             app:argType="com.muratozturk.metflix.common.enums.MediaTypeEnum" />
+        <action
+            android:id="@+id/action_detailsFragment_self"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imagesFragment"
+        android:name="com.muratozturk.metflix.ui.details.images.ImagesFragment"
+        android:label="fragment_images"
+        tools:layout="@layout/fragment_images" />
+    <fragment
+        android:id="@+id/trailersFragment"
+        android:name="com.muratozturk.metflix.ui.details.trailers.TrailersFragment"
+        android:label="fragment_trailers"
+        tools:layout="@layout/fragment_trailers" />
+    <fragment
+        android:id="@+id/similarFragment"
+        android:name="com.muratozturk.metflix.ui.details.similar.SimilarFragment"
+        android:label="fragment_similar"
+        tools:layout="@layout/fragment_similar">
+        <action
+            android:id="@+id/action_similarFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.muratozturk.metflix.ui.player.VideoPlayerFragment"
+        android:label="fragment_video_player"
+        tools:layout="@layout/fragment_video_player">
+        <argument
+            android:name="videoId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="mediaType"
+            app:argType="com.muratozturk.metflix.common.enums.MediaTypeEnum" />
     </fragment>
 </navigation>

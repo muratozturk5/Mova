@@ -139,5 +139,8 @@ dependencies {
     // Show More TextView
     implementation 'com.github.sanjaydraws:ShowMoreTextView:1.0.3'
 
+    // Youtube Player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
+
 
 }

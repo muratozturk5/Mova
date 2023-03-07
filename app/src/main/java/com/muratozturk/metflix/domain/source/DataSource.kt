@@ -33,6 +33,8 @@ interface DataSource {
         suspend fun getSerieTrailers(serieId: Int): VideosResponse
         suspend fun getMovieImages(movieId: Int): ImagesResponse
         suspend fun getSerieImages(serieId: Int): ImagesResponse
+        suspend fun getSimilarMovies(movieId: Int): Flow<PagingData<Movie>>
+        suspend fun getSimilarSeries(serieId: Int): Flow<PagingData<Serie>>
 
     }
 

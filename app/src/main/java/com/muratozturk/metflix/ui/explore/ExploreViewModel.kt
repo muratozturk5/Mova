@@ -13,6 +13,7 @@ import com.muratozturk.metflix.domain.use_case.explore.GetSearchMovieUseCase
 import com.muratozturk.metflix.domain.use_case.explore.GetSearchSerieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -29,13 +30,13 @@ class ExploreViewModel @Inject constructor(
     private val _discoverMovies: MutableStateFlow<PagingData<MovieUI>> =
         MutableStateFlow(PagingData.empty())
     val discoverMovies
-        get() = _discoverMovies
+        get() = _discoverMovies.asStateFlow()
 
 
     private val _discoverSeries: MutableStateFlow<PagingData<SerieUI>> =
         MutableStateFlow(PagingData.empty())
     val discoverSeries
-        get() = _discoverSeries
+        get() = _discoverSeries.asStateFlow()
 
 
     fun getDiscoverMovies(filterResult: FilterResult?) = viewModelScope.launch {

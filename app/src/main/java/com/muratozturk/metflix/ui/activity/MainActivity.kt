@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.dialogFragment -> {
                     binding.bottomNavigation.gone()
                 }
+                R.id.videoPlayerFragment -> {
+                    binding.bottomNavigation.gone()
+                }
                 else -> {
                     binding.bottomNavigation.visible()
                 }

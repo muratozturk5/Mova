@@ -1,5 +1,6 @@
 package com.muratozturk.metflix.ui.details
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -31,25 +32,41 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     fun initUI() {
         with(binding) {
+            with(viewModel) {
+                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
-            backButton.setOnClickListener {
-                findNavController().popBackStack()
+                getDetails()
+
+                playBtn.setOnClickListener {
+                    val action =
+                        DetailsFragmentDirections.actionDetailsFragmentToVideoPlayerFragment(
+                            videoId = null,
+                            id = args.id,
+                            mediaType = args.mediaType
+                        )
+                    findNavController().navigate(action)
+                }
+
+                backButton.setOnClickListener {
+                    findNavController().popBackStack()
+                }
+
+                viewPager.adapter =
+                    ViewPagerAdapter(childFragmentManager, lifecycle, args.id, args.mediaType)
+
+
+                val tabsArray = arrayOf(
+                    resources.getString(R.string.trailers),
+                    resources.getString(R.string.images),
+                    resources.getString(R.string.smilar)
+                )
+
+                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                    tab.text = tabsArray[position]
+                }.attach()
+
+
             }
-
-            viewPager.adapter =
-                ViewPagerAdapter(parentFragmentManager, lifecycle, args.id, args.mediaType)
-
-
-            val tabsArray = arrayOf(
-                resources.getString(R.string.trailers),
-                resources.getString(R.string.images),
-                resources.getString(R.string.smilar)
-            )
-
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = tabsArray[position]
-            }.attach()
-
         }
     }
 

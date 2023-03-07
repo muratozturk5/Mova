@@ -13,6 +13,9 @@ object Constants {
     object Arguments {
         const val ID = "id"
         const val MEDIA_TYPE = "mediaType"
+        const val FILTER_RESULT = "filterResult"
+        const val POP_UP = "popUp"
+
     }
 
     object Filter {
@@ -53,6 +56,8 @@ object Constants {
         const val GET_SERIE_TRAILERS = "tv/{tv_id}/videos"
         const val GET_MOVIE_IMAGES = "movie/{movie_id}/images"
         const val GET_SERIE_IMAGES = "tv/{tv_id}/images"
+        const val GET_MOVIE_SIMILAR = "movie/{movie_id}/similar"
+        const val GET_SERIE_SIMILAR = "tv/{tv_id}/similar"
 
     }
 
