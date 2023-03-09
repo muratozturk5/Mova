@@ -15,8 +15,6 @@ import com.muratozturk.metflix.databinding.FragmentVideoPlayerBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -40,29 +38,22 @@ class VideoPlayerFragment : Fragment(R.layout.fragment_video_player) {
         with(binding) {
             requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
 
 
             lifecycle.addObserver(youtubePlayerView)
             args.videoId?.let {
-
-                val options: IFramePlayerOptions = IFramePlayerOptions.Builder().controls(0).build()
-                val listener = object :
+                youtubePlayerView.addYouTubePlayerListener(object :
                     AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
-                        val defaultPlayerUiController =
-                            DefaultPlayerUiController(
-                                youtubePlayerView,
-                                youTubePlayer
-                            )
-                        youtubePlayerView.setCustomPlayerUi(
-                            defaultPlayerUiController.rootView
-                        )
-                        youTubePlayer.loadVideo(it, 0f)
-                    }
 
-                }
-                youtubePlayerView.initialize(listener, options)
+                        youTubePlayer.loadVideo(
+                            it,
+                            0f
+                        )
+                    }
+                })
 
             }
 
@@ -91,18 +82,6 @@ class VideoPlayerFragment : Fragment(R.layout.fragment_video_player) {
                                         AbstractYouTubePlayerListener() {
                                         var videoIndex = 0
                                         override fun onReady(youTubePlayer: YouTubePlayer) {
-
-                                            val defaultPlayerUiController =
-                                                DefaultPlayerUiController(
-                                                    youtubePlayerView,
-                                                    youTubePlayer
-                                                )
-                                            youtubePlayerView.setCustomPlayerUi(
-                                                defaultPlayerUiController.rootView
-                                            )
-
-
-
                                             youTubePlayer.loadVideo(
                                                 response.data[videoIndex].key,
                                                 0f

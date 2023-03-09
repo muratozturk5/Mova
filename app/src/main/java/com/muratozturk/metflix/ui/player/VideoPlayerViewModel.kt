@@ -31,12 +31,14 @@ class VideoPlayerViewModel @Inject constructor(
     init {
         savedStateHandle.get<Int>(Constants.Arguments.ID)?.let { id ->
             savedStateHandle.get<MediaTypeEnum>(Constants.Arguments.MEDIA_TYPE)?.let { mediaType ->
-                when (mediaType) {
-                    MediaTypeEnum.MOVIE -> {
-                        getMovieTrailers(id)
-                    }
-                    MediaTypeEnum.SERIE -> {
-                        getSerieTrailers(id)
+                if (id != 0) {
+                    when (mediaType) {
+                        MediaTypeEnum.MOVIE -> {
+                            getMovieTrailers(id)
+                        }
+                        MediaTypeEnum.SERIE -> {
+                            getSerieTrailers(id)
+                        }
                     }
                 }
             }

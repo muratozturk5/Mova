@@ -46,6 +46,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         )
                     findNavController().navigate(action)
                 }
+                downloadBtn.setOnClickListener {
+                    val action =
+                        DetailsFragmentDirections.actionDetailsFragmentToDownloadDialogFragment()
+                    findNavController().navigate(action)
+                }
 
                 backButton.setOnClickListener {
                     findNavController().popBackStack()

@@ -431,7 +431,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/AddListBtn"
+                    android:id="@+id/downloadBtn"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_weight="1"

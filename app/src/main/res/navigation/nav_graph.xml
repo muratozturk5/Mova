@@ -234,6 +234,9 @@
         <action
             android:id="@+id/action_detailsFragment_to_videoPlayerFragment"
             app:destination="@id/videoPlayerFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_downloadDialogFragment"
+            app:destination="@id/downloadDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/imagesFragment"
@@ -271,4 +274,9 @@
             android:name="mediaType"
             app:argType="com.muratozturk.metflix.common.enums.MediaTypeEnum" />
     </fragment>
+    <dialog
+        android:id="@+id/downloadDialogFragment"
+        android:name="com.muratozturk.metflix.ui.dialog.download.DownloadDialogFragment"
+        android:label="fragment_download_dialog"
+        tools:layout="@layout/fragment_download_dialog" />
 </navigation>

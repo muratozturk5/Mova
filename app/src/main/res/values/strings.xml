@@ -84,6 +84,8 @@
     <string name="smilar">Smilar</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="download_desc">This Feature is Not Downloading Movie...\nJust Saves to Room Database</string>
+    <string name="hide">Hide</string>
 
 
 </resources>
