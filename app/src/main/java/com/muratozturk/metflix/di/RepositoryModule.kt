@@ -12,5 +12,5 @@ import dagger.hilt.components.SingletonComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun provideMovieRepository(remoteRepositoryImpl: MetflixRepositoryImpl): MetflixRepository
+    abstract fun provideMovieRepository(metflixRepositoryImpl: MetflixRepositoryImpl): MetflixRepository
 }

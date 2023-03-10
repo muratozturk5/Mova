@@ -15,6 +15,7 @@ object Constants {
         const val MEDIA_TYPE = "mediaType"
         const val FILTER_RESULT = "filterResult"
         const val POP_UP = "popUp"
+        const val DELETED_POSITION = "deletedPosition"
 
     }
 

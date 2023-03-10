@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
+import com.muratozturk.metflix.common.format
 import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemMovieSerieNowPlayingBinding
 import com.muratozturk.metflix.domain.model.SerieUI
@@ -23,7 +24,7 @@ class ExploreSeriesAdapter(
         fun bind(item: SerieUI) = binding.apply {
 
             item.posterPath?.let { imageView.loadImage(it, imageTypeEnum = ImageTypeEnum.POSTER) }
-            voteAverageTV.text = item.voteAverage.toString()
+            voteAverageTV.text = item.voteAverage.format(1)
             root.setOnClickListener {
                 onClickMovie?.invoke(item.id)
             }

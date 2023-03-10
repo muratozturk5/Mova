@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.data.service
+package com.muratozturk.metflix.data.source.remote
 
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse

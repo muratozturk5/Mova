@@ -7,5 +7,6 @@ data class MovieUI(
     val posterPath: String?,
     val backdropPath: String?,
     val title: String,
-    val voteAverage: Double
+    val voteAverage: Double,
+    var isBookmarked: Boolean = false
 )

@@ -119,6 +119,9 @@
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
@@ -278,5 +281,33 @@
         android:id="@+id/downloadDialogFragment"
         android:name="com.muratozturk.metflix.ui.dialog.download.DownloadDialogFragment"
         android:label="fragment_download_dialog"
-        tools:layout="@layout/fragment_download_dialog" />
+        tools:layout="@layout/fragment_download_dialog">
+        <argument
+            android:name="download"
+            app:argType="com.muratozturk.metflix.data.model.local.Download" />
+    </dialog>
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="com.muratozturk.metflix.ui.download.DownloadFragment"
+        android:label="fragment_download"
+        tools:layout="@layout/fragment_download">
+        <action
+            android:id="@+id/action_downloadFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+        <action
+            android:id="@+id/action_downloadFragment_to_deleteDownloadFragment"
+            app:destination="@id/deleteDownloadFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteDownloadFragment"
+        android:name="com.muratozturk.metflix.ui.download.delete.DeleteDownloadFragment"
+        android:label="fragment_delete_download"
+        tools:layout="@layout/fragment_delete_download">
+        <argument
+            android:name="download"
+            app:argType="com.muratozturk.metflix.data.model.local.Download" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </dialog>
 </navigation>

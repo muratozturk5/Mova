@@ -7,7 +7,7 @@ import com.muratozturk.metflix.common.MovieRequestOptionsMapper
 import com.muratozturk.metflix.common.enums.MovieEnum
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.movies.Movie
-import com.muratozturk.metflix.data.service.MetflixService
+import com.muratozturk.metflix.data.source.remote.MetflixService
 import okio.IOException
 import retrofit2.HttpException
 

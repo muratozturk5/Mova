@@ -31,7 +31,7 @@
             android:textFontWeight="600"
             android:textSize="25sp"
             tools:text="Movie Name" />
-        
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,16 +68,40 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
+
+            <ToggleButton
+                android:id="@+id/addListBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textOn="@string/added_to_list"
+                android:textOff="@string/my_list"
+                android:textAllCaps="false"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/rounded_btn_bordered"
+                android:button="@android:color/transparent"
+                style="?android:attr/borderlessButtonStyle"
+                android:checked="false"
+                android:textSize="14sp"
+                android:paddingHorizontal="15dp"
+                android:drawableLeft="@drawable/add_list_icon"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:text="@string/popularity"
+                android:textColor="@color/white"
+                android:textFontWeight="600" />
+
             <LinearLayout
-                android:id="@+id/AddListBtn"
+                android:id="@+id/addListBtn2"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:visibility="gone"
                 android:background="@drawable/rounded_btn_bordered"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingHorizontal="15dp">
 
                 <ImageView
+                    android:id="@+id/addListIcon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="8dp"
@@ -86,6 +110,7 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:id="@+id/addListTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/my_list"

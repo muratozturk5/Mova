@@ -6,9 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
+import com.muratozturk.metflix.data.model.local.Bookmark
 import com.muratozturk.metflix.domain.model.CastUI
 import com.muratozturk.metflix.domain.model.MovieDetailsUI
 import com.muratozturk.metflix.domain.model.SerieDetailsUI
+import com.muratozturk.metflix.domain.use_case.bookmark.AddBookmarkUseCase
+import com.muratozturk.metflix.domain.use_case.bookmark.IsBookmarkedUseCase
+import com.muratozturk.metflix.domain.use_case.bookmark.RemoveBookmarkUseCase
 import com.muratozturk.metflix.domain.use_case.details.movie.GetMovieCreditsUseCase
 import com.muratozturk.metflix.domain.use_case.details.movie.GetMovieDetailsUseCase
 import com.muratozturk.metflix.domain.use_case.details.serie.GetSerieCreditsUseCase
@@ -26,6 +30,9 @@ class DetailsViewModel @Inject constructor(
     private val getMovieCreditsUseCase: GetMovieCreditsUseCase,
     private val getSerieDetailsUseCase: GetSerieDetailsUseCase,
     private val getSerieCreditsUseCase: GetSerieCreditsUseCase,
+    private val addBookmarkUseCase: AddBookmarkUseCase,
+    private val removeBookmarkUseCase: RemoveBookmarkUseCase,
+    private val isBookmarkedUseCase: IsBookmarkedUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -45,6 +52,10 @@ class DetailsViewModel @Inject constructor(
     val serieCredits
         get() = _serieCredits.asSharedFlow()
 
+    private var _isBookmarked = MutableSharedFlow<Resource<Boolean>>()
+    val isBookmarked
+        get() = _isBookmarked.asSharedFlow()
+
     // Init is not used because when we navigate to back stack we need to get data again
     fun getDetails() {
         savedStateHandle.get<Int>(Constants.Arguments.ID)?.let { id ->
@@ -60,6 +71,7 @@ class DetailsViewModel @Inject constructor(
                     }
                 }
 
+                isBookmarked(id)
 
             }
         } ?: throw IllegalArgumentException("Missing id or media type")
@@ -86,6 +98,20 @@ class DetailsViewModel @Inject constructor(
     private fun getSerieCredits(serieId: Int) = viewModelScope.launch {
         getSerieCreditsUseCase(serieId).collectLatest {
             _serieCredits.emit(it)
+        }
+    }
+
+    fun addBookmark(bookmark: Bookmark) = viewModelScope.launch {
+        addBookmarkUseCase(bookmark)
+    }
+
+    fun removeBookmark(id: Int) = viewModelScope.launch {
+        removeBookmarkUseCase(id)
+    }
+
+    fun isBookmarked(id: Int) = viewModelScope.launch {
+        isBookmarkedUseCase(id).collectLatest {
+            _isBookmarked.emit(it)
         }
     }
 }

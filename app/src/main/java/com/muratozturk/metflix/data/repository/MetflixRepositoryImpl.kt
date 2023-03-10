@@ -1,9 +1,12 @@
 package com.muratozturk.metflix.data.repository
 
+import android.app.Application
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.data.model.FilterResult
+import com.muratozturk.metflix.data.model.local.Bookmark
+import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.data.model.remote.genres.Genre
 import com.muratozturk.metflix.domain.mapper.*
 import com.muratozturk.metflix.domain.model.*
@@ -14,12 +17,21 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.Remote) :
+class MetflixRepositoryImpl @Inject constructor(
+    private val remote: DataSource.Remote,
+    private val local: DataSource.Local,
+    private val app: Application
+) :
     MetflixRepository {
     override fun getPopularMovies(): Flow<Resource<List<MovieUI>>> = flow {
         emit(Resource.Loading)
         try {
             val response = remote.getPopularMovies().results.toMovieUI()
+
+            response.forEach {
+                it.isBookmarked = local.isBookmarked(it.id)
+            }
+
             emit(Resource.Success(response))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
@@ -174,5 +186,61 @@ class MetflixRepositoryImpl @Inject constructor(private val remote: DataSource.R
         remote.getSimilarSeries(serieId).map { pagingData ->
             pagingData.map { it.toSerieUI() }
         }.collect { emit(it) }
+    }
+
+    override suspend fun addBookmark(bookmark: Bookmark) {
+//        download image and save to local storage
+
+//        val imagePath = bookmark.id.toString() + bookmark.name + ".png"
+//        bookmark.imageFilePath = app.imageDownloadSaveFile(
+//            imagePath,
+//            Constants.getPosterPath(bookmark.poster)
+//        )
+        local.addBookmark(bookmark)
+    }
+
+    override suspend fun removeBookmark(id: Int) = local.removeBookmark(id)
+    override fun isBookmarked(id: Int): Flow<Resource<Boolean>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = local.isBookmarked(id)
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getBookmarks(): Flow<Resource<List<Bookmark>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = local.getBookmarks()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override suspend fun addDownload(download: Download) = local.addDownload(download)
+
+    override suspend fun removeDownloaded(id: Int) = local.removeDownloaded(id)
+
+    override fun isDownloaded(id: Int): Flow<Resource<Boolean>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = local.isDownloaded(id)
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getDownloads(): Flow<Resource<List<Download>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = local.getDownloads()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
     }
 }

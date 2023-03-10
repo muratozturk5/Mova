@@ -4,5 +4,6 @@ enum class ImageTypeEnum {
     POSTER,
     BACKDROP,
     YOUTUBE,
-    CREDIT
+    CREDIT,
+    LOCAL
 }

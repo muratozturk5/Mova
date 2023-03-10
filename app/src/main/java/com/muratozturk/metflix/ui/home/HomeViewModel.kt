@@ -5,8 +5,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.muratozturk.metflix.common.Resource
+import com.muratozturk.metflix.data.model.local.Bookmark
 import com.muratozturk.metflix.domain.model.MovieUI
 import com.muratozturk.metflix.domain.model.SerieUI
+import com.muratozturk.metflix.domain.use_case.bookmark.AddBookmarkUseCase
+import com.muratozturk.metflix.domain.use_case.bookmark.RemoveBookmarkUseCase
 import com.muratozturk.metflix.domain.use_case.home.GetNowPlayingMoviesUseCase
 import com.muratozturk.metflix.domain.use_case.home.GetNowPlayingSeriesUseCase
 import com.muratozturk.metflix.domain.use_case.home.GetPopularMoviesUseCase
@@ -22,7 +25,9 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
     private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase,
-    private val getNowPlayingSeriesUseCase: GetNowPlayingSeriesUseCase
+    private val getNowPlayingSeriesUseCase: GetNowPlayingSeriesUseCase,
+    private val addBookmarkUseCase: AddBookmarkUseCase,
+    private val removeBookmarkUseCase: RemoveBookmarkUseCase
 ) : ViewModel() {
 
     private val _popularMovies = MutableStateFlow<Resource<List<MovieUI>>>(Resource.Loading)
@@ -65,5 +70,13 @@ class HomeViewModel @Inject constructor(
             _nowPlayingSeries.emit(it)
             Timber.d("now playing series: $it")
         }
+    }
+
+    fun addBookmark(bookmark: Bookmark) = viewModelScope.launch {
+        addBookmarkUseCase(bookmark)
+    }
+
+    fun removeBookmark(id: Int) = viewModelScope.launch {
+        removeBookmarkUseCase(id)
     }
 }

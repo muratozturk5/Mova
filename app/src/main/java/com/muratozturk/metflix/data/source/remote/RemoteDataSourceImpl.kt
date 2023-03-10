@@ -1,4 +1,4 @@
-package com.muratozturk.metflix.data.data_source
+package com.muratozturk.metflix.data.source.remote
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -19,7 +19,6 @@ import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
 import com.muratozturk.metflix.data.model.remote.series.Serie
 import com.muratozturk.metflix.data.paging_source.MoviePagingSource
 import com.muratozturk.metflix.data.paging_source.SeriePagingSource
-import com.muratozturk.metflix.data.service.MetflixService
 import com.muratozturk.metflix.domain.source.DataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

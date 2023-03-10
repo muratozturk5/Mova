@@ -15,5 +15,6 @@ data class SerieDetailsUI(
     val posterPath: String,
     val tagline: String,
     val voteAverage: Double,
+    val homepage: String
 )
 

@@ -13,7 +13,11 @@ import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
+import com.muratozturk.metflix.data.model.local.Bookmark
+import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.databinding.FragmentDetailsBinding
+import com.muratozturk.metflix.domain.model.MovieDetailsUI
+import com.muratozturk.metflix.domain.model.SerieDetailsUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -24,6 +28,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private val binding by viewBinding(FragmentDetailsBinding::bind)
     private val viewModel: DetailsViewModel by viewModels()
     private val args: DetailsFragmentArgs by navArgs()
+    private var isMovieSerieBookmarked: Boolean = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
@@ -44,11 +49,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                             id = args.id,
                             mediaType = args.mediaType
                         )
-                    findNavController().navigate(action)
-                }
-                downloadBtn.setOnClickListener {
-                    val action =
-                        DetailsFragmentDirections.actionDetailsFragmentToDownloadDialogFragment()
                     findNavController().navigate(action)
                 }
 
@@ -121,6 +121,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                                 resources.getString(R.string.tv_series)
                                         }
                                     }
+
+                                    addListener(movie = this, serie = null)
                                 }
                             }
                             is Resource.Error -> {
@@ -206,6 +208,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                                                 resources.getString(R.string.tv_series)
                                         }
                                     }
+
+                                    addListener(movie = null, serie = this)
                                 }
                             }
                             is Resource.Error -> {
@@ -249,6 +253,114 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         }
                     }
                 }
+
+                viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+                    isBookmarked.collectLatest { response ->
+                        when (response) {
+                            is Resource.Success -> {
+                                if (response.data) {
+                                    bookmarkBtn.setImageResource(R.drawable.bookmark_curved_filled)
+                                } else {
+                                    bookmarkBtn.setImageResource(R.drawable.bookmark_curved)
+                                }
+                                isMovieSerieBookmarked = response.data
+                            }
+                            is Resource.Error -> {
+                                requireActivity().showToast(
+                                    getString(R.string.error),
+                                    response.throwable.localizedMessage ?: "Error",
+                                    MotionToastStyle.ERROR
+                                )
+                            }
+                            is Resource.Loading -> {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun addListener(movie: MovieDetailsUI?, serie: SerieDetailsUI?) {
+        with(binding) {
+            with(viewModel) {
+                var bookmark: Bookmark? = null
+                var download: Download? = null
+                var stareText: String? = null
+
+                when (args.mediaType) {
+                    MediaTypeEnum.MOVIE -> {
+                        movie?.let { movie ->
+                            bookmark = Bookmark(
+                                movie.id,
+                                movie.title,
+                                "",
+                                movie.posterPath ?: "",
+                                movie.voteAverage,
+                                args.mediaType
+                            )
+
+                            download = Download(
+                                movie.id,
+                                movie.title,
+                                "",
+                                movie.backdropPath ?: "",
+                                movie.runtime ?: 0,
+                                type = args.mediaType
+                            )
+
+                            stareText = "${movie.title} - ${movie.homepage}"
+                        }
+                    }
+                    MediaTypeEnum.SERIE -> {
+                        serie?.let { serie ->
+                            bookmark = Bookmark(
+                                serie.id,
+                                serie.name,
+                                "",
+                                serie.posterPath,
+                                serie.voteAverage,
+                                args.mediaType
+                            )
+
+                            download = Download(
+                                serie.id,
+                                serie.name,
+                                "",
+                                serie.backdropPath,
+                                getRandomRuntime(),
+                                type = args.mediaType
+                            )
+
+                            stareText = "${serie.name} - ${serie.homepage}"
+                        }
+                    }
+                }
+
+                bookmarkBtn.setOnClickListener {
+                    if (isMovieSerieBookmarked) {
+                        removeBookmark(bookmark!!.id)
+                        isMovieSerieBookmarked = false
+                        bookmarkBtn.setImageResource(R.drawable.bookmark_curved)
+                    } else {
+                        addBookmark(bookmark!!)
+                        isMovieSerieBookmarked = true
+                        bookmarkBtn.setImageResource(R.drawable.bookmark_curved_filled)
+                    }
+                }
+
+                shareBtn.setOnClickListener {
+                    requireContext().openShareIntent(stareText!!)
+                }
+
+                downloadBtn.setOnClickListener {
+                    val action =
+                        DetailsFragmentDirections.actionDetailsFragmentToDownloadDialogFragment(
+                            download!!
+                        )
+                    findNavController().navigate(action)
+                }
+
             }
         }
     }

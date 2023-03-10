@@ -102,6 +102,7 @@
                         tools:progress="47" />
 
                     <ImageView
+                        android:id="@+id/cancelBtn"
                         android:layout_width="wrap_content"
                         android:src="@drawable/close"
                         android:scaleX="2"

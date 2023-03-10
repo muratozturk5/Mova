@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.muratozturk.metflix.common.Constants.API_KEY
 import com.muratozturk.metflix.common.Constants.BASE_URL
 import com.muratozturk.metflix.common.interceptor.ApiKeyInterceptor
-import com.muratozturk.metflix.data.service.MetflixService
+import com.muratozturk.metflix.data.source.remote.MetflixService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

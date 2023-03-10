@@ -16,5 +16,6 @@ data class MovieDetailsUI(
     val tagline: String?,
     val title: String,
     val video: Boolean,
-    val voteAverage: Double
+    val voteAverage: Double,
+    val homepage: String?,
 )

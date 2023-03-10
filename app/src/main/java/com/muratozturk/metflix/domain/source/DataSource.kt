@@ -2,6 +2,8 @@ package com.muratozturk.metflix.domain.source
 
 import androidx.paging.PagingData
 import com.muratozturk.metflix.data.model.FilterResult
+import com.muratozturk.metflix.data.model.local.Bookmark
+import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
 import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
@@ -36,6 +38,17 @@ interface DataSource {
         suspend fun getSimilarMovies(movieId: Int): Flow<PagingData<Movie>>
         suspend fun getSimilarSeries(serieId: Int): Flow<PagingData<Serie>>
 
+    }
+
+    interface Local {
+        suspend fun addBookmark(bookmark: Bookmark)
+        suspend fun removeBookmark(id: Int)
+        suspend fun isBookmarked(id: Int): Boolean
+        suspend fun getBookmarks(): List<Bookmark>
+        suspend fun addDownload(download: Download)
+        suspend fun removeDownloaded(id: Int)
+        suspend fun isDownloaded(id: Int): Boolean
+        suspend fun getDownloads(): List<Download>
     }
 
 }

@@ -7,13 +7,18 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.muratozturk.metflix.R
+import com.muratozturk.metflix.common.convertMBtoGB
 import com.muratozturk.metflix.databinding.FragmentDownloadDialogBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class DownloadDialogFragment : BottomSheetDialogFragment(R.layout.fragment_download_dialog) {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext(), R.style.AppModalStyle)
@@ -39,6 +44,8 @@ class DownloadDialogFragment : BottomSheetDialogFragment(R.layout.fragment_downl
     }
 
     private val binding by viewBinding(FragmentDownloadDialogBinding::bind)
+    private val viewModel by viewModels<DownloadDialogViewModel>()
+    private val args: DownloadDialogFragmentArgs by navArgs()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     var progressBarJob: Job? = null
 
@@ -53,12 +60,16 @@ class DownloadDialogFragment : BottomSheetDialogFragment(R.layout.fragment_downl
                 findNavController().popBackStack()
             }
 
-
+            viewModel.addDownload(args.download)
             progressBarJob = coroutineScope.launch {
                 repeat(101) {
                     updateProgress(it)
                     delay(100)
                 }
+            }
+
+            cancelBtn.setOnClickListener {
+                progressBarJob?.cancel()
             }
 
         }
@@ -67,16 +78,16 @@ class DownloadDialogFragment : BottomSheetDialogFragment(R.layout.fragment_downl
     private fun updateProgress(progress: Int) {
         with(binding) {
 
-            val downloadSize = 968.5
+            val downloadSize = args.download.downloadSize
             val downloadedSize = (progress * downloadSize) / 100.0
 
             val progressPercentBuilder: StringBuilder =
                 StringBuilder().append(progress).append(" %")
 
             val progressBuilder: StringBuilder =
-                StringBuilder().append(String.format("%.1f", downloadedSize)).append(" / ")
-                    .append(String.format("%.1f", downloadSize))
-                    .append(" MB")
+                StringBuilder().append(downloadedSize.convertMBtoGB(false)).append(" / ")
+                    .append(downloadSize.convertMBtoGB(true))
+
             progressPercent.text = progressPercentBuilder.toString()
             progressText.text = progressBuilder.toString()
             progressBar.progress = progress

@@ -1,6 +1,7 @@
 package com.muratozturk.metflix.ui.home
 
 import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.paging.LoadState
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
+import com.muratozturk.metflix.data.model.local.Bookmark
 import com.muratozturk.metflix.databinding.FragmentHomeBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -39,6 +41,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @SuppressLint("ClickableViewAccessibility")
     private fun initUI() {
         with(binding) {
+            requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            
             viewpagerPopularMovies.setOnTouchListener { v, event ->
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> onUserInteraction()
@@ -91,7 +95,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                 val pagerAdapter =
                                     ViewPagerAdapter(
                                         response.data as ArrayList<MovieUI>,
-                                        ::onClickMovieItem
+                                        ::onClickMovieItem,
+                                        ::onClickMovieItemPlay,
+                                        ::onClickMovieItemAddList
                                     )
                                 viewpagerPopularMovies.apply {
                                     setScrollDurationFactor(4)
@@ -181,6 +187,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val action =
             HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie, MediaTypeEnum.MOVIE)
         findNavController().navigate(action)
+    }
+
+    private fun onClickMovieItemPlay(movie: Int) {
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToVideoPlayerFragment(
+                videoId = null,
+                id = movie,
+                mediaType = MediaTypeEnum.MOVIE
+            )
+        findNavController().navigate(action)
+    }
+
+    private fun onClickMovieItemAddList(movie: Int, isBookmarked: Boolean, bookmark: Bookmark) {
+        with(viewModel) {
+            if (isBookmarked) removeBookmark(movie)
+            else addBookmark(bookmark)
+        }
     }
 
     private fun onClickSerieItem(serie: Int) {

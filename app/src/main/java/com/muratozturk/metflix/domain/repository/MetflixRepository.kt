@@ -3,6 +3,8 @@ package com.muratozturk.metflix.domain.repository
 import androidx.paging.PagingData
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.data.model.FilterResult
+import com.muratozturk.metflix.data.model.local.Bookmark
+import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.data.model.remote.genres.Genre
 import com.muratozturk.metflix.domain.model.*
 import kotlinx.coroutines.flow.Flow
@@ -27,4 +29,13 @@ interface MetflixRepository {
     fun getSerieImages(serieId: Int): Flow<Resource<List<ImageUI>>>
     fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUI>>
     fun getSimilarSeries(serieId: Int): Flow<PagingData<SerieUI>>
+    suspend fun addBookmark(bookmark: Bookmark)
+    suspend fun removeBookmark(id: Int)
+    fun isBookmarked(id: Int): Flow<Resource<Boolean>>
+    fun getBookmarks(): Flow<Resource<List<Bookmark>>>
+    suspend fun addDownload(download: Download)
+    suspend fun removeDownloaded(id: Int)
+    fun isDownloaded(id: Int): Flow<Resource<Boolean>>
+    fun getDownloads(): Flow<Resource<List<Download>>>
+
 }

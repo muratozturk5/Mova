@@ -57,7 +57,8 @@ fun MovieDetailsResponse.toMovieDetailsUI() =
         tagline = tagline,
         title = title,
         video = video,
-        voteAverage = voteAverage
+        voteAverage = voteAverage,
+        homepage = homepage
     )
 
 fun Cast.toCastUI() =
@@ -82,7 +83,8 @@ fun SerieDetailsResponse.toSerieDetailsUI() =
         overview = overview,
         posterPath = posterPath,
         tagline = tagline,
-        voteAverage = voteAverage
+        voteAverage = voteAverage,
+        homepage = homepage
     )
 
 fun List<Video>.toVideoUI() = map {
