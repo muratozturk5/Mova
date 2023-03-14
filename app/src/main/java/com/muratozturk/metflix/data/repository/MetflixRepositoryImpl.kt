@@ -198,7 +198,7 @@ class MetflixRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getPersonImages(personId: Int): Flow<Resource<List<PersonImageUI>>> = flow {
+    override fun getPersonImages(personId: Int): Flow<Resource<List<ImageUI>>> = flow {
         emit(Resource.Loading)
         try {
             val response = remote.getPersonImages(personId).profiles.toPersonImagesUI()

@@ -5,10 +5,14 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.databinding.FragmentImagesBinding
+import com.muratozturk.metflix.domain.model.ImageUI
+import com.muratozturk.metflix.ui.details.DetailsFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -30,6 +34,16 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
 
             }
         }
+    }
+
+    fun onClick(list: List<ImageUI>, position: Int) {
+        val action =
+            DetailsFragmentDirections.actionDetailsFragmentToPreviewImagesFragment(
+                list.toTypedArray(),
+                position,
+                ImageTypeEnum.BACKDROP
+            )
+        findNavController().navigate(action)
     }
 
     fun collectData() {
@@ -59,6 +73,7 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
                                 val imagesAdapter =
                                     ImagesAdapter(response.data)
                                 imagesRecycler.adapter = imagesAdapter
+                                imagesAdapter.onClick = ::onClick
 
                             }
                         }

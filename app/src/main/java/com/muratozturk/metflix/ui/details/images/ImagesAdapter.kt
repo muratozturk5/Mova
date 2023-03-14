@@ -10,12 +10,16 @@ import com.muratozturk.metflix.domain.model.ImageUI
 
 class ImagesAdapter(private val trailerList: List<ImageUI>) :
     RecyclerView.Adapter<ImagesAdapter.ViewHolder>() {
+    var onClick: (List<ImageUI>, Int) -> Unit = { _, _ -> }
 
     inner class ViewHolder(private val binding: ItemImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ImageUI) {
+        fun bind(item: ImageUI, position: Int) {
             with(binding) {
                 imageView.loadImage(item.filePath, imageTypeEnum = ImageTypeEnum.BACKDROP)
+                root.setOnClickListener {
+                    onClick(trailerList, position)
+                }
             }
         }
     }
@@ -27,7 +31,7 @@ class ImagesAdapter(private val trailerList: List<ImageUI>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(trailerList[position])
+        holder.bind(trailerList[position], position)
     }
 
     override fun getItemCount(): Int {

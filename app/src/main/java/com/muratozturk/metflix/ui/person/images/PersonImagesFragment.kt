@@ -5,9 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
+import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.databinding.FragmentPersonImagesBinding
+import com.muratozturk.metflix.domain.model.ImageUI
+import com.muratozturk.metflix.ui.person.PersonDetailFragmentDirections
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -28,12 +32,19 @@ class PersonImagesFragment : Fragment(R.layout.fragment_person_images) {
         with(binding) {
             with(viewModel) {
 
+
             }
         }
     }
 
-    private fun onClick(id: Int) {
-
+    private fun onClick(list: List<ImageUI>, position: Int) {
+        val action =
+            PersonDetailFragmentDirections.actionPersonDetailFragmentToPreviewImagesFragment(
+                list.toTypedArray(),
+                position,
+                ImageTypeEnum.POSTER
+            )
+        findNavController().navigate(action)
     }
 
     fun collectData() {
@@ -62,6 +73,7 @@ class PersonImagesFragment : Fragment(R.layout.fragment_person_images) {
                                 val imagesAdapter =
                                     PersonImagesAdapter(response.data)
                                 imagesRecycler.adapter = imagesAdapter
+                                imagesAdapter.onClick = ::onClick
 
                             }
                         }

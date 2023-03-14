@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.videoPlayerFragment -> {
                     binding.bottomNavigation.gone()
                 }
+                R.id.previewImagesFragment -> {
+                    binding.bottomNavigation.gone()
+                }
                 else -> {
                     binding.bottomNavigation.visible()
                 }

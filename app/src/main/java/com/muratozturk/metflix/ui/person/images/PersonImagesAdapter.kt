@@ -6,16 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.ItemPersonImageBinding
-import com.muratozturk.metflix.domain.model.PersonImageUI
+import com.muratozturk.metflix.domain.model.ImageUI
 
-class PersonImagesAdapter(private val list: List<PersonImageUI>) :
+class PersonImagesAdapter(private val list: List<ImageUI>) :
     RecyclerView.Adapter<PersonImagesAdapter.ViewHolder>() {
+    var onClick: (List<ImageUI>, Int) -> Unit = { _, _ -> }
 
     inner class ViewHolder(private val binding: ItemPersonImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PersonImageUI) {
+        fun bind(item: ImageUI, position: Int) {
             with(binding) {
                 imageView.loadImage(item.filePath, imageTypeEnum = ImageTypeEnum.POSTER)
+
+                root.setOnClickListener {
+                    onClick(list, position)
+                }
             }
         }
     }
@@ -27,7 +32,7 @@ class PersonImagesAdapter(private val list: List<PersonImageUI>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], position)
     }
 
     override fun getItemCount(): Int {

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.muratozturk.metflix.R
@@ -29,6 +30,11 @@ class PersonDetailFragment : Fragment(R.layout.fragment_person_detail) {
 
     fun initUI() {
         with(binding) {
+
+            backButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
             viewPager.adapter =
                 PersonViewPagerAdapter(childFragmentManager, lifecycle, args.id)
 

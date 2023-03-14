@@ -243,6 +243,9 @@
         <action
             android:id="@+id/action_detailsFragment_to_personDetailFragment"
             app:destination="@id/personDetailFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_previewImagesFragment"
+            app:destination="@id/previewImagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/imagesFragment"
@@ -324,6 +327,9 @@
         <action
             android:id="@+id/action_personDetailFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_personDetailFragment_to_previewImagesFragment"
+            app:destination="@id/previewImagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/personImagesFragment"
@@ -340,4 +346,19 @@
         android:name="com.muratozturk.metflix.ui.person.movies.PersonMoviesFragment"
         android:label="fragment_person_movies"
         tools:layout="@layout/fragment_person_movies" />
+    <fragment
+        android:id="@+id/previewImagesFragment"
+        android:name="com.muratozturk.metflix.ui.images.PreviewImagesFragment"
+        android:label="fragment_preview_images"
+        tools:layout="@layout/fragment_preview_images">
+        <argument
+            android:name="imageList"
+            app:argType="com.muratozturk.metflix.domain.model.ImageUI[]" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="imageType"
+            app:argType="com.muratozturk.metflix.common.enums.ImageTypeEnum" />
+    </fragment>
 </navigation>

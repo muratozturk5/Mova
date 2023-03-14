@@ -1,0 +1,9 @@
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/movie_poster"
+    android:adjustViewBounds="true"
+    android:scaleType="centerCrop"
+    tools:srcCompat="@tools:sample/avatars" />

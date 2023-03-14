@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.common.Resource
-import com.muratozturk.metflix.domain.model.PersonImageUI
+import com.muratozturk.metflix.domain.model.ImageUI
 import com.muratozturk.metflix.domain.use_case.person.images.GetPersonImagesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +22,7 @@ class PersonImagesViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    private val _images = MutableStateFlow<Resource<List<PersonImageUI>>>(Resource.Loading)
+    private val _images = MutableStateFlow<Resource<List<ImageUI>>>(Resource.Loading)
     val images
         get() = _images.asStateFlow()
 

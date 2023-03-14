@@ -127,7 +127,7 @@ fun PersonDetailResponse.toPersonDetailUI() =
     )
 
 fun List<Profile>.toPersonImagesUI() = map {
-    PersonImageUI(
+    ImageUI(
         filePath = it.filePath,
         voteCount = it.voteCount
     )

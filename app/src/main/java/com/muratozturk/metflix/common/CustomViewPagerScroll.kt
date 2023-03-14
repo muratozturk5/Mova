@@ -70,3 +70,7 @@ fun parallaxPageTransformer(vararg v: Int): ViewPager.PageTransformer =
             )
         }
     }
+
+fun pageTransformer(): ViewPager.PageTransformer = ViewPager.PageTransformer { page, position ->
+    page.translationX = if (position < 0.0f) 0.0f else (-page.width).toFloat() * position
+}

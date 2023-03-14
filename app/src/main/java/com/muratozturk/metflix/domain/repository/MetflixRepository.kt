@@ -30,7 +30,7 @@ interface MetflixRepository {
     fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUI>>
     fun getSimilarSeries(serieId: Int): Flow<PagingData<SerieUI>>
     fun getPersonDetails(personId: Int): Flow<Resource<PersonDetailsUI>>
-    fun getPersonImages(personId: Int): Flow<Resource<List<PersonImageUI>>>
+    fun getPersonImages(personId: Int): Flow<Resource<List<ImageUI>>>
     fun getPersonMovieCredits(personId: Int): Flow<Resource<List<MovieUI>>>
     fun getPersonSerieCredits(personId: Int): Flow<Resource<List<SerieUI>>>
 
