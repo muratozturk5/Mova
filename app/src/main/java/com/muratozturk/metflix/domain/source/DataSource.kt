@@ -12,6 +12,10 @@ import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
+import com.muratozturk.metflix.data.model.remote.person.PersonDetailResponse
+import com.muratozturk.metflix.data.model.remote.person.images.PersonImagesResponse
+import com.muratozturk.metflix.data.model.remote.person.movies.PersonMovieCreditsResponse
+import com.muratozturk.metflix.data.model.remote.person.series.PersonSerieCreditsResponse
 import com.muratozturk.metflix.data.model.remote.series.Serie
 import kotlinx.coroutines.flow.Flow
 
@@ -37,7 +41,10 @@ interface DataSource {
         suspend fun getSerieImages(serieId: Int): ImagesResponse
         suspend fun getSimilarMovies(movieId: Int): Flow<PagingData<Movie>>
         suspend fun getSimilarSeries(serieId: Int): Flow<PagingData<Serie>>
-
+        suspend fun getPersonDetails(personId: Int): PersonDetailResponse
+        suspend fun getPersonImages(personId: Int): PersonImagesResponse
+        suspend fun getPersonMovieCredits(personId: Int): PersonMovieCreditsResponse
+        suspend fun getPersonSerieCredits(personId: Int): PersonSerieCreditsResponse
     }
 
     interface Local {

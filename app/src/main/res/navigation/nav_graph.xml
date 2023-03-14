@@ -240,6 +240,9 @@
         <action
             android:id="@+id/action_detailsFragment_to_downloadDialogFragment"
             app:destination="@id/downloadDialogFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_personDetailFragment"
+            app:destination="@id/personDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/imagesFragment"
@@ -310,4 +313,31 @@
             android:name="position"
             app:argType="integer" />
     </dialog>
+    <fragment
+        android:id="@+id/personDetailFragment"
+        android:name="com.muratozturk.metflix.ui.person.PersonDetailFragment"
+        android:label="fragment_person_detail"
+        tools:layout="@layout/fragment_person_detail">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_personDetailFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personImagesFragment"
+        android:name="com.muratozturk.metflix.ui.person.images.PersonImagesFragment"
+        android:label="fragment_person_images"
+        tools:layout="@layout/fragment_person_images" />
+    <fragment
+        android:id="@+id/personSeriesFragment"
+        android:name="com.muratozturk.metflix.ui.person.series.PersonSeriesFragment"
+        android:label="fragment_person_series"
+        tools:layout="@layout/fragment_person_series" />
+    <fragment
+        android:id="@+id/personMoviesFragment"
+        android:name="com.muratozturk.metflix.ui.person.movies.PersonMoviesFragment"
+        android:label="fragment_person_movies"
+        tools:layout="@layout/fragment_person_movies" />
 </navigation>

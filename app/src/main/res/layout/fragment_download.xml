@@ -75,11 +75,13 @@
             android:orientation="vertical"
             android:paddingHorizontal="10dp">
 
-            <include layout="@layout/placeholder_movie_serie_now_playing" />
+            <include layout="@layout/placeholder_download" />
 
-            <include layout="@layout/placeholder_movie_serie_now_playing" />
+            <include layout="@layout/placeholder_download" />
 
-            <include layout="@layout/placeholder_movie_serie_now_playing" />
+            <include layout="@layout/placeholder_download" />
+
+            <include layout="@layout/placeholder_download" />
         </LinearLayout>
 
 

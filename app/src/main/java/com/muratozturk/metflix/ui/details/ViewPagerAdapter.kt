@@ -8,7 +8,6 @@ import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.ui.details.images.ImagesFragment
 import com.muratozturk.metflix.ui.details.similar.SimilarFragment
 import com.muratozturk.metflix.ui.details.trailers.TrailersFragment
-import com.muratozturk.metflix.ui.mylist.MyListFragment
 
 class ViewPagerAdapter(
     fragmentManager: FragmentManager,
@@ -28,6 +27,6 @@ class ViewPagerAdapter(
             1 -> return ImagesFragment.createBundle(id, mediaType)
             2 -> return SimilarFragment.createBundle(id, mediaType)
         }
-        return MyListFragment()
+        return TrailersFragment.createBundle(id, mediaType)
     }
 }

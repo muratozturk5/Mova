@@ -91,6 +91,9 @@
     <string name="delete_message">Are you sure you want to delete this download?</string>
     <string name="cancel">Cancel</string>
     <string name="yes_delete">Yes, Delete</string>
+    <string name="birthday">Birthday</string>
+    <string name="biography">Biography</string>
+    <string name="place_of_birth">Place of Birth</string>
 
 
 </resources>

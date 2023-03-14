@@ -517,30 +517,6 @@
             </LinearLayout>
 
 
-            <nl.joery.animatedbottombar.AnimatedBottomBar
-                android:id="@+id/tabBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:visibility="gone"
-                app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
-                app:abb_iconSize="30dp"
-                app:abb_indicatorAppearance="round"
-                app:abb_indicatorColor="@color/red"
-                app:abb_indicatorHeight="5dp"
-                app:abb_indicatorLocation="bottom"
-                app:abb_selectedIndex="0"
-                app:abb_selectedTabType="icon"
-                app:abb_tabColor="@color/unselected_tabs"
-                app:abb_tabColorSelected="@color/red"
-                app:abb_tabs="@menu/tabs"
-                app:abb_textAppearance="@style/CustomText"
-                app:abb_textSize="14sp"
-                app:abb_textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"

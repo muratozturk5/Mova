@@ -16,6 +16,10 @@ import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.Movie
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
+import com.muratozturk.metflix.data.model.remote.person.PersonDetailResponse
+import com.muratozturk.metflix.data.model.remote.person.images.PersonImagesResponse
+import com.muratozturk.metflix.data.model.remote.person.movies.PersonMovieCreditsResponse
+import com.muratozturk.metflix.data.model.remote.person.series.PersonSerieCreditsResponse
 import com.muratozturk.metflix.data.model.remote.series.Serie
 import com.muratozturk.metflix.data.paging_source.MoviePagingSource
 import com.muratozturk.metflix.data.paging_source.SeriePagingSource
@@ -203,6 +207,18 @@ class RemoteDataSourceImpl @Inject constructor(
             )
         }
     ).flow
+
+    override suspend fun getPersonDetails(personId: Int): PersonDetailResponse =
+        metflixService.getPeopleDetails(personId)
+
+    override suspend fun getPersonImages(personId: Int): PersonImagesResponse =
+        metflixService.getPersonImages(personId)
+
+    override suspend fun getPersonMovieCredits(personId: Int): PersonMovieCreditsResponse =
+        metflixService.getPersonMovieCredits(personId)
+
+    override suspend fun getPersonSerieCredits(personId: Int): PersonSerieCreditsResponse =
+        metflixService.getPersonSerieCredits(personId)
 
 
 }

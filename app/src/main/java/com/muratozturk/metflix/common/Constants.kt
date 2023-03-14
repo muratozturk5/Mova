@@ -59,6 +59,10 @@ object Constants {
         const val GET_SERIE_IMAGES = "tv/{tv_id}/images"
         const val GET_MOVIE_SIMILAR = "movie/{movie_id}/similar"
         const val GET_SERIE_SIMILAR = "tv/{tv_id}/similar"
+        const val GET_PERSON_DETAIL = "person/{person_id}"
+        const val GET_PERSON_IMAGES = "person/{person_id}/images"
+        const val GET_PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
+        const val GET_PERSON_SERIE_CREDITS = "person/{person_id}/tv_credits"
 
     }
 

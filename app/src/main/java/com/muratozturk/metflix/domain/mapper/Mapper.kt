@@ -6,6 +6,10 @@ import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsRespo
 import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsResponse
 import com.muratozturk.metflix.data.model.remote.details.videos.Video
 import com.muratozturk.metflix.data.model.remote.movies.Movie
+import com.muratozturk.metflix.data.model.remote.person.PersonDetailResponse
+import com.muratozturk.metflix.data.model.remote.person.images.Profile
+import com.muratozturk.metflix.data.model.remote.person.movies.PersonMovieCreditsResponse
+import com.muratozturk.metflix.data.model.remote.person.series.PersonSerieCreditsResponse
 import com.muratozturk.metflix.data.model.remote.series.Serie
 import com.muratozturk.metflix.domain.model.*
 
@@ -17,7 +21,8 @@ fun List<Movie>.toMovieUI() = map {
         backdropPath = it.backdropPath,
         voteAverage = it.voteAverage,
         originalTitle = it.originalTitle,
-        adult = it.adult
+        adult = it.adult,
+        releaseDate = it.releaseDate
     )
 }
 
@@ -29,7 +34,8 @@ fun Movie.toMovieUI() =
         backdropPath = backdropPath,
         voteAverage = voteAverage,
         originalTitle = originalTitle,
-        adult = adult
+        adult = adult,
+        releaseDate = releaseDate
     )
 
 fun Serie.toSerieUI() =
@@ -39,7 +45,8 @@ fun Serie.toSerieUI() =
         posterPath = posterPath,
         backdropPath = backdropPath,
         voteAverage = voteAverage,
-        originalName = originalName
+        originalName = originalName,
+        firstAirDate = firstAirDate
     )
 
 fun MovieDetailsResponse.toMovieDetailsUI() =
@@ -100,5 +107,53 @@ fun List<Backdrop>.toImageUI() = map {
     ImageUI(
         filePath = it.filePath,
         voteCount = it.voteCount
+    )
+}
+
+fun PersonDetailResponse.toPersonDetailUI() =
+    PersonDetailsUI(
+        alsoKnownAs = alsoKnownAs,
+        biography = biography,
+        birthday = birthday,
+        deathday = deathday,
+        gender = gender,
+        homepage = homepage,
+        id = id,
+        imdbİd = imdbİd,
+        name = name,
+        placeOfBirth = placeOfBirth,
+        popularity = popularity,
+        profilePath = profilePath
+    )
+
+fun List<Profile>.toPersonImagesUI() = map {
+    PersonImageUI(
+        filePath = it.filePath,
+        voteCount = it.voteCount
+    )
+}
+
+fun PersonMovieCreditsResponse.toPersonMovieUI() = cast.map {
+    MovieUI(
+        id = it.id,
+        title = it.title,
+        posterPath = it.posterPath,
+        backdropPath = it.backdropPath,
+        voteAverage = it.voteAverage,
+        originalTitle = it.originalTitle,
+        adult = it.adult,
+        releaseDate = it.releaseDate
+    )
+}
+
+fun PersonSerieCreditsResponse.toPersonSerieUI() = cast.map {
+    SerieUI(
+        id = it.id,
+        name = it.name,
+        posterPath = it.posterPath,
+        backdropPath = it.backdropPath,
+        voteAverage = it.voteAverage,
+        originalName = it.originalName,
+        firstAirDate = it.firstAirDate
     )
 }

@@ -29,6 +29,12 @@ interface MetflixRepository {
     fun getSerieImages(serieId: Int): Flow<Resource<List<ImageUI>>>
     fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUI>>
     fun getSimilarSeries(serieId: Int): Flow<PagingData<SerieUI>>
+    fun getPersonDetails(personId: Int): Flow<Resource<PersonDetailsUI>>
+    fun getPersonImages(personId: Int): Flow<Resource<List<PersonImageUI>>>
+    fun getPersonMovieCredits(personId: Int): Flow<Resource<List<MovieUI>>>
+    fun getPersonSerieCredits(personId: Int): Flow<Resource<List<SerieUI>>>
+
+
     suspend fun addBookmark(bookmark: Bookmark)
     suspend fun removeBookmark(id: Int)
     fun isBookmarked(id: Int): Flow<Resource<Boolean>>

@@ -6,5 +6,6 @@ data class SerieUI(
     val name: String,
     val originalName: String,
     val posterPath: String?,
-    val voteAverage: Double
+    val voteAverage: Double,
+    val firstAirDate: String
 )

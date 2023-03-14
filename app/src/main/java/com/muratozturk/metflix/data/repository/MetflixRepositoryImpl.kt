@@ -188,6 +188,49 @@ class MetflixRepositoryImpl @Inject constructor(
         }.collect { emit(it) }
     }
 
+    override fun getPersonDetails(personId: Int): Flow<Resource<PersonDetailsUI>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getPersonDetails(personId).toPersonDetailUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getPersonImages(personId: Int): Flow<Resource<List<PersonImageUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getPersonImages(personId).profiles.toPersonImagesUI()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getPersonMovieCredits(personId: Int): Flow<Resource<List<MovieUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response =
+                remote.getPersonMovieCredits(personId).toPersonMovieUI()
+                    .sortedByDescending { it.releaseDate }
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getPersonSerieCredits(personId: Int): Flow<Resource<List<SerieUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = remote.getPersonSerieCredits(personId).toPersonSerieUI()
+                .sortedByDescending { it.firstAirDate }
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
     override suspend fun addBookmark(bookmark: Bookmark) {
 //        download image and save to local storage
 

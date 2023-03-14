@@ -35,6 +35,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         collectData()
     }
 
+    private fun onClickCredit(id: Int) {
+        val action = DetailsFragmentDirections.actionDetailsFragmentToPersonDetailFragment(id)
+        findNavController().navigate(action)
+    }
+
     fun initUI() {
         with(binding) {
             with(viewModel) {
@@ -151,8 +156,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     movieCredits.collectLatest { response ->
                         when (response) {
                             is Resource.Success -> {
-                                val genresAdapter = CreditsAdapter(response.data)
-                                recyclerViewCasts.adapter = genresAdapter
+                                val creditsAdapter = CreditsAdapter(response.data)
+                                recyclerViewCasts.adapter = creditsAdapter
+                                creditsAdapter.onClickHigh = ::onClickCredit
                             }
                             is Resource.Error -> {
                                 requireActivity().showToast(
@@ -238,8 +244,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     serieCredits.collectLatest { response ->
                         when (response) {
                             is Resource.Success -> {
-                                val genresAdapter = CreditsAdapter(response.data)
-                                recyclerViewCasts.adapter = genresAdapter
+                                val creditsAdapter = CreditsAdapter(response.data)
+                                recyclerViewCasts.adapter = creditsAdapter
+                                creditsAdapter.onClickHigh = ::onClickCredit
                             }
                             is Resource.Error -> {
                                 requireActivity().showToast(

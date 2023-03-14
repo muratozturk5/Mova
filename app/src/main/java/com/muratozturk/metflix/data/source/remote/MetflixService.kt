@@ -8,6 +8,10 @@ import com.muratozturk.metflix.data.model.remote.details.serie.SerieDetailsRespo
 import com.muratozturk.metflix.data.model.remote.details.videos.VideosResponse
 import com.muratozturk.metflix.data.model.remote.genres.GenresResponse
 import com.muratozturk.metflix.data.model.remote.movies.MoviesResponse
+import com.muratozturk.metflix.data.model.remote.person.PersonDetailResponse
+import com.muratozturk.metflix.data.model.remote.person.images.PersonImagesResponse
+import com.muratozturk.metflix.data.model.remote.person.movies.PersonMovieCreditsResponse
+import com.muratozturk.metflix.data.model.remote.person.series.PersonSerieCreditsResponse
 import com.muratozturk.metflix.data.model.remote.series.SeriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -90,5 +94,19 @@ interface MetflixService {
     suspend fun getSimilarSeries(
         @Path("tv_id") serieId: Int, @Query("page") page: Int,
     ): SeriesResponse
+
+    @GET(Constants.Endpoints.GET_PERSON_DETAIL)
+    suspend fun getPeopleDetails(@Path("person_id") personId: Int): PersonDetailResponse
+
+    @GET(Constants.Endpoints.GET_PERSON_IMAGES)
+    suspend fun getPersonImages(
+        @Path("person_id") personId: Int
+    ): PersonImagesResponse
+
+    @GET(Constants.Endpoints.GET_PERSON_MOVIE_CREDITS)
+    suspend fun getPersonMovieCredits(@Path("person_id") personId: Int): PersonMovieCreditsResponse
+
+    @GET(Constants.Endpoints.GET_PERSON_SERIE_CREDITS)
+    suspend fun getPersonSerieCredits(@Path("person_id") personId: Int): PersonSerieCreditsResponse
 
 }

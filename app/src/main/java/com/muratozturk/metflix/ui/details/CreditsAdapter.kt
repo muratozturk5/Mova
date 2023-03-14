@@ -10,6 +10,7 @@ import com.muratozturk.metflix.domain.model.CastUI
 
 class CreditsAdapter(private val list: List<CastUI>) :
     RecyclerView.Adapter<CreditsAdapter.ViewHolder>() {
+    var onClickHigh: (Int) -> Unit = { }
 
     inner class ViewHolder(private val binding: ItemCreditBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -23,6 +24,9 @@ class CreditsAdapter(private val list: List<CastUI>) :
                     imageTypeEnum = ImageTypeEnum.CREDIT
                 )
 
+                root.setOnClickListener {
+                    onClickHigh(item.id)
+                }
             }
         }
     }
