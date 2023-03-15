@@ -309,6 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:contentDescription="@string/bookmark"
+                    app:tint="@color/text_color"
                     android:gravity="center"
                     android:src="@drawable/bookmark_curved" />
 
@@ -317,6 +318,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    app:tint="@color/text_color"
                     android:contentDescription="@string/share"
                     android:gravity="center"
                     android:src="@drawable/send_curved" />

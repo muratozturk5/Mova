@@ -44,4 +44,8 @@ interface MetflixRepository {
     fun isDownloaded(id: Int): Flow<Resource<Boolean>>
     fun getDownloads(): Flow<Resource<List<Download>>>
 
+
+    fun setDarkMode(isDarkMode: Boolean)
+    fun getDarkMode(): Flow<Resource<Boolean>>
+
 }

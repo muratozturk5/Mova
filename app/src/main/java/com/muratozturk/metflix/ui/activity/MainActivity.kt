@@ -2,26 +2,67 @@ package com.muratozturk.metflix.ui.activity
 
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.gone
-import com.muratozturk.metflix.common.visible
+import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
+import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private val binding by viewBinding(ActivityMainBinding::inflate)
+    private val viewModel by viewModels<MainActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
-
         setupBottomNavigationView()
+        collectData()
+    }
+
+    private fun collectData() {
+        with(viewModel) {
+
+            lifecycleScope.launchWhenCreated {
+                darkMode.collectLatest { response ->
+                    when (response) {
+                        is Resource.Loading -> {
+                        }
+                        is Resource.Error -> {
+                            showToast(
+                                getString(R.string.error),
+                                response.throwable.localizedMessage ?: "Error",
+                                MotionToastStyle.ERROR
+                            )
+
+                        }
+                        is Resource.Success -> {
+                            Timber.e(response.data.toString())
+
+                            try {
+                                if (response.data) {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                                } else {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                                }
+                            } catch (e: Exception) {
+                                Timber.e(e)
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun setupBottomNavigationView() {

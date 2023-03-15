@@ -94,6 +94,15 @@
     <string name="birthday">Birthday</string>
     <string name="biography">Biography</string>
     <string name="place_of_birth">Place of Birth</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notification">Notification</string>
+    <string name="logout">Logout</string>
+    <string name="security">Security</string>
+    <string name="language">Language</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="help_center">Help Center</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="english">English</string>
 
 
 </resources>

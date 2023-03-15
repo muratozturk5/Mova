@@ -20,6 +20,7 @@ import javax.inject.Inject
 class MetflixRepositoryImpl @Inject constructor(
     private val remote: DataSource.Remote,
     private val local: DataSource.Local,
+    private val preference: DataSource.Preference,
     private val app: Application
 ) :
     MetflixRepository {
@@ -281,6 +282,18 @@ class MetflixRepositoryImpl @Inject constructor(
         emit(Resource.Loading)
         try {
             val response = local.getDownloads()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun setDarkMode(isDarkMode: Boolean) = preference.setDarkMode(isDarkMode)
+
+    override fun getDarkMode(): Flow<Resource<Boolean>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = preference.getDarkMode()
             emit(Resource.Success(response))
         } catch (t: Throwable) {
             emit(Resource.Error(t))

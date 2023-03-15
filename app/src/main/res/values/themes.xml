@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/urbanist_font_family</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
     </style>
 

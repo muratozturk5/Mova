@@ -45,7 +45,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
                 showHidePassword.setOnClickListener {
                     if (isPasswordShowing) {
-                        showHidePassword.setImageResource(R.drawable.show)
+                        showHidePassword.setImageResource(R.drawable.dark_theme)
                         passwordEditText.transformationMethod = PasswordTransformationMethod()
                         isPasswordShowing = false
                     } else {

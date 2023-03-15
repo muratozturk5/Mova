@@ -12,6 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/card_bg"
         android:layout_margin="10dp"
         app:cardCornerRadius="35dp"
         app:cardElevation="1dp">
@@ -106,6 +107,7 @@
                         android:layout_width="wrap_content"
                         android:src="@drawable/close"
                         android:scaleX="2"
+                        app:tint="@color/text_color"
                         android:scaleY="2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -120,13 +122,13 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_btn"
-                android:backgroundTint="@color/red_input_active_background"
+                android:backgroundTint="@color/second_btn_bg"
                 android:elevation="0dp"
                 android:shadowRadius="0"
                 android:stateListAnimator="@null"
                 android:text="@string/hide"
                 android:textAllCaps="false"
-                android:textColor="@color/red"
+                android:textColor="@color/second_btn_text"
                 android:textFontWeight="600"
                 android:textSize="15sp" />
 

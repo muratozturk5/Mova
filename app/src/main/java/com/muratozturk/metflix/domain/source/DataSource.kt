@@ -58,4 +58,9 @@ interface DataSource {
         suspend fun getDownloads(): List<Download>
     }
 
+    interface Preference {
+        fun setDarkMode(isDarkMode: Boolean)
+        fun getDarkMode(): Boolean
+    }
+
 }

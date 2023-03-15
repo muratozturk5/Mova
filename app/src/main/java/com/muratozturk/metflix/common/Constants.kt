@@ -9,6 +9,8 @@ object Constants {
     private const val SIZE_IMG_YOUTUBE = "/hq720.jpg"
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
+    const val SHARED_PREF_NAME = "metflix_shared_pref"
+    const val DARK_MODE = "darkMode"
 
     object Arguments {
         const val ID = "id"

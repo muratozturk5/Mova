@@ -49,7 +49,7 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                 }
                 showHidePassword.setOnClickListener {
                     if (isPasswordShowing) {
-                        showHidePassword.setImageResource(R.drawable.show)
+                        showHidePassword.setImageResource(R.drawable.dark_theme)
                         passwordEditText.transformationMethod = PasswordTransformationMethod()
                         isPasswordShowing = false
                     } else {

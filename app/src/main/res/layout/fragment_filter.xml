@@ -43,7 +43,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rounded_btn"
-                android:backgroundTint="@color/indicator_color" />
+                android:backgroundTint="@color/stroke_color" />
 
 
             <TextView
@@ -267,7 +267,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rounded_btn"
-                android:backgroundTint="@color/indicator_color" />
+                android:backgroundTint="@color/stroke_color" />
 
 
         </LinearLayout>
@@ -288,13 +288,13 @@
                 android:layout_marginVertical="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_btn"
-                android:backgroundTint="@color/red_input_active_background"
+                android:backgroundTint="@color/second_btn_bg"
                 android:elevation="0dp"
                 android:shadowRadius="0"
                 android:stateListAnimator="@null"
                 android:text="@string/reset"
                 android:textAllCaps="false"
-                android:textColor="@color/red"
+                android:textColor="@color/second_btn_text"
                 android:textFontWeight="600"
                 android:textSize="15sp" />
 

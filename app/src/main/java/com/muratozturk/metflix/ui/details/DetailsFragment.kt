@@ -1,8 +1,10 @@
 package com.muratozturk.metflix.ui.details
 
 import android.content.pm.ActivityInfo
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -267,8 +269,21 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                             is Resource.Success -> {
                                 if (response.data) {
                                     bookmarkBtn.setImageResource(R.drawable.bookmark_curved_filled)
+                                    bookmarkBtn.imageTintList = ColorStateList.valueOf(
+                                        ContextCompat.getColor(
+                                            requireContext(),
+                                            R.color.red
+                                        )
+                                    )
                                 } else {
                                     bookmarkBtn.setImageResource(R.drawable.bookmark_curved)
+                                    bookmarkBtn.imageTintList =
+                                        ColorStateList.valueOf(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                R.color.text_color
+                                            )
+                                        )
                                 }
                                 isMovieSerieBookmarked = response.data
                             }
@@ -349,10 +364,22 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         removeBookmark(bookmark!!.id)
                         isMovieSerieBookmarked = false
                         bookmarkBtn.setImageResource(R.drawable.bookmark_curved)
+                        bookmarkBtn.imageTintList = ColorStateList.valueOf(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.text_color
+                            )
+                        )
                     } else {
                         addBookmark(bookmark!!)
                         isMovieSerieBookmarked = true
                         bookmarkBtn.setImageResource(R.drawable.bookmark_curved_filled)
+                        bookmarkBtn.imageTintList = ColorStateList.valueOf(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.red
+                            )
+                        )
                     }
                 }
 

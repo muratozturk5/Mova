@@ -49,6 +49,7 @@
             android:id="@+id/searchBtn"
             android:layout_width="30dp"
             android:layout_height="match_parent"
+            app:tint="@color/text_color"
             android:contentDescription="@string/search"
             android:src="@drawable/search"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/toggle_background_on"></item>
+
+    <item
+
+
+        android:drawable="@drawable/white_toggle_icon"
+        android:right="2dp"
+        android:left="20dp"
+        android:bottom="1.5dp"
+        android:top="1.5dp"></item>
+</layer-list>

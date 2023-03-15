@@ -1,6 +1,7 @@
 package com.muratozturk.metflix.di
 
 import com.muratozturk.metflix.data.source.local.LocalDataSourceImpl
+import com.muratozturk.metflix.data.source.preference.PreferenceDataSourceImpl
 import com.muratozturk.metflix.data.source.remote.RemoteDataSourceImpl
 import com.muratozturk.metflix.domain.source.DataSource
 import dagger.Binds
@@ -17,4 +18,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun provideLocalDataSource(localDataSourceImpl: LocalDataSourceImpl): DataSource.Local
+
+    @Binds
+    abstract fun providePreferenceDataSource(preferenceDataSourceImpl: PreferenceDataSourceImpl): DataSource.Preference
 }

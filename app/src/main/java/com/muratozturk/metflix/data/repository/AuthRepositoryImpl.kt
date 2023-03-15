@@ -86,4 +86,5 @@ class AuthRepositoryImpl constructor(
             emit(Resource.Loading)
             emit(Resource.Success(firebaseAuth.signInWithCredential(credential).await()))
         }.catch { emit(Resource.Error(it)) }
+
 }
