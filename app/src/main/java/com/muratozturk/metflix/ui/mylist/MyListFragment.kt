@@ -7,13 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.Resource
+import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
-import com.muratozturk.metflix.common.gone
-import com.muratozturk.metflix.common.showToast
-import com.muratozturk.metflix.common.visible
 import com.muratozturk.metflix.databinding.FragmentMyListBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

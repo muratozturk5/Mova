@@ -7,23 +7,22 @@ import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.domain.use_case.profile.GetDarkModeUseCase
 import com.muratozturk.metflix.domain.use_case.profile.GetUserInfoUseCase
 import com.muratozturk.metflix.domain.use_case.profile.SetDarkModeUseCase
-import com.muratozturk.metflix.domain.use_case.profile.SignOut
+import com.muratozturk.metflix.domain.use_case.profile.language.GetCurrentLanguageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val signOutUseCase: SignOut,
     private val getUserInfoUseCase: GetUserInfoUseCase,
     private val getDarkModeUseCase: GetDarkModeUseCase,
-    private val setDarkModeUseCase: SetDarkModeUseCase
+    private val setDarkModeUseCase: SetDarkModeUseCase,
+    private val getCurrentLanguageUseCase: GetCurrentLanguageUseCase
 ) : ViewModel() {
 
-    private val _authResult = MutableSharedFlow<Resource<Boolean>>()
-    val authResult
-        get() = _authResult.asSharedFlow()
 
     private val _darkMode = MutableStateFlow<Resource<Boolean>>(Resource.Loading)
     val darkMode
@@ -32,6 +31,10 @@ class ProfileViewModel @Inject constructor(
     private val _userInfo = MutableStateFlow<Resource<FirebaseUser>>(Resource.Loading)
     val userInfo
         get() = _userInfo.asStateFlow()
+
+
+    private val _currentLanguage = MutableStateFlow<Resource<String>>(Resource.Loading)
+    val currentLanguage get() = _currentLanguage.asStateFlow()
 
     init {
         getUserInfo()
@@ -54,9 +57,9 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun signOut() = viewModelScope.launch {
-        signOutUseCase().collectLatest {
-            _authResult.emit(it)
+    fun getCurrentLanguage() = viewModelScope.launch {
+        getCurrentLanguageUseCase().collectLatest {
+            _currentLanguage.emit(it)
         }
     }
 }

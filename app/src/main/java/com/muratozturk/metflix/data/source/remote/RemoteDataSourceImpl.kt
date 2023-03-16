@@ -8,6 +8,7 @@ import com.muratozturk.metflix.common.MovieRequestOptionsMapper
 import com.muratozturk.metflix.common.enums.MovieEnum
 import com.muratozturk.metflix.common.enums.SerieEnum
 import com.muratozturk.metflix.data.model.FilterResult
+import com.muratozturk.metflix.data.model.remote.configurations.LanguagesResponse
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
 import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
@@ -219,6 +220,8 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getPersonSerieCredits(personId: Int): PersonSerieCreditsResponse =
         metflixService.getPersonSerieCredits(personId)
+
+    override suspend fun getLanguages(): LanguagesResponse = metflixService.getLanguages()
 
 
 }

@@ -16,10 +16,10 @@ import com.muratozturk.metflix.common.Constants.Authentication.REQ_SIGN_IN_GOOGL
 import com.muratozturk.metflix.common.LoadingScreen
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.showToast
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.data.model.DialogArguments
 import com.muratozturk.metflix.databinding.FragmentSignInWithSocialBinding
 import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber

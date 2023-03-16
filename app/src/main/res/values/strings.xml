@@ -29,14 +29,11 @@
     <string name="my_list">My List</string>
     <string name="profile">Profile</string>
     <string name="download">Download</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error">Error</string>
     <string name="email_or_password_is_not_valid">Email or password is not valid</string>
     <string name="sign_up_success">Sign Up Successful</string>
     <string name="success">Success</string>
     <string name="credantials_error">Credantials Error</string>
-
-
     <string name="facebook_application_id">3452963321696571</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">b825f9066fe6b0faddfcf6f185c66f81</string>
@@ -76,12 +73,9 @@
     <string name="star">Star</string>
     <string name="view_more">…View More</string>
     <string name="trailers">Trailers</string>
-    <string name="more_like_this">More Like This</string>
     <string name="comments">Comments</string>
     <string name="images">Images</string>
     <string name="smilar">Smilar</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="download_desc">This Feature is Not Downloading Movie…\nJust Saves to Room Database</string>
     <string name="hide">Hide</string>
     <string name="added_to_list">Added List</string>
@@ -103,6 +97,6 @@
     <string name="help_center">Help Center</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="english">English</string>
-
-
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="yes_logout">Yes, Logout</string>
 </resources>

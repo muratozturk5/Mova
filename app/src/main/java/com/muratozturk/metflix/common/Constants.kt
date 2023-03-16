@@ -9,8 +9,14 @@ object Constants {
     private const val SIZE_IMG_YOUTUBE = "/hq720.jpg"
     const val NETWORK_PAGE_SIZE = 10
     const val STARTING_PAGE = 1
-    const val SHARED_PREF_NAME = "metflix_shared_pref"
-    const val DARK_MODE = "darkMode"
+
+
+    object Preferences {
+        const val LANGUAGE_CODE = "languageCode"
+        const val LANGUAGE_NAME = "languageName"
+        const val SHARED_PREF_NAME = "metflix_shared_pref"
+        const val DARK_MODE = "darkMode"
+    }
 
     object Arguments {
         const val ID = "id"
@@ -65,6 +71,7 @@ object Constants {
         const val GET_PERSON_IMAGES = "person/{person_id}/images"
         const val GET_PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
         const val GET_PERSON_SERIE_CREDITS = "person/{person_id}/tv_credits"
+        const val GET_LANGUAGES = "configuration/languages"
 
     }
 
@@ -78,5 +85,9 @@ object Constants {
 
     fun getYouTubePath(youTubePath: String?): String {
         return BASE_URL_IMAGE_YOUTUBE + youTubePath + SIZE_IMG_YOUTUBE
+    }
+
+    fun getFlagPath(iso6391: String): String {
+        return "https://www.unknown.nu/flags/images/$iso6391-100"
     }
 }

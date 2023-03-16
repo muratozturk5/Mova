@@ -1,5 +1,6 @@
 package com.muratozturk.metflix.domain.mapper
 
+import com.muratozturk.metflix.data.model.remote.configurations.LanguagesResponse
 import com.muratozturk.metflix.data.model.remote.credits.Cast
 import com.muratozturk.metflix.data.model.remote.details.images.Backdrop
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
@@ -155,5 +156,13 @@ fun PersonSerieCreditsResponse.toPersonSerieUI() = cast.map {
         voteAverage = it.voteAverage,
         originalName = it.originalName,
         firstAirDate = it.firstAirDate
+    )
+}
+
+fun LanguagesResponse.toLanguageUI() = map {
+    LanguageUI(
+        englishName = it.englishName,
+        iso6391 = it.iso6391,
+        name = it.name
     )
 }

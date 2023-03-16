@@ -11,11 +11,11 @@ import androidx.navigation.fragment.navArgs
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.Resource
 import com.muratozturk.metflix.common.showToast
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.databinding.FragmentVideoPlayerBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

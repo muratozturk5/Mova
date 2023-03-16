@@ -33,6 +33,7 @@ interface MetflixRepository {
     fun getPersonImages(personId: Int): Flow<Resource<List<ImageUI>>>
     fun getPersonMovieCredits(personId: Int): Flow<Resource<List<MovieUI>>>
     fun getPersonSerieCredits(personId: Int): Flow<Resource<List<SerieUI>>>
+    fun getLanguages(): Flow<Resource<List<LanguageUI>>>
 
 
     suspend fun addBookmark(bookmark: Bookmark)
@@ -47,5 +48,10 @@ interface MetflixRepository {
 
     fun setDarkMode(isDarkMode: Boolean)
     fun getDarkMode(): Flow<Resource<Boolean>>
+    fun getCurrentLanguage(): Flow<Resource<String>>
+    fun setCurrentLanguage(languageCode: String)
+    fun getCurrentLanguageCode(): Flow<Resource<String>>
+    fun setCurrentLanguageCode(languageCode: String)
+
 
 }

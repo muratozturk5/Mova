@@ -16,7 +16,10 @@ object SharedPreferenceModule {
 
     @Provides
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        return context.getSharedPreferences(
+            Constants.Preferences.SHARED_PREF_NAME,
+            Context.MODE_PRIVATE
+        )
     }
 
 }

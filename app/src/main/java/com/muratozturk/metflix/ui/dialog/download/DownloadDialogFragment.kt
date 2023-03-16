@@ -13,8 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.convertMBtoGB
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.databinding.FragmentDownloadDialogBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 

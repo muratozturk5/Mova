@@ -15,6 +15,7 @@ import com.muratozturk.metflix.domain.source.DataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 import javax.inject.Inject
 
 class MetflixRepositoryImpl @Inject constructor(
@@ -160,6 +161,7 @@ class MetflixRepositoryImpl @Inject constructor(
     override fun getMovieImages(movieId: Int): Flow<Resource<List<ImageUI>>> = flow {
         emit(Resource.Loading)
         try {
+            Timber.d("getMovieImages: ${remote.getMovieImages(movieId)}")
             val response = remote.getMovieImages(movieId).backdrops.toImageUI()
             emit(Resource.Success(response))
         } catch (t: Throwable) {
@@ -226,6 +228,17 @@ class MetflixRepositoryImpl @Inject constructor(
         try {
             val response = remote.getPersonSerieCredits(personId).toPersonSerieUI()
                 .sortedByDescending { it.firstAirDate }
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun getLanguages(): Flow<Resource<List<LanguageUI>>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response =
+                remote.getLanguages().toLanguageUI().sortedBy { it.englishName }
             emit(Resource.Success(response))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
@@ -299,4 +312,30 @@ class MetflixRepositoryImpl @Inject constructor(
             emit(Resource.Error(t))
         }
     }
+
+    override fun getCurrentLanguage(): Flow<Resource<String>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = preference.getCurrentLanguage()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun setCurrentLanguage(languageCode: String) =
+        preference.setCurrentLanguage(languageCode)
+
+    override fun getCurrentLanguageCode(): Flow<Resource<String>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = preference.getCurrentLanguageCode()
+            emit(Resource.Success(response))
+        } catch (t: Throwable) {
+            emit(Resource.Error(t))
+        }
+    }
+
+    override fun setCurrentLanguageCode(languageCode: String) =
+        preference.setCurrentLanguageCode(languageCode)
 }

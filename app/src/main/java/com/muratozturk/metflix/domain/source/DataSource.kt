@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.local.Bookmark
 import com.muratozturk.metflix.data.model.local.Download
+import com.muratozturk.metflix.data.model.remote.configurations.LanguagesResponse
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
 import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
@@ -45,6 +46,7 @@ interface DataSource {
         suspend fun getPersonImages(personId: Int): PersonImagesResponse
         suspend fun getPersonMovieCredits(personId: Int): PersonMovieCreditsResponse
         suspend fun getPersonSerieCredits(personId: Int): PersonSerieCreditsResponse
+        suspend fun getLanguages(): LanguagesResponse
     }
 
     interface Local {
@@ -61,6 +63,11 @@ interface DataSource {
     interface Preference {
         fun setDarkMode(isDarkMode: Boolean)
         fun getDarkMode(): Boolean
+        fun setCurrentLanguage(language: String)
+        fun getCurrentLanguage(): String
+
+        fun setCurrentLanguageCode(language: String)
+        fun getCurrentLanguageCode(): String
     }
 
 }

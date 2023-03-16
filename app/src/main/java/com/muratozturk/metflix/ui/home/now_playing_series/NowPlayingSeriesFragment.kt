@@ -12,10 +12,10 @@ import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.common.gone
 import com.muratozturk.metflix.common.showToast
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.common.visible
 import com.muratozturk.metflix.databinding.FragmentNowPlayingSeriesBinding
 import com.muratozturk.metflix.ui.home.LoadStateAdapter
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

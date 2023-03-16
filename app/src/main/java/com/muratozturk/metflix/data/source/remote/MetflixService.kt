@@ -1,6 +1,7 @@
 package com.muratozturk.metflix.data.source.remote
 
 import com.muratozturk.metflix.common.Constants
+import com.muratozturk.metflix.data.model.remote.configurations.LanguagesResponse
 import com.muratozturk.metflix.data.model.remote.credits.CreditsResponse
 import com.muratozturk.metflix.data.model.remote.details.images.ImagesResponse
 import com.muratozturk.metflix.data.model.remote.details.movie.MovieDetailsResponse
@@ -108,5 +109,8 @@ interface MetflixService {
 
     @GET(Constants.Endpoints.GET_PERSON_SERIE_CREDITS)
     suspend fun getPersonSerieCredits(@Path("person_id") personId: Int): PersonSerieCreditsResponse
+
+    @GET(Constants.Endpoints.GET_LANGUAGES)
+    suspend fun getLanguages(): LanguagesResponse
 
 }

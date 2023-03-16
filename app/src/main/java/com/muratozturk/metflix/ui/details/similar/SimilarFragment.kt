@@ -10,15 +10,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.Constants
+import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
-import com.muratozturk.metflix.common.gone
-import com.muratozturk.metflix.common.showToast
-import com.muratozturk.metflix.common.visible
 import com.muratozturk.metflix.databinding.FragmentSimilarBinding
 import com.muratozturk.metflix.ui.details.DetailsFragmentDirections
 import com.muratozturk.metflix.ui.home.LoadStateAdapter
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

@@ -4,11 +4,14 @@ import com.google.gson.Gson
 import com.muratozturk.metflix.common.Constants.API_KEY
 import com.muratozturk.metflix.common.Constants.BASE_URL
 import com.muratozturk.metflix.common.interceptor.ApiKeyInterceptor
+import com.muratozturk.metflix.common.interceptor.LanguageInterceptor
 import com.muratozturk.metflix.data.source.remote.MetflixService
+import com.muratozturk.metflix.domain.source.DataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -29,18 +32,27 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @IntoSet
     fun provideApiKeyInterceptor(@Named("apiKey") apiKey: String): Interceptor {
         return ApiKeyInterceptor(apiKey)
     }
 
+    @Provides
+    @Singleton
+    @IntoSet
+    fun provideLanguageInterceptor(preferenceDataSource: DataSource.Preference): Interceptor {
+        return LanguageInterceptor(preferenceDataSource)
+    }
 
     @Singleton
     @Provides
-    fun provideHttpClient(interceptor: Interceptor): OkHttpClient {
+    fun provideHttpClient(interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(interceptor)
+            .apply {
+                interceptors().addAll(interceptors)
+            }
             .build()
     }
 
@@ -73,7 +85,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRemoteService(retrofit: Retrofit): MetflixService =
+    fun provideMetflixService(retrofit: Retrofit): MetflixService =
         retrofit.create(MetflixService::class.java)
 
 }

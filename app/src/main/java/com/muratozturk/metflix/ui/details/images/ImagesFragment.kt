@@ -13,7 +13,6 @@ import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.databinding.FragmentImagesBinding
 import com.muratozturk.metflix.domain.model.ImageUI
 import com.muratozturk.metflix.ui.details.DetailsFragmentDirections
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

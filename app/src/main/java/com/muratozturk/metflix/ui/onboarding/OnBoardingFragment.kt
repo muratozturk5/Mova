@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.muratozturk.metflix.R
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.databinding.FragmentOnBoardingBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

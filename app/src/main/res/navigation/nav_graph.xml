@@ -145,14 +145,15 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_signInWithSocialFragment"
-            app:destination="@id/signInWithSocialFragment"
+            android:id="@+id/action_profileFragment_to_languageFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_logoutDialogFragment"
+            app:destination="@id/logoutDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/dialogFragment"
@@ -233,6 +234,10 @@
             app:argType="com.muratozturk.metflix.common.enums.MediaTypeEnum" />
         <action
             android:id="@+id/action_detailsFragment_self"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
         <action
             android:id="@+id/action_detailsFragment_to_videoPlayerFragment"
@@ -242,6 +247,10 @@
             app:destination="@id/downloadDialogFragment" />
         <action
             android:id="@+id/action_detailsFragment_to_personDetailFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/personDetailFragment" />
         <action
             android:id="@+id/action_detailsFragment_to_previewImagesFragment"
@@ -264,6 +273,10 @@
         tools:layout="@layout/fragment_similar">
         <action
             android:id="@+id/action_similarFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -303,6 +316,13 @@
         <action
             android:id="@+id/action_downloadFragment_to_deleteDownloadFragment"
             app:destination="@id/deleteDownloadFragment" />
+        <action
+            android:id="@+id/action_downloadFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <dialog
         android:id="@+id/deleteDownloadFragment"
@@ -326,9 +346,17 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_personDetailFragment_to_detailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/detailsFragment" />
         <action
             android:id="@+id/action_personDetailFragment_to_previewImagesFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/previewImagesFragment" />
     </fragment>
     <fragment
@@ -361,4 +389,24 @@
             android:name="imageType"
             app:argType="com.muratozturk.metflix.common.enums.ImageTypeEnum" />
     </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.muratozturk.metflix.ui.profile.language.LanguageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language" />
+    <dialog
+        android:id="@+id/logoutDialogFragment"
+        android:name="com.muratozturk.metflix.ui.profile.logout.LogoutDialogFragment"
+        android:label="fragment_logout_dialog"
+        tools:layout="@layout/fragment_logout_dialog">
+        <action
+            android:id="@+id/action_logoutDialogFragment_to_signInWithSocialFragment"
+            app:destination="@id/signInWithSocialFragment"
+            app:popUpTo="@id/nav_graph"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>

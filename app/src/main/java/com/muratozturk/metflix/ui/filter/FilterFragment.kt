@@ -20,7 +20,6 @@ import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.databinding.FragmentFilterBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

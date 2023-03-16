@@ -1,5 +1,6 @@
 package com.muratozturk.metflix.ui.activity
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -22,11 +24,13 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+
         window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
-        setupBottomNavigationView()
+        viewModel.getDarkMode()
+        viewModel.getCurrentLanguageCode()
         collectData()
+
     }
 
     private fun collectData() {
@@ -62,6 +66,35 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            lifecycleScope.launchWhenCreated {
+                currentLanguageCode.collectLatest { response ->
+                    when (response) {
+                        is Resource.Loading -> {
+                        }
+                        is Resource.Error -> {
+                            showToast(
+                                getString(R.string.error),
+                                response.throwable.localizedMessage ?: "Error",
+                                MotionToastStyle.ERROR
+                            )
+
+                        }
+                        is Resource.Success -> {
+
+                            val locale = Locale(response.data)
+                            val config = Configuration()
+                            config.setLocale(locale)
+                            val resources = this@MainActivity.resources
+                            resources?.updateConfiguration(config, resources.displayMetrics)
+                            setContentView(binding.root)
+
+                            setupBottomNavigationView()
+
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -74,31 +107,31 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashScreenFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.signUpFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.signInWithPasswordFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.onBoardingFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.signInWithSocialFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.dialogFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.videoPlayerFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithoutAnimation(binding.fragmentContainerView)
                 }
                 R.id.previewImagesFragment -> {
-                    binding.bottomNavigation.gone()
+                    binding.bottomNavigation.hideWithAnimation(binding.fragmentContainerView)
                 }
                 else -> {
-                    binding.bottomNavigation.visible()
+                    binding.bottomNavigation.showWithAnimation(binding.fragmentContainerView)
                 }
             }
         }

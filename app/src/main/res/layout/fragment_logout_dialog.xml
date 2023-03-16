@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".ui.profile.logout.LogoutDialogFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp">
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/indicator_color" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/logout"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textFontWeight="700"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/stroke_color" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/logout_message"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelBtn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/second_btn_bg"
+                android:elevation="0dp"
+                android:shadowRadius="0"
+                android:stateListAnimator="@null"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/second_btn_text"
+                android:textFontWeight="600"
+                android:textSize="15sp" />
+
+            <com.github.sablasvegas.shadout.Shadout
+                android:id="@+id/shadout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:Dy="10dp"
+                app:cornerRadius="100dp"
+                app:shadowColor="@color/red_shadow"
+                app:shadowRadius="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/deleteButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/rounded_btn"
+                    android:backgroundTint="@color/red"
+                    android:elevation="0dp"
+                    android:shadowRadius="0"
+                    android:stateListAnimator="@null"
+                    android:text="@string/yes_logout"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textFontWeight="600"
+                    android:textSize="15sp" />
+
+            </com.github.sablasvegas.shadout.Shadout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -12,7 +12,6 @@ import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.databinding.FragmentPersonImagesBinding
 import com.muratozturk.metflix.domain.model.ImageUI
 import com.muratozturk.metflix.ui.person.PersonDetailFragmentDirections
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

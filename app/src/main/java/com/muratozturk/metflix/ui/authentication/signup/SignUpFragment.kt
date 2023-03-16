@@ -19,7 +19,6 @@ import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.data.model.DialogArguments
 import com.muratozturk.metflix.databinding.FragmentSignUpBinding
 import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

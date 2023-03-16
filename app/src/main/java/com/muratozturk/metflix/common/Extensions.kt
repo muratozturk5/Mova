@@ -1,5 +1,9 @@
 package com.muratozturk.metflix.common
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -8,9 +12,11 @@ import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -21,8 +27,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.Constants.getBackDropPath
+import com.muratozturk.metflix.common.Constants.getFlagPath
 import com.muratozturk.metflix.common.Constants.getPosterPath
 import com.muratozturk.metflix.common.Constants.getYouTubePath
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
@@ -131,6 +139,86 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
+
+fun View.animateTranslationY(animateFrom: Float, animateTo: Float, duration: Long) {
+    val animator =
+        ObjectAnimator.ofFloat(
+            this, "translationY", TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                animateTo,
+                resources.displayMetrics
+            ), TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                animateFrom,
+                resources.displayMetrics
+            )
+        )
+    animator.duration = duration
+    if (animateTo == 0f) {
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                this@animateTranslationY.gone()
+            }
+        })
+    }
+    animator.start()
+
+}
+
+fun View.animateMarginBottom(size: Float, duration: Long) {
+    val dpToPx = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        size,
+        resources.displayMetrics
+    )
+
+
+    val params =
+        this.layoutParams as ConstraintLayout.LayoutParams
+    val animator = ValueAnimator.ofInt(params.bottomMargin, dpToPx.toInt())
+    animator.addUpdateListener {
+        val value = it.animatedValue as Int
+        params.setMargins(
+            params.leftMargin,
+            params.topMargin,
+            params.rightMargin,
+            value
+        )
+        this.layoutParams = params
+    }
+    animator.duration = duration
+    animator.start()
+}
+
+fun BottomNavigationView.showWithAnimation(fragmentContainerView: View) {
+    if (this.visibility == View.VISIBLE) return
+    this.visible()
+    this.animateTranslationY(0f, 60f, 700)
+    fragmentContainerView.animateMarginBottom(60f, 700)
+}
+
+fun BottomNavigationView.hideWithAnimation(fragmentContainerView: View) {
+    if (this.visibility == View.GONE) return
+    this.animateTranslationY(60f, 0f, 700)
+    fragmentContainerView.animateMarginBottom(0f, 700)
+}
+
+fun BottomNavigationView.hideWithoutAnimation(fragmentContainerView: View) {
+    if (this.visibility == View.GONE) return
+    this.gone()
+
+    val params =
+        fragmentContainerView.layoutParams as ConstraintLayout.LayoutParams
+    params.setMargins(
+        params.leftMargin,
+        params.topMargin,
+        params.rightMargin,
+        0
+    )
+    fragmentContainerView.layoutParams = params
+
+}
+
 fun Activity.showToast(
     title: String?,
     description: String,
@@ -151,7 +239,13 @@ fun Activity.showToast(
 fun Context.circularProgressDrawable(): Drawable {
     return CircularProgressDrawable(this).apply {
         strokeWidth = 7f
-        centerRadius = 80f
+        centerRadius = 60f
+        setColorSchemeColors(
+            androidx.core.content.ContextCompat.getColor(
+                this@circularProgressDrawable,
+                R.color.text_color
+            )
+        )
         start()
     }
 }
@@ -164,6 +258,7 @@ fun ImageView.loadImage(url: String?, isBlur: Boolean? = false, imageTypeEnum: I
         ImageTypeEnum.YOUTUBE -> R.drawable.gray_placeholder
         ImageTypeEnum.CREDIT -> R.drawable.profile_filled
         ImageTypeEnum.LOCAL -> R.drawable.gray_placeholder
+        ImageTypeEnum.FLAG -> R.drawable.gray_placeholder
     }
 
     url?.let {
@@ -174,6 +269,7 @@ fun ImageView.loadImage(url: String?, isBlur: Boolean? = false, imageTypeEnum: I
             ImageTypeEnum.YOUTUBE -> getYouTubePath(url)
             ImageTypeEnum.CREDIT -> getPosterPath(url)
             ImageTypeEnum.LOCAL -> url
+            ImageTypeEnum.FLAG -> getFlagPath(url)
         }
 
         if (isBlur == true) {

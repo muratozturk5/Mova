@@ -11,8 +11,8 @@ import androidx.viewpager.widget.ViewPager
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.pageTransformer
+import com.muratozturk.metflix.common.viewBinding
 import com.muratozturk.metflix.databinding.FragmentPreviewImagesBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
 class PreviewImagesFragment : Fragment(R.layout.fragment_preview_images) {
 

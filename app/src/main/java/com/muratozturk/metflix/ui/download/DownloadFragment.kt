@@ -13,7 +13,6 @@ import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.databinding.FragmentDownloadBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle
@@ -39,6 +38,14 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
     }
 
     private fun onClickItem(id: Int, mediaType: MediaTypeEnum) {
+        val action = DownloadFragmentDirections.actionDownloadFragmentToDetailsFragment(
+            id,
+            mediaType
+        )
+        findNavController().navigate(action)
+    }
+
+    private fun onClickItemPlay(id: Int, mediaType: MediaTypeEnum) {
         val action = DownloadFragmentDirections.actionDownloadFragmentToVideoPlayerFragment(
             videoId = null,
             mediaType,
@@ -96,6 +103,7 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
                                         DownloadAdapter(response.data as ArrayList)
                                     downloadRecyclerView.adapter = adapter
                                     adapter!!.onClickHigh = ::onClickItem
+                                    adapter!!.onClickPlayHigh = ::onClickItemPlay
                                     adapter!!.onClickRemoveHigh = ::onClickItemRemove
                                 }
 

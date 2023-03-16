@@ -15,13 +15,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.muratozturk.metflix.R
-import com.muratozturk.metflix.common.Constants
-import com.muratozturk.metflix.common.convertMBtoGB
+import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
-import com.muratozturk.metflix.common.formatTime
-import com.muratozturk.metflix.common.loadImage
 import com.muratozturk.metflix.databinding.FragmentDeleteDownloadBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

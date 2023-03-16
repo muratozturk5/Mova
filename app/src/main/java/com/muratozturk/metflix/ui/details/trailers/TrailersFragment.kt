@@ -11,7 +11,6 @@ import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.databinding.FragmentTrailersBinding
 import com.muratozturk.metflix.ui.details.DetailsFragmentDirections
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber

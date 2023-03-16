@@ -16,7 +16,6 @@ import com.muratozturk.metflix.common.enums.MediaTypeEnum
 import com.muratozturk.metflix.data.model.local.Bookmark
 import com.muratozturk.metflix.databinding.FragmentHomeBinding
 import com.muratozturk.metflix.domain.model.MovieUI
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
@@ -42,7 +41,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun initUI() {
         with(binding) {
             requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-            
+
             viewpagerPopularMovies.setOnTouchListener { v, event ->
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> onUserInteraction()

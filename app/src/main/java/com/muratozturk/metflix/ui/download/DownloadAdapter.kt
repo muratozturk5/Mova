@@ -14,6 +14,7 @@ import com.muratozturk.metflix.databinding.ItemDownloadBinding
 class DownloadAdapter(private val downloadList: ArrayList<Download>) :
     RecyclerView.Adapter<DownloadAdapter.ViewHolder>() {
     var onClickHigh: (Int, MediaTypeEnum) -> Unit = { _, _ -> }
+    var onClickPlayHigh: (Int, MediaTypeEnum) -> Unit = { _, _ -> }
     var onClickRemoveHigh: (Download, Int) -> Unit = { _, _ -> }
 
     inner class ViewHolder(private val binding: ItemDownloadBinding) :
@@ -29,6 +30,10 @@ class DownloadAdapter(private val downloadList: ArrayList<Download>) :
                 }
                 imageView.loadImage(item.backdrop, imageTypeEnum = ImageTypeEnum.BACKDROP)
                 cardView.setOnClickListener {
+                    onClickPlayHigh(item.id, item.type)
+                }
+
+                movieInfo.setOnClickListener {
                     onClickHigh(item.id, item.type)
                 }
 

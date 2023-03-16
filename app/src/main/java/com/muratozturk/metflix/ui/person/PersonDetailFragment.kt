@@ -11,7 +11,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.muratozturk.metflix.R
 import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.databinding.FragmentPersonDetailBinding
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle

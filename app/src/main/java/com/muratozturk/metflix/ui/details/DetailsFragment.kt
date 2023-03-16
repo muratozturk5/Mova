@@ -20,7 +20,6 @@ import com.muratozturk.metflix.data.model.local.Download
 import com.muratozturk.metflix.databinding.FragmentDetailsBinding
 import com.muratozturk.metflix.domain.model.MovieDetailsUI
 import com.muratozturk.metflix.domain.model.SerieDetailsUI
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import www.sanju.motiontoast.MotionToastStyle
