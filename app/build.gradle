@@ -83,23 +83,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
-    // Animated Bottom Bar
-    implementation 'nl.joery.animatedbottombar:library:1.1.0'
-
     // Shimmer Effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
-    // Smooth BottomBar
-    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
-
     // Motion Toast
     implementation 'com.github.Spikeysanju:MotionToast:1.4'
-
-    // Loading Button
-    implementation group: 'com.apachat', name: 'loadingbutton-android', version: '1.0.11'
-
-    // Rounded Progress Bar
-    implementation 'com.github.MackHartley:RoundedProgressBar:3.0.0'
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
