@@ -6,9 +6,9 @@
 <img src="https://github.com/muratozturk5/Metflix/blob/main/Screenshots/logo.png" align="left"
 width="250" hspace="10" vspace="10">
    
-Metflix is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Metflix App APK 👇***
+Metflix is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Metflix App APK in Releases Page👇***
 
-[![](https://img.shields.io/badge/Metflix-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Metflix/releases)</br></br></br></br></br></br>
+[![](https://img.shields.io/badge/Metflix-Releases-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Metflix/releases)</br></br></br></br></br></br>
 
 ## 🛠 Built With
 - [MVVM with Clean Architecture](https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture)
