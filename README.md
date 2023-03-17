@@ -52,6 +52,11 @@ Metflix is a TMDb mobile add that list movies and series, shows their details, y
 **Murat ÖZTÜRK**
 
 [![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/murat-%C3%B6zt%C3%BCrk-7a9306217/)
+</br>
+
+## ♥ Contributions 
+Contributions are welcome, use the pull request
+</br>
 
 📄 License 
 -------
