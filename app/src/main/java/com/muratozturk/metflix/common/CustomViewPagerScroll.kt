@@ -8,9 +8,7 @@ import android.widget.Scroller
 import androidx.core.view.ViewCompat
 import androidx.viewpager.widget.ViewPager
 
-/**
- * Created by luis rafael on 16/02/19.
- */
+
 class CustomViewPagerScroll : ViewPager {
 
     constructor(context: Context) : super(context) {
@@ -33,7 +31,7 @@ class CustomViewPagerScroll : ViewPager {
 
             mScroller = ScrollerCustomDuration(context, interpolator.get(null) as Interpolator)
             scroller.set(this, mScroller)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
 
     }

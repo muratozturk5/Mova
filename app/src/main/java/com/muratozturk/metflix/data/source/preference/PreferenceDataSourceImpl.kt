@@ -28,7 +28,6 @@ class PreferenceDataSourceImpl @Inject constructor(
             Configuration.UI_MODE_NIGHT_NO -> {
                 isDarkMode = false
             }
-            Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
         }
 
         Timber.e("isDarkMode: $isDarkMode")

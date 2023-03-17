@@ -1,6 +1,5 @@
 package com.muratozturk.metflix.data.repository
 
-import android.app.Application
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.muratozturk.metflix.common.Resource
@@ -21,8 +20,7 @@ import javax.inject.Inject
 class MetflixRepositoryImpl @Inject constructor(
     private val remote: DataSource.Remote,
     private val local: DataSource.Local,
-    private val preference: DataSource.Preference,
-    private val app: Application
+    private val preference: DataSource.Preference
 ) :
     MetflixRepository {
     override fun getPopularMovies(): Flow<Resource<List<MovieUI>>> = flow {

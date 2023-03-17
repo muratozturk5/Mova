@@ -1,6 +1,5 @@
 package com.muratozturk.metflix.ui.person
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muratozturk.metflix.common.Resource
@@ -16,8 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PersonDetailViewModel @Inject constructor(
-    private val getPersonDetailsUseCase: GetPersonDetailsUseCase,
-    savedStateHandle: SavedStateHandle
+    private val getPersonDetailsUseCase: GetPersonDetailsUseCase
 ) :
     ViewModel() {
 

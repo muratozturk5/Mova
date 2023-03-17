@@ -47,6 +47,15 @@ object Constants {
         const val REQ_SIGN_IN_GOOGLE = -1
     }
 
+    object Queries {
+        const val DELETE_BOOKMARK = "DELETE FROM bookmarks WHERE id = :id"
+        const val IS_BOOKMARKED = "SELECT EXISTS(SELECT * FROM bookmarks WHERE id = :id)"
+        const val GET_BOOKMARKS = "SELECT * FROM bookmarks ORDER BY addDate DESC"
+        const val DELETE_DOWNLOAD = "DELETE FROM downloads WHERE id = :id"
+        const val IS_DOWNLOADED = "SELECT EXISTS(SELECT * FROM downloads WHERE id = :id)"
+        const val GET_DOWNLOADS = "SELECT * FROM downloads ORDER BY addDate DESC"
+    }
+
     object Endpoints {
         const val GET_POPULAR_MOVIES = "movie/popular"
         const val GET_NOW_PLAYING_MOVIES = "movie/now_playing"

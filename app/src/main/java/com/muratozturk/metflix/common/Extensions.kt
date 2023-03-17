@@ -124,7 +124,7 @@ fun getReformatDate(dateInString: String?): String {
         val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         try {
             val date = parser.parse(dateInString)
-            formatter.format(date)
+            formatter.format(date!!)
         } catch (e: ParseException) {
             "-"
         }

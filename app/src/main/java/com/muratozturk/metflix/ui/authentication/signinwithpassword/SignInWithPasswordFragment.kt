@@ -138,7 +138,6 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                                 )
                             findNavController().navigate(action)
                         }
-                        else -> {}
                     }
                 }
             }
@@ -163,7 +162,6 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                             laResult.launch(response.data)
 
                         }
-                        else -> {}
                     }
                 }
             }
@@ -197,7 +195,6 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                             findNavController().navigate(action)
 
                         }
-                        else -> {}
                     }
                 }
             }
@@ -222,7 +219,6 @@ class SignInWithPasswordFragment : Fragment(R.layout.fragment_sign_in_with_passw
                             signInWithCredential(response.data)
 
                         }
-                        else -> {}
                     }
                 }
             }

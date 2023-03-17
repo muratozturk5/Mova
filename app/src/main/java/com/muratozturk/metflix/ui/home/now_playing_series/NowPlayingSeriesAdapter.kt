@@ -3,7 +3,7 @@ package com.muratozturk.metflix.ui.home.now_playing_series
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.herdal.moviehouse.common.base.BasePagingAdapter
+import com.muratozturk.metflix.common.base.BasePagingAdapter
 import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import com.muratozturk.metflix.common.format
 import com.muratozturk.metflix.common.loadImage

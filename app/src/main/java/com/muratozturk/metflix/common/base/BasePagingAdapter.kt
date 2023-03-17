@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.common.base
+package com.muratozturk.metflix.common.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
