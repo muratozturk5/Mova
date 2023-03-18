@@ -8,7 +8,7 @@ width="250" hspace="10" vspace="10">
    
 Metflix is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Metflix App APK in Releases Page👇***
 
-[![](https://img.shields.io/badge/Metflix-Releases-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Metflix/releases)</br></br></br></br></br></br>
+[![](https://img.shields.io/badge/Metflix-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Metflix/releases)</br></br></br></br></br></br>
 
 ## 🛠 Built With
 - [MVVM with Clean Architecture](https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture)
@@ -16,12 +16,15 @@ Metflix is a TMDb mobile add that list movies and series, shows their details, y
 - [Hilt for Dependency Injection](https://developer.android.com/training/dependency-injection/hilt-android)
 - [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Room Database](https://developer.android.com/training/data-storage/room)
+- [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit](https://square.github.io/retrofit)
 - [Gson](https://github.com/google/gson)
 - [Lottie](https://github.com/LottieFiles/lottie-android)
 - [Paging 3](https://proandroiddev.com/paging-3-easier-way-to-pagination-part-1-584cad1f4f61)
+- [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 - [Coil](https://coil-kt.github.io/coil/)
+- [Youtube Player](https://github.com/PierfrancescoSoffritti/android-youtube-player)
 - [TheMovieDb(Tmdb) API](https://developers.themoviedb.org/3)
 
 ## 📷 Light Theme Screenshots
@@ -45,6 +48,10 @@ Metflix is a TMDb mobile add that list movies and series, shows their details, y
 </br>
 
 
+## ♥ Contributions 
+Contributions are welcome, use the pull request
+</br>
+
 ## 👨 Developed By 
 
  <img src="https://avatars.githubusercontent.com/u/62841905?s=400&u=6b1f97cf6a3dfe668719000f9686f5fe861f273a&v=4" width="70" align="left">
@@ -55,9 +62,6 @@ Metflix is a TMDb mobile add that list movies and series, shows their details, y
 [![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/murat-%C3%B6zt%C3%BCrk-7a9306217/)
 </br>
 
-## ♥ Contributions 
-Contributions are welcome, use the pull request
-</br>
 
 📄 License 
 -------
