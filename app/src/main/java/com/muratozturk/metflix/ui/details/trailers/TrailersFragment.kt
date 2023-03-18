@@ -13,7 +13,6 @@ import com.muratozturk.metflix.databinding.FragmentTrailersBinding
 import com.muratozturk.metflix.ui.details.DetailsFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -86,7 +85,6 @@ class TrailersFragment : Fragment(R.layout.fragment_trailers) {
         fun createBundle(id: Int, mediaType: MediaTypeEnum) =
             TrailersFragment().apply {
                 arguments = Bundle().apply {
-                    Timber.e("id: $id mediaType: $mediaType")
                     putInt(Constants.Arguments.ID, id)
                     putSerializable(Constants.Arguments.MEDIA_TYPE, mediaType)
                 }

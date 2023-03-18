@@ -14,7 +14,6 @@ import com.muratozturk.metflix.common.*
 import com.muratozturk.metflix.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 import java.util.*
 
@@ -50,16 +49,13 @@ class MainActivity : AppCompatActivity() {
 
                         }
                         is Resource.Success -> {
-                            Timber.e(response.data.toString())
-
                             try {
                                 if (response.data) {
                                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                                 } else {
                                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                                 }
-                            } catch (e: Exception) {
-                                Timber.e(e)
+                            } catch (_: Exception) {
                             }
 
                         }

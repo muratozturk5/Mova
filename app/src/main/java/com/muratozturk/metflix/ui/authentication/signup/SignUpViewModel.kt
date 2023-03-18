@@ -13,10 +13,10 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.muratozturk.metflix.common.Resource
-import com.muratozturk.metflix.domain.use_case.authentication.SignInWithCredential
-import com.muratozturk.metflix.domain.use_case.authentication.SignUp
-import com.muratozturk.metflix.domain.use_case.authentication.github.SignInGithub
-import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogle
+import com.muratozturk.metflix.domain.use_case.authentication.SignInWithCredentialUseCase
+import com.muratozturk.metflix.domain.use_case.authentication.SignUpUseCase
+import com.muratozturk.metflix.domain.use_case.authentication.github.SignInGithubUseCase
+import com.muratozturk.metflix.domain.use_case.authentication.google.SignInGoogleUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -26,10 +26,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    private val signUpUseCase: SignUp,
-    private val signInWithCredentialUseCase: SignInWithCredential,
-    private val signInGoogleUseCase: SignInGoogle,
-    private val signInGithubUseCase: SignInGithub
+    private val signUpUseCase: SignUpUseCase,
+    private val signInWithCredentialUseCase: SignInWithCredentialUseCase,
+    private val signInGoogleUseCase: SignInGoogleUseCase,
+    private val signInGithubUseCase: SignInGithubUseCase
 ) : ViewModel() {
 
     private val _user = MutableSharedFlow<Resource<AuthResult>>()

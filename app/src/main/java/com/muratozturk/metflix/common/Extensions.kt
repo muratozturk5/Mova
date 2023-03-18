@@ -37,7 +37,6 @@ import com.muratozturk.metflix.common.enums.ImageTypeEnum
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.io.File
@@ -334,8 +333,6 @@ suspend fun Context.imageDownloadSaveFile(photoName: String, url: String): Strin
         }
         return imageUri
     } catch (e: Exception) {
-        Timber.tag("getBitmap-Ex").e(e.toString())
-
         return ""
     }
 

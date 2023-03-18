@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.metflix.data.model.FilterResult
 import com.muratozturk.metflix.data.model.remote.genres.Genre
 import com.muratozturk.metflix.databinding.ItemGenreBinding
-import timber.log.Timber
 
 class FilterAdapter(private val filterResult: FilterResult) :
     RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
@@ -23,10 +22,8 @@ class FilterAdapter(private val filterResult: FilterResult) :
                 genreCheckBox.setOnClickListener {
                     if (genreCheckBox.isChecked) {
                         filterResult.selectedGenreList.add(item)
-                        Timber.d("add: ${filterResult.selectedGenreList}")
                     } else {
                         filterResult.selectedGenreList.remove(item)
-                        Timber.d("remove: ${filterResult.selectedGenreList}")
                     }
                 }
             }

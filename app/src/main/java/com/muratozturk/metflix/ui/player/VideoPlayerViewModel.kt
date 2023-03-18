@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -48,14 +47,12 @@ class VideoPlayerViewModel @Inject constructor(
     private fun getMovieTrailers(movieId: Int) = viewModelScope.launch {
         getMovieTrailersUseCase(movieId).collectLatest {
             _trailers.emit(it)
-            Timber.d("getMovieTrailers: $it")
         }
     }
 
     private fun getSerieTrailers(serieId: Int) = viewModelScope.launch {
         getSerieTrailersUseCase(serieId).collectLatest {
             _trailers.emit(it)
-            Timber.d("getSerieTrailers: $it")
         }
     }
 }

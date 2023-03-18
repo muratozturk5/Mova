@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userCard"
-        tools:text="@tools:sample/full_names" />
+        tools:text="Murat ÖZTÜRK" />
 
     <TextView
         android:id="@+id/emailTv"
@@ -399,7 +399,7 @@
 
                 <ImageView
                     android:layout_width="28dp"
-                    app:tint="@color/text_color"
+                    app:tint="@color/red"
                     android:layout_height="28dp"
                     android:src="@drawable/logout" />
 
@@ -409,7 +409,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:text="@string/logout"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/red"
                     android:textFontWeight="600"
                     android:textSize="16sp" />
 
@@ -417,8 +417,7 @@
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:src="@drawable/arrow_right"
-                    app:tint="@color/text_color" />
+                    android:src="@drawable/arrow_right" />
             </LinearLayout>
 
         </LinearLayout>

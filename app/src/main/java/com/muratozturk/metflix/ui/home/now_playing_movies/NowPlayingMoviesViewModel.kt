@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,7 +29,6 @@ class NowPlayingMoviesViewModel @Inject constructor(private val getNowPlayingMov
     private fun getNowPlayingMovies() = viewModelScope.launch {
         getNowPlayingMoviesUseCase().cachedIn(viewModelScope).collectLatest {
             _nowPlayingMovies.emit(it)
-            Timber.d("now playing movies: $it")
         }
     }
 

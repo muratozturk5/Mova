@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,15 +41,12 @@ class ExploreViewModel @Inject constructor(
     fun getDiscoverMovies(filterResult: FilterResult?) = viewModelScope.launch {
         getDiscoverMoviesUseCase(filterResult).cachedIn(viewModelScope).collectLatest {
             _discoverMovies.emit(it)
-            Timber.d("getDiscoverMovies $it")
         }
     }
 
     fun getDiscoverSeries(filterResult: FilterResult?) = viewModelScope.launch {
         getDiscoverSeriesUseCase(filterResult).cachedIn(viewModelScope).collectLatest {
             _discoverSeries.emit(it)
-            Timber.d("getDiscoverSeries $it")
-
         }
     }
 

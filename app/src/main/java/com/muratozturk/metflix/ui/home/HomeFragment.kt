@@ -18,7 +18,6 @@ import com.muratozturk.metflix.databinding.FragmentHomeBinding
 import com.muratozturk.metflix.domain.model.MovieUI
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -235,12 +234,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     private fun onStopTimer() {
-        Timber.d("onStopTimer")
         if (timer != null) timer!!.cancel()
     }
 
     private fun onUserInteraction() {
-        Timber.d("onUserInteraction")
         if (timer != null) {
             timer!!.cancel()
             timer!!.start()

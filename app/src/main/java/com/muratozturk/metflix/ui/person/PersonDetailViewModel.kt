@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,7 +26,6 @@ class PersonDetailViewModel @Inject constructor(
     fun getPersonDetails(id: Int) = viewModelScope.launch {
         getPersonDetailsUseCase(id).collectLatest {
             _personDetails.emit(it)
-            Timber.d("Person: $it")
         }
     }
 }

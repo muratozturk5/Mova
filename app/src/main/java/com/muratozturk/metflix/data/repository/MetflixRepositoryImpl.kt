@@ -14,7 +14,6 @@ import com.muratozturk.metflix.domain.source.DataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 import javax.inject.Inject
 
 class MetflixRepositoryImpl @Inject constructor(
@@ -159,7 +158,6 @@ class MetflixRepositoryImpl @Inject constructor(
     override fun getMovieImages(movieId: Int): Flow<Resource<List<ImageUI>>> = flow {
         emit(Resource.Loading)
         try {
-            Timber.d("getMovieImages: ${remote.getMovieImages(movieId)}")
             val response = remote.getMovieImages(movieId).backdrops.toImageUI()
             emit(Resource.Success(response))
         } catch (t: Throwable) {

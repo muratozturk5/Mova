@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -46,14 +45,12 @@ class ImagesViewModel @Inject constructor(
     private fun getMovieImages(movieId: Int) = viewModelScope.launch {
         getMovieImagesUseCase(movieId).collectLatest {
             _images.emit(it)
-            Timber.d("Images: $it")
         }
     }
 
     private fun getSerieImages(serieId: Int) = viewModelScope.launch {
         getSerieImagesUseCase(serieId).collectLatest {
             _images.emit(it)
-            Timber.d("Images: $it")
         }
     }
 }

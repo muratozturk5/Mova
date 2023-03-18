@@ -10,7 +10,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,8 +25,6 @@ class FilterViewModel @Inject constructor(
     fun getMovieGenres() = viewModelScope.launch {
         getMovieGenresUseCase().collectLatest {
             _genres.emit(it)
-            Timber.d("movie genres: $it")
-
         }
     }
 

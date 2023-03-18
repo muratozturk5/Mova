@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import com.muratozturk.metflix.common.Constants
 import com.muratozturk.metflix.domain.source.DataSource
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -29,8 +28,6 @@ class PreferenceDataSourceImpl @Inject constructor(
                 isDarkMode = false
             }
         }
-
-        Timber.e("isDarkMode: $isDarkMode")
         return sharedPreferences.getBoolean(
             Constants.Preferences.DARK_MODE,
             isDarkMode

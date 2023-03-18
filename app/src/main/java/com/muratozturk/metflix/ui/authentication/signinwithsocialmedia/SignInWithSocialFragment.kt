@@ -22,7 +22,6 @@ import com.muratozturk.metflix.databinding.FragmentSignInWithSocialBinding
 import com.muratozturk.metflix.ui.dialog.DialogFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
@@ -171,8 +170,7 @@ class SignInWithSocialFragment : Fragment(R.layout.fragment_sign_in_with_social)
                 }
             }
 
-        } catch (e: Exception) {
-            Timber.e("TAG-Activity", "onActivityResult: ${e.message}")
+        } catch (_: Exception) {
         }
     }
 
