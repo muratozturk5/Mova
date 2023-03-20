@@ -1,14 +1,14 @@
-![App Screenshot](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/BANNER.png)
+![App Screenshot](https://github.com/muratozturk5/Mova/blob/main/Screenshots/MovaBanner.png)
 ![](https://vbr.wocr.tk/badge?page_id=metflix&color=55acb7&style=for-the-badge&logo=Github)
 
-# Metflix Kotlin Android App
+# Mova Kotlin Android App
 
-<img src="https://github.com/muratozturk5/Metflix/blob/main/Screenshots/logo.png" align="left"
+<img src="https://github.com/muratozturk5/Mova/blob/main/Screenshots/logo.png" align="left"
 width="250" hspace="10" vspace="10">
    
-Metflix is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Metflix App APK in Releases Page👇***
+Mova is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Mova App APK in Releases Page👇***
 
-[![](https://img.shields.io/badge/Metflix-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Metflix/releases)</br></br></br></br></br></br>
+[![](https://img.shields.io/badge/Mova-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Mova/releases)</br></br></br></br></br></br>
 
 ## 🛠 Built With
 - [MVVM with Clean Architecture](https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture)
@@ -29,24 +29,29 @@ Metflix is a TMDb mobile add that list movies and series, shows their details, y
 
 ## 📷 Light Theme Screenshots
 
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/1.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/2.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/3.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/4.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/5.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/6.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/1.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/2.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/3.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/4.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/5.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/6.png)
 
 </br>
 
 ## 📷 Dark Theme Screenshots
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/1d.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/2d.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/3d.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/4d.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/5d.png)
-![](https://github.com/muratozturk5/Metflix/blob/main/Screenshots/6d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/1d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/2d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/3d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/4d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/5d.png)
+![](https://github.com/muratozturk5/Mova/blob/main/Screenshots/6d.png)
 </br>
 
+
+## 🎨 Design 
+
+[![Figma](https://img.shields.io/badge/-figma-grey?style=for-the-badge&logo=figma)](https://www.figma.com/community/file/1216311757237992126/Mova---Movie-Streaming-App-UI-Kit)
+</br>
 
 ## ♥ Contributions 
 Contributions are welcome, use the pull request
