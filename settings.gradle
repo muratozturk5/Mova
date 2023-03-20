@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "Metflix"
+rootProject.name = "Mova"
 include ':app'
