@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="30dp"
-        android:text="@string/welcome_to_metflix"
+        android:text="@string/welcome_to_mova"
         android:textColor="@color/white"
         android:layout_marginHorizontal="10dp"
         android:textFontWeight="700"

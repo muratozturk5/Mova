@@ -14,11 +14,11 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:name=".MetflixApp"
+        android:name=".MovaApp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MetFlix"
+        android:theme="@style/Theme.Mova"
         tools:targetApi="31">
         <activity
             android:name=".ui.activity.MainActivity"
@@ -35,7 +35,7 @@
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.muratozturk.metflix.fileProvider"
+            android:authorities="com.muratozturk.mova.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

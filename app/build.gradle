@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace 'com.muratozturk.metflix'
+    namespace 'com.muratozturk.mova'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.muratozturk.metflix"
+        applicationId "com.muratozturk.mova"
         minSdk 22
         targetSdk 33
         versionCode 2

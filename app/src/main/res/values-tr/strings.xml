@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Metflix</string>
+    <string name="app_name">Mova</string>
     <string name="login_image">Giriş Resmi</string>
     <string name="lets_you_in">Giriş yapalım</string>
     <string name="continue_with_facebook">Facebook ile devam et</string>
@@ -22,7 +22,7 @@
     <string name="onboarding_image">Giriş resmi</string>
     <string name="onboarding_gradient">Giriş gradyan</string>
     <string name="get_started">Başlayın</string>
-    <string name="welcome_to_metflix">Metflix\'e Hoş Geldiniz</string>
+    <string name="welcome_to_mova">Mova\'ya Hoş Geldiniz</string>
     <string name="onboarding_description">Günlerinizi harika kılmak için yüzyılın en iyi film akışı uygulaması!</string>
     <string name="app_logo">Uygulama logosu</string>
     <string name="home">Ana Sayfa</string>

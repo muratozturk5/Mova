@@ -26,7 +26,7 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_logo"
-            android:src="@drawable/metflix"
+            android:src="@drawable/mova"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
