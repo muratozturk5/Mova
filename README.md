@@ -6,9 +6,17 @@
 <img src="https://github.com/muratozturk5/Mova/blob/main/Screenshots/logo.png" align="left"
 width="250" hspace="10" vspace="10">
    
-Mova is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br>***Try latest Mova App APK in Releases Page👇***
+Mova is a TMDb mobile add that list movies and series, shows their details, you can even watch trailers, save movies to list for watch later</br></br></br></br></br></br></br></br></br></br>
 
-[![](https://img.shields.io/badge/Mova-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Mova/releases)</br></br></br></br></br></br>
+## 📎 Releases
+***Try latest Mova App APK in Releases Page👇***
+
+[![](https://img.shields.io/badge/Mova-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/muratozturk5/Mova/releases)
+
+***Try latest Mova App in Google Play👇***
+
+[![](https://img.shields.io/badge/Mova-Google%20Play-brightgreen?style=for-the-badge&logo=googleplay)](https://play.google.com/store/apps/details?id=com.muratozturk.mova)
+
 
 ## 🛠 Built With
 - [MVVM with Clean Architecture](https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture)
@@ -50,7 +58,7 @@ Mova is a TMDb mobile add that list movies and series, shows their details, you 
 
 ## 🎨 Design 
 
-[![Figma](https://img.shields.io/badge/-figma-grey?style=for-the-badge&logo=figma)](https://www.figma.com/community/file/1216311757237992126/Mova---Movie-Streaming-App-UI-Kit)
+[![Figma](https://img.shields.io/badge/Mova-Figma-black?style=for-the-badge&logo=figma)](https://www.figma.com/community/file/1216311757237992126/Mova---Movie-Streaming-App-UI-Kit)
 </br>
 
 ## ♥ Contributions 
