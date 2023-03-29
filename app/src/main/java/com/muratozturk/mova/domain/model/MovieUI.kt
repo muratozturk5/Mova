@@ -9,5 +9,5 @@ data class MovieUI(
     val title: String,
     val voteAverage: Double,
     var isBookmarked: Boolean = false,
-    val releaseDate: String
+    val releaseDate: String?
 )
