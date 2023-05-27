@@ -1,5 +1,5 @@
 ![App Screenshot](https://github.com/muratozturk5/Mova/blob/main/Screenshots/MovaBanner.png)
-![](https://vbr.wocr.tk/badge?page_id=metflix&color=55acb7&style=for-the-badge&logo=Github)
+![](https://komarev.com/ghpvc/?username=metflix&color=55acb7&style=for-the-badge&logo=Github&label=Views)
 
 # Mova Kotlin Android App
 
